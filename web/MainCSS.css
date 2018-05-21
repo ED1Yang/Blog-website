@@ -1,0 +1,224 @@
+.container {
+    padding: 80px 120px;
+
+}
+
+.avatar {
+    border-radius: 50px;
+    width: 50px;
+}
+
+#bg-1 .container {
+    display: inline-block;
+}
+
+
+/* Remove rounded borders on input fields */
+.form-control {
+    border-radius: 0;
+}
+
+/* Disable the ability to resize textareas */
+textarea {
+    resize: none;
+}
+
+
+.row {
+    text-align: center;
+    font-size: x-large;
+}
+
+.subject {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+}
+.subject:hover {
+    border-color: #f1f1f1;
+}
+
+.row {
+    font-family: "Tahoma";
+    font-size: small;
+}
+
+.carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%); /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+/* Adding a very dark background color with a little bit see-through */
+.navbar {
+    margin-bottom: 0;
+    background-color: black;
+    border: 0;
+    font-size: 15px !important;
+    letter-spacing: 4px;
+    opacity:0.9;
+    vertical-align: center;
+}
+
+
+/* Add a gray color to all navbar links */
+.navbar li a, .navbar .navbar-brand {
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+/* Dropdown */
+.open .dropdown-toggle {
+    color: #fff ;
+    background-color: #555 !important;
+}
+
+/* Dropdown links */
+.dropdown-menu li a {
+    color: #000 !important;
+}
+
+/* On hover, the dropdown links will turn red */
+.dropdown-menu li a:hover {
+    background-color: red !important;
+}
+
+
+.navbar-header li {
+    border-color: yellow;
+    padding: 5px;
+
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h3 {
+    font-size: x-large;
+}
+
+
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/* Remove rounded borders from list */
+.list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Remove border and add padding to thumbnails */
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+    margin: 30px;
+}
+
+.thumbnail p {
+    margin-top: 15px;
+    color: #555;
+}
+
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+
+.bg-1 img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
+
+.bg-1 h3 {
+    font-size: large;
+
+}
+/* Black buttons with extra padding and without rounded borders */
+.btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+/* On hover, the color of .btn will transition to white with black text */
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+
+textarea {
+    font-family:sans-serif;
+    font-size:1.2em;
+    text-align: left;
+}
+
+
+/* Add a dark background color to the footer */
+footer {
+    background-color: black;
+    color: #f5f5f5;
+    padding: 32px;
+}
+
+.text-center a {
+    color: #f5f5f5;
+}
+
+.text-center p {
+    font-size: large;
+
+}
+
+
+
+footer a:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+
+
+

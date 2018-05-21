@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(Web-Design-solutions.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+
+.registration-form{
+    text-align: center;
+    margin: 100px 400px;
+}
+
+#registration{
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+    padding: 50px 0px;
+}
+
+.personaldetails{
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+}
+
+#ph-no{
+    width: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+}
+
+#personnum{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+}
+
+.selectgender{
+    color: white;
+    font-size: 18px;
+}
+
+#register{
+    width: 250px;
+    padding: 10px;
+    background: #fb2525;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 20px;
+    outline: 0px;
+}
+
+#register:hover{
+    background-color: darkturquoise;
+}
+
