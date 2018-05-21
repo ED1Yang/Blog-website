@@ -5,7 +5,10 @@ CREATE TABLE users(
   last_name VARCHAR(32),
   date_of_birth DATE,
   country VARCHAR(32),
-  description TEXT
+  description TEXT,
+  image VARCHAR(30),
+  session INT DEFAULT NULL,
+  PRIMARY KEY (userName)
 );
 
 
@@ -15,10 +18,16 @@ CREATE TABLE articles(
   article_content TEXT,
   genre VARCHAR(25),
   author_id VARCHAR(16),
-  PRIMARY KEY (article_id),
-  FOREIGN KEY (author_id) REFERENCES users(userName)
+  date TIMESTAMP DEFAULT current_timestamp,
+  PRIMARY KEY (article_id)-- ,
+  -- FOREIGN KEY (author_id) REFERENCES users(userName)
 );
 
-ALTER TABLE articles ADD date TIMESTAMP DEFAULT current_timestamp;
-ALTER TABLE users ADD session INT DEFAULT NULL;
-ALTER TABLE users ADD image VARCHAR(30);
+CREATE TABLE comments(
+  article_id INT,
+  userName VARCHAR(16),
+  userComment TEXT,
+  date TIMESTAMP DEFAULT current_timestamp
+  -- FOREIGN KEY (article_id) REFERENCES articles(article_id),
+  -- FOREIGN KEY (userName) REFERENCES users(userName)
+)
