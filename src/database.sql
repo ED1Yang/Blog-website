@@ -7,7 +7,7 @@ CREATE TABLE users(
   country VARCHAR(32),
   description TEXT,
   image VARCHAR(30),
-  session INT DEFAULT NULL,
+  session VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (userName)
 );
 

@@ -81,16 +81,23 @@ public class UserDAO implements AutoCloseable {
         }
     }
 
-    public void logIn(String session, String username) throws SQLException{
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET loginSession = ? WHERE username = ?")) {
-            stmt.setString(1, session);
-            stmt.setString(2, username);
-            stmt.executeUpdate();
+    public boolean logIn(String session, String username, String password) throws SQLException{
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET session = ? WHERE username = ?")) {
+            User user = getUserInfo(username);
+            if(user.getPassword().equals(password)) {
+                stmt.setString(1, session);
+                stmt.setString(2, username);
+                stmt.executeUpdate();
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     }
 
     public void logOut(String username) throws SQLException{
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET loginSession = NULL WHERE username = ?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET session = NULL WHERE username = ?")) {
             stmt.setString(1, username);
             stmt.executeUpdate();
         }
