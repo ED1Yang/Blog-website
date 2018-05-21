@@ -13,7 +13,7 @@ CREATE TABLE users(
 
 
 CREATE TABLE articles(
-  article_id INT,
+  article_id INT AUTO_INCREMENT,
   article_name VARCHAR(50),
   article_content TEXT,
   genre VARCHAR(25),
@@ -27,7 +27,8 @@ CREATE TABLE comments(
   article_id INT,
   userName VARCHAR(16),
   userComment TEXT,
-  date TIMESTAMP DEFAULT current_timestamp
+  date TIMESTAMP DEFAULT current_timestamp,
+  commentID INT AUTO_INCREMENT
   -- FOREIGN KEY (article_id) REFERENCES articles(article_id),
   -- FOREIGN KEY (userName) REFERENCES users(userName)
 )
