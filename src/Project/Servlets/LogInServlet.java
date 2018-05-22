@@ -21,7 +21,7 @@ public class LogInServlet extends HttpServlet {
             if (login.logIn(req.getSession().getId(), username, password)) {
                 req.setAttribute("LoggedIn", true);
                 req.setAttribute("UserImage", login.getUserInfo(username).getImage());
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ApolloWebPage.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
                 dispatcher.forward(req, resp);
             }
             else {

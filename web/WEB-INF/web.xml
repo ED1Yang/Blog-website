@@ -14,8 +14,29 @@
         <url-pattern>/LogIn</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>Project.Servlets.LogOutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/LogOut</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HomePage</servlet-name>
+        <servlet-class>Project.Servlets.HomePageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HomePage</servlet-name>
+        <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+
+
     <welcome-file-list>
-        <welcome-file>ApolloWebPage.jsp</welcome-file>
+        <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>
 
 
