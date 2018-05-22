@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(Web-Design-solutions.jpg);
+    background: url(Resources/Web-Design-solutions.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     font-family: sans-serif;
@@ -65,5 +65,9 @@ h1{
 
 #register:hover{
     background-color: darkturquoise;
+}
+
+img.highlighted {
+    border: 3px solid red;
 }
 
