@@ -27,7 +27,7 @@
                     <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="Login_page.jsp"><img src="Avatars/${UserImage}" alt="Name" class="avatar"></a></li>
+                    <li><a href="User_Profile.html"><img src="Avatars/${UserImage}" alt="Name" class="avatar"></a></li>
                 </c:otherwise>
             </c:choose>
         </div>
