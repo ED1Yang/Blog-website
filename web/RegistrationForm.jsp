@@ -22,7 +22,7 @@
         <br><br>
         <input type="date" name="dob" class="personaldetails" placeholder="DOB" required>
         <br><br>
-        <select name="country" class="country" required>
+        <select name="country" class="personaldetails" required>
             <option value="NZ">New Zealand</option>
             <option value="AU">Australia</option>
             <option value="CHN">China</option>

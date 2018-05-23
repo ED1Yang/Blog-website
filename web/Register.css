@@ -34,6 +34,13 @@ h1{
     outline: 0px;
 }
 
+.countrydetails{
+    width: 270px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+}
+
 #ph-no{
     width: 50px;
     padding: 10px;
