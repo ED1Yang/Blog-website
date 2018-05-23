@@ -54,6 +54,16 @@
         <url-pattern>/UserProfileServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ArticleViewer</servlet-name>
+        <servlet-class>Project.Servlets.ArticleViewerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ArticleViewer</servlet-name>
+        <url-pattern>/ArticleViewer</url-pattern>
+    </servlet-mapping>
+
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>

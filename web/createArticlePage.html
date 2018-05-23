@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Articles</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="createPageStylesheet.css">
+
+</head>
+<body class="newart">
+
+<!-- Creating the NavBar -->
+<header>
+    <div class="container">
+        <img src="../../../../Apollo/Apollo/avatar.jpeg" alt="profileimg" class="profileimg">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Publish</a></li>
+                <li><a href="#">Draft</a></li>
+                <!--<li><a href="#">Saved</a></li>-->
+
+            </ul>
+        </nav>
+    </div>
+</header>
+<br><br>
+    <div class="container">
+        <h2>Post New Article</h2>
+        <br>
+
+        <!-- Left-aligned media object -->
+        <div class="media">
+            <div class="media-left">
+                <img src="../../../../Apollo/Apollo/avatar.jpeg" class="media-object" style="width:60px">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Username</h4>
+                <p>As soon as the user starts writing, this will be updated to "Draft'</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <p>Please enter your article details below</p>
+        <form>
+            <div class="form-group">
+                <label for="articleTitle">Title of the Article:</label>
+                <input type="text" class="form-control" id="articleTitle">
+            </div>
+            <div class="form-group">
+                <label for="articleBody">Body of the Article:</label>
+                <input type="text" class="form-control" id="articleBody">
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-primary">Image</button>
+        <button type="button" class="btn btn-primary">Video</button>
+        <button type="button" class="btn btn-primary">Embed</button>
+    </div>
+<br><br><br>
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p>copyright <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
+</footer>
+
+
+
+
+
+</body>
+</html>

@@ -168,7 +168,10 @@
                         </a>
                         <h3><strong>${article.getTitle()}</strong></h3>
                         <p>${article.getDate()}</p>
-                        <a href=""><button class="btn">Read..</button></a>
+                        <form action="/ArticleViewer">
+                            <input type="hidden" name="article" value="${article.getId()}">
+                            <input type="submit" value="Read..." class="btn">
+                        </form>
                     </div>
                 </div>
             </c:forEach>
