@@ -27,7 +27,7 @@
                     <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="User_Profile.html"><img src="Avatars/${UserImage}" alt="Name" class="avatar"></a></li>
+                    <li><a href="/UserProfileServlet"><img src="Avatars/${UserImage}" alt="Name" class="avatar"></a></li>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -160,74 +160,18 @@
 <div class="bg-1" id = "articles">
     <div class="container">
         <div class="row text-center">
-            <%
-
-            %>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <a target="_blank" href="Resources/imageAddArticle2.jpg">
-                        <img src="Resources/imageAddArticle2.jpg">
-                    </a>
-                    <h3><strong>ArticleTitle1</strong></h3>
-                    <p>Date Posted</p>
-                    <button class="btn">Read..</button>
+            <c:forEach items="${AllArticles}" var="article">
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <a target="_blank" href="Resources/imageAddArticle2.jpg">
+                            <img src="Resources/imageAddArticle2.jpg">
+                        </a>
+                        <h3><strong>${article.getTitle()}</strong></h3>
+                        <p>${article.getDate()}</p>
+                        <a href=""><button class="btn">Read..</button></a>
+                    </div>
                 </div>
-                <!--<form action="/html/tags/html_form_tag_action.cfm" method="post">-->
-                    <!--<div>-->
-                        <!--<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">comment box</textarea>-->
-                    <!--</div>-->
-                    <!--<input type="submit" value="Submit">-->
-                <!--</form>-->
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <a target="_blank" href="Resources/imageAddArticle2.jpg">
-                        <img src="Resources/imageAddArticle2.jpg">
-                    </a>
-                    <h3><strong>ArticleTitle2</strong></h3>
-                    <p>Date Posted</p>
-                    <button class="btn">Read..</button>
-                </div>
-                <!--<form action="/html/tags/html_form_tag_action.cfm" method="post">-->
-                    <!--<div>-->
-                        <!--<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">comment box</textarea>-->
-                    <!--</div>-->
-                    <!--<input type="submit" value="Submit">-->
-                <!--</form>-->
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <a target="_blank" href="Resources/imageAddArticle3.jpg">
-                        <img src="Resources/imageAddArticle3.jpg">
-                    </a>
-                    <h3><strong>ArticleTitle3</strong></h3>
-                    <p>Date Posted</p>
-                    <button class="btn">Read..</button>
-                </div>
-                <!--<form action="/html/tags/html_form_tag_action.cfm" method="post">-->
-                    <!--<div>-->
-                        <!--<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">comment box</textarea>-->
-                    <!--</div>-->
-                    <!--<input type="submit" value="Submit">-->
-                <!--</form>-->
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <a target="_blank" href="Resources/imageAddArticle4.jpg">
-                        <img src="Resources/imageAddArticle4.jpg">
-                    </a>
-                    <h3><strong>ArticleTitle4</strong></h3>
-                    <p>Date Posted</p>
-                    <button class="btn">Read..</button>
-                </div>
-                <!--<form action="/html/tags/html_form_tag_action.cfm" method="post">-->
-                    <!--<div>-->
-                        <!--<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">comment box</textarea>-->
-                    <!--</div>-->
-                    <!--<input type="submit" value="Submit">-->
-                <!--</form>-->
-            </div>
-
+            </c:forEach>
         </div>
     </div>
 </div>

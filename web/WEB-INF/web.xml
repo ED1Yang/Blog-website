@@ -44,6 +44,16 @@
         <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UserProfile</servlet-name>
+        <servlet-class>Project.Servlets.UserProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserProfile</servlet-name>
+        <url-pattern>/UserProfileServlet</url-pattern>
+    </servlet-mapping>
+
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
