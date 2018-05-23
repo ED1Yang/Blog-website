@@ -160,6 +160,9 @@
 <div class="bg-1" id = "articles">
     <div class="container">
         <div class="row text-center">
+            <%
+
+            %>
             <div class="col-sm-3">
                 <div class="thumbnail">
                     <a target="_blank" href="Resources/imageAddArticle2.jpg">

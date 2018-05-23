@@ -35,10 +35,10 @@ public class RegistrationServlet extends HttpServlet{
         }
 
         // Ditto with the temp folder that the file-upload mechanism needs.
-        this.tempFolder = new File(getServletContext().getRealPath("/WEB-INF/temp"));
-        if (!tempFolder.exists()) {
-            tempFolder.mkdirs();
-        }
+//        this.tempFolder = new File(getServletContext().getRealPath("/WEB-INF/temp"));
+//        if (!tempFolder.exists()) {
+//            tempFolder.mkdirs();
+//        }
     }
 
     @Override
