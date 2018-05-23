@@ -104,6 +104,20 @@ public class UserDAO implements AutoCloseable {
             stmt.executeUpdate();
         }
     }
+
+    public boolean userNameValidation(String username) throws SQLException{
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(userName) FROM users WHERE userName = ?")) {
+            stmt.setString(1,username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                rs.next();
+                if (rs.getInt(1) == 1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    }
     @Override
     public void close() throws SQLException {
         this.conn.close();

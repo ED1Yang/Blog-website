@@ -21,7 +21,7 @@
         </c:if>
         <input type="submit" name="" value="Login">
         <a href="#">Forgot your Password?</a>
-        <a href="RegistrationForm.html">Don't Have an Account?</a>
+        <a href="RegistrationForm.jsp">Don't Have an Account?</a>
     </form>
 
 

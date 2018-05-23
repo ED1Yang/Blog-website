@@ -37,7 +37,7 @@
                 <li><a href="#getstarted">GET STARTED</a></li>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
-                    <li><a href="RegistrationForm.html">SIGN UP</a></li>
+                    <li><a href="RegistrationForm.jsp">SIGN UP</a></li>
                 </c:if>
                 <c:if test="${LoggedIn}">
                     <li><a href="/LogOut">LOG OUT</a></li>
