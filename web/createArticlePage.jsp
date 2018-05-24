@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
     <!-- Creating the NavBar -->
     <header>
         <div class="container">
-            <img src="placeholder.png" alt="profileimg" class="profileimg">
+            <img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg">
             <nav>
                 <ul>
                     <li><a href="Home.jsp">Home</a></li>
@@ -55,10 +56,10 @@
 
     <div class="container">
         <div class="media-left">
-            <img src="../avatar.jpeg" class="media-object" style="width:60px">
+            <img src="Avatars/${User.getImage()}" class="media-object" style="width:60px">
         </div>
         <div class="media-body">
-            <h3 class="media-heading">Username</h3>
+            <h3 class="media-heading">${User.getUerName()}</h3>
             <p>This text should to "Draft" as soon as user starts typing</p>
         </div>
     </div>

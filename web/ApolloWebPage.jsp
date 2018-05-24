@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">ABOUT</a></li>
                 <c:if test="${LoggedIn}">
-                    <li><a href="createArticlePage.html">ADD ARTICLE</a></li>
+                    <li><a href="/ArticleCreation">ADD ARTICLE</a></li>
                 </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
