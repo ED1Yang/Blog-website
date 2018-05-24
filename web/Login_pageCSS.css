@@ -1,11 +1,16 @@
+#container{
+    width: 350px;
+    margin: 0px auto;
+}
+
 body{
     margin: 0;
     padding: 0;
     background: url(Resources/Web-Design-solutions.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     font-family: sans-serif;
-
 }
 
 .loginbox{
@@ -83,6 +88,12 @@ h1{
 
 .loginbox a:hover{
     color: darkturquoise;
+}
+
+@media screen and (max-width: 259px) {
+    #container{
+        width: 100%;
+    }
 }
 
 

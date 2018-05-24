@@ -64,6 +64,27 @@
         <url-pattern>/ArticleViewer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AccountSetting</servlet-name>
+        <servlet-class>Project.Servlets.AccountSettingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AccountSetting</servlet-name>
+        <url-pattern>/AccountSetting</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewUserInformation</servlet-name>
+        <servlet-class>Project.Servlets.NewUserInformation</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewUserInformation</servlet-name>
+        <url-pattern>/NewUserInformation</url-pattern>
+    </servlet-mapping>
+
+
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>

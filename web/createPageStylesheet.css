@@ -75,9 +75,9 @@ nav a::before {
 nav a:hover::before {
     width: 100%;
 }
-
-
+.jpg
 /*<!-- Styling the Contents -->*/
+
 
 img {
     border-radius: 50%;
@@ -86,10 +86,13 @@ img {
     width: 60px;
 }
 
+
 .media-body {
     font-family: Tahoma;
     font-size: small;
 }
+
+
 
 .section-content {
     color: lightgray;
@@ -108,11 +111,19 @@ img {
     font-size: 16px;
 }
 
+
 footer {
     background-color: black;
     color: white;
     padding: 15px;
+    width: 100%;
+    text-align: center;
 }
+
+
+
+
+
 
 
 

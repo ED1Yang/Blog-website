@@ -39,4 +39,10 @@ body {
 
 .btn{
     margin-top: 10px;
+    border-radius: 15%;
+}
+
+#validationdesc{
+    min-height: 200px;
+    min-width: 400px;
 }

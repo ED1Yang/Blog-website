@@ -24,4 +24,6 @@ public class HikariConnectionPool {
     public static Connection getConnection() throws SQLException {
         return hds.getConnection();
     }
+
+
 }

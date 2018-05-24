@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title>Log-In Page</title>
     <link rel="stylesheet" type="text/css" href="Login_pageCSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="loginbox">
+<div id="container" class="loginbox">
     <img src="Resources/avatarimg.png" class="avatar">
     <h1>Login Here</h1>
     <form action = /LogIn method="post">
@@ -21,7 +22,7 @@
         </c:if>
         <input type="submit" name="" value="Login">
         <a href="#">Forgot your Password?</a>
-        <a href="RegistrationForm.jsp">Don't Have an Account?</a>
+        <a href="/RegistrationForm.jsp">Don't Have an Account?</a>
     </form>
 
 

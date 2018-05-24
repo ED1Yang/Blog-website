@@ -34,7 +34,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">ABOUT</a></li>
-                <li><a href="#getstarted">GET STARTED</a></li>
+                <c:if test="${LoggedIn}">
+                    <li><a href="createArticlePage.html">ADD ARTICLE</a></li>
+                </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
                     <li><a href="RegistrationForm.jsp">SIGN UP</a></li>
