@@ -26,7 +26,6 @@ public class HomePageServlet extends HttpServlet{
             List<Article> allArticles = articles.getAllArticles();
             request.setAttribute("AllArticles", allArticles);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ApolloWebPage.jsp");
-            System.out.println("Completed");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -60,7 +60,7 @@ public class ArticleDAO implements AutoCloseable {
     }
 
     public Article getArticleById(int id) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE id = ?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE article_id = ?")) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

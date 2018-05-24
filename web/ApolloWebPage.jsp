@@ -98,7 +98,7 @@
 
 
 <div class="container text-center">
-    <h1><strong>TOP BLOGS</strong></h1>
+    <h1><strong>LATEST ARTICLES</strong></h1>
     <p>We use words</p>
     <p>Lorem ipsum dolor sit amet, qui unum populo bonorum ei. Per no enim utroque probatus, te labore dictas omittam his, illum mnesarchum vel te. Vis ad tota elitr minimum, ne ludus epicuri epicurei pro. His facilisi pertinax an. Pro eripuit denique scribentur ut, est ei ferri epicurei contentiones, vidit antiopam explicari te nam. Sit natum accusata in, in libris apeirian adipisci eam.</p>
 </div>
@@ -161,13 +161,21 @@
     <div class="container">
         <div class="row text-center">
             <c:forEach items="${AllArticles}" var="article">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="thumbnail">
-                        <a target="_blank" href="Resources/imageAddArticle2.jpg">
-                            <img src="Resources/imageAddArticle2.jpg">
-                        </a>
+                        <c:choose>
+                            <c:when test="${article.getGenre() == 'Business'}">
+                                <img src="Resources/business.jpg">
+                            </c:when>
+                            <c:when test="${article.getGenre() == 'Technology'}">
+                                <img src="Resources/technology.jpg">
+                            </c:when>
+                            <c:when test="${article.getGenre() == 'Politics'}">
+                                <img src="Resources/politics.jpg">
+                            </c:when>
+                        </c:choose>
                         <h3><strong>${article.getTitle()}</strong></h3>
-                        <p>${article.getDate()}</p>
+                        <p>${article.getDate().substring(0,11)}</p>
                         <form action="/ArticleViewer">
                             <input type="hidden" name="article" value="${article.getId()}">
                             <input type="submit" value="Read..." class="btn">

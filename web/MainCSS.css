@@ -338,3 +338,8 @@ h6 {
     min-width: 2em;
     max-width: 30em;
 }
+
+.avatar {
+    height: 50px;
+    border-radius: 50px;
+}
