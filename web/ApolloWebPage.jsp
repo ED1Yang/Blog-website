@@ -27,7 +27,7 @@
                     <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="/UserProfileServlet"><img src="Avatars/${UserImage}" alt="Name" class="avatar"></a></li>
+                    <li><a href="/UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a></li>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -160,6 +160,7 @@
 <div class="bg-1" id = "articles">
     <div class="container">
         <div class="row text-center">
+            <h1 style="color: white">ALL ARTICLES</h1>
             <c:forEach items="${AllArticles}" var="article">
                 <div class="col-sm-4">
                     <div class="thumbnail">
@@ -183,6 +184,35 @@
                     </div>
                 </div>
             </c:forEach>
+            <c:if test="${LoggedIn}">
+                <h1>YOUR ARTICLES</h1>
+                <c:forEach items="${AllArticles}" var="article">
+                    <c:set var="userName" value="${user.getUerName()}"></c:set>
+                    <c:if test="${article.getAuthor() == userName}">
+                        <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <c:choose>
+                                <c:when test="${article.getGenre() == 'Business'}">
+                                    <img src="Resources/business.jpg">
+                                </c:when>
+                                <c:when test="${article.getGenre() == 'Technology'}">
+                                    <img src="Resources/technology.jpg">
+                                </c:when>
+                                <c:when test="${article.getGenre() == 'Politics'}">
+                                    <img src="Resources/politics.jpg">
+                                </c:when>
+                            </c:choose>
+                            <h3><strong>${article.getTitle()}</strong></h3>
+                            <p>${article.getDate().substring(0,11)}</p>
+                            <form action="/ArticleViewer">
+                                <input type="hidden" name="article" value="${article.getId()}">
+                                <input type="submit" value="Read..." class="btn">
+                            </form>
+                        </div>
+                    </div>
+                    </c:if>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 </div>

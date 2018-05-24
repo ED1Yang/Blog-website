@@ -20,7 +20,7 @@ public class LogInServlet extends HttpServlet {
             UserDAO login = new UserDAO();
             if (login.logIn(req.getSession().getId(), username, password)) {
                 req.setAttribute("LoggedIn", true);
-                req.setAttribute("UserImage", login.getUserInfo(username).getImage());
+                req.setAttribute("user", login.getUserInfo(username));
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
                 dispatcher.forward(req, resp);
             }

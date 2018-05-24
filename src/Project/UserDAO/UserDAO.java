@@ -44,6 +44,13 @@ public class UserDAO implements AutoCloseable {
         }
     }
 
+    public void deleteUserSession(String session) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET session = NULL WHERE session = ?")) {
+            stmt.setString(1, session);
+            stmt.executeUpdate();
+            }
+        }
+
     private User userFromResultSet(ResultSet rs) throws SQLException {
         return new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                 rs.getString(5), rs.getString(6), rs.getString(7),

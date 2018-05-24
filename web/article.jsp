@@ -12,7 +12,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/MainCSS.css">
+    <link rel="stylesheet" type="text/css" href="MainCSS.css">
 
 </head>
 <body>
@@ -48,6 +48,9 @@
         <strong>${article.getTitle()}</strong></h3>
     <h6 style="text-align:center;">
         Posted by: ${article.getAuthor()}</h6>
+    <h6 style="text-align: center">
+        Date: ${article.getDate().substring(0,11)}
+    </h6>
     <p>
         ${article.getContent()}
     </p><br>
@@ -94,7 +97,7 @@
 
 <div class="bgimg-2">
     <div class="caption">
-        <a href="ApolloWebPage.jsp"> <span class="border">More stories here</span> </a>
+        <a href="Home.jsp"> <span class="border">More stories here</span> </a>
     </div>
 </div>
 
