@@ -12,67 +12,80 @@
 </head>
 <body class="newart">
 
-<!-- Creating the NavBar -->
-<header>
-    <div class="container">
-        <img src="../../../../Apollo/Apollo/avatar.jpeg" alt="profileimg" class="profileimg">
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Publish</a></li>
-                <li><a href="#">Draft</a></li>
-                <!--<li><a href="#">Saved</a></li>-->
+    <!-- Creating the NavBar -->
+    <header>
+        <div class="container">
+            <img src="placeholder.png" alt="profileimg" class="profileimg">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Publish</a></li>
+                    <li><a href="#">Draft</a></li>
+                    <!--<li><a href="#">Saved</a></li>-->
 
-            </ul>
-        </nav>
-    </div>
-</header>
-<br><br>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <br><br>
+
+    <!--Creating the Contents-->
     <div class="container">
         <h2>Post New Article</h2>
+        <hr>
         <br>
-
         <!-- Left-aligned media object -->
+
         <div class="media">
             <div class="media-left">
-                <img src="../../../../Apollo/Apollo/avatar.jpeg" class="media-object" style="width:60px">
+                <img src="Avatars/avatar2.png" class="media-object" style="width:60px">
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Username</h4>
-                <p>As soon as the user starts writing, this will be updated to "Draft'</p>
+                <h3 class="media-heading">Username</h3>
+                <p>This text should to "Draft" as soon as user starts typing</p>
             </div>
         </div>
-        <hr>
+        <br>
+
     </div>
     <div class="container">
-        <p>Please enter your article details below</p>
-        <form>
-            <div class="form-group">
-                <label for="articleTitle">Title of the Article:</label>
-                <input type="text" class="form-control" id="articleTitle">
-            </div>
-            <div class="form-group">
-                <label for="articleBody">Body of the Article:</label>
-                <input type="text" class="form-control" id="articleBody">
-            </div>
-        </form>
+
+        <div class="postArticle-content"
+             contenteditable="true"
+             data-default-value="Title
+                                     Tell your story…">
+            <section class="section">
+                <div class="section-content">
+                    <div class="articleDetails">
+                        <h3 class="articleTitle">
+                            <span ><strong>Title</strong></span><br>
+                        </h3>
+                        <p class="articleBody" data-scroll="native">
+                            <span >Tell your story…<br></span><br>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
+
+    <br><br>
+
     <div class="container">
         <button type="button" class="btn btn-primary">Image</button>
         <button type="button" class="btn btn-primary">Video</button>
         <button type="button" class="btn btn-primary">Embed</button>
     </div>
-<br><br><br>
-<footer class="text-center">
-    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br><br>
-    <p>copyright <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
-</footer>
 
+    <br><br><br>
 
-
-
+    <footer class="text-center">
+        <a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
+        <p>copyright <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
+    </footer>
 
 </body>
 </html>

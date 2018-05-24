@@ -1,3 +1,5 @@
+/*<!-- Styling the Navbar -->*/
+
 body {
     margin: 0;
     background: whitesmoke;
@@ -11,8 +13,7 @@ body {
 }
 
 header {
-    background: silver;
-
+    background: black;
 }
 
 header::after {
@@ -21,7 +22,7 @@ header::after {
     clear: both;
 }
 
-.avatar {
+.profileimg {
     float: left;
     margin-left: -100px;
     padding: 10px 0;
@@ -48,7 +49,7 @@ nav li {
 }
 
 nav a {
-    color: black;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -75,6 +76,27 @@ nav a:hover::before {
     width: 100%;
 }
 
+
+/*<!-- Styling the Contents -->*/
+
+img {
+    border-radius: 50%;
+    width:30px;
+    height: 60px;
+    width: 60px;
+}
+
+.media-body {
+    font-family: Tahoma;
+    font-size: small;
+}
+
+.section-content {
+    color: lightgray;
+    font-family: Tahoma;
+}
+
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -87,9 +109,29 @@ nav a:hover::before {
 }
 
 footer {
-    background-color: silver;
+    background-color: black;
     color: white;
     padding: 15px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
