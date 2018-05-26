@@ -44,6 +44,9 @@
 </div>
 
 <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+    <c:if test="${Edited}">
+        <h6 style="color:red; text-align: center; font-weight: bold">Article Edited</h6>
+    </c:if>
     <h3 style="text-align:center;">
         <strong>${article.getTitle()}</strong></h3>
     <h6 style="text-align:center;">
@@ -54,7 +57,18 @@
     <p>
         ${article.getContent()}
     </p><br>
-
+    <c:if test="${LoggedIn}">
+        <form action="/ArticleCreation"  style="display: inline">
+            <input type="submit" class="btn" style="background-color: #4CAF50" value="Edit">
+            <input type="hidden" value="${article.getId()}" name="article">
+        </form>
+        <form action="/ArticleDeletion" style="display: inline">
+            <input type="submit" class="btn" style="background-color: #fb2525" value="Delete">
+            <input type="hidden" value="${article.getId()}" name="article">
+        </form>
+        <br>
+        <br>
+    </c:if>
     <form action="/html/tags/html_form_tag_action.cfm" method="post">
             <textarea name="comments" id="comments"
                       style="width: 30%;

@@ -196,7 +196,10 @@
                 <%--</c:if>--%>
                 <h1 id="user-articles">YOUR ARTICLES</h1>
                 <c:if test="${Added}">
-                    <h3 style="font-weight: bold; color: #4CAF50;">Article Added!</h3>
+                    <h3 style="font-weight: bold; color: #4CAF50;">Article Added</h3>
+                </c:if>
+                <c:if test="${deleted}">
+                    <h3 style="font-weight: bold; color: #fb2525;">Article Deleted</h3>
                 </c:if>
                 <c:forEach items="${AllArticles}" var="article">
                     <c:set var="userName" value="${user.getUerName()}"></c:set>

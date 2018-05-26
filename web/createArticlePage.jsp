@@ -41,7 +41,14 @@
     <!--<div style="background-image: url('Resources/imageMainArticle1.jpg')"></div>-->
 
     <div class="container">
-        <h2>Post New Article</h2>
+        <c:choose>
+            <c:when test="${editing}">
+                <h2>Edit Article</h2>
+            </c:when>
+            <c:otherwise>
+                <h2>Post New Article</h2>
+            </c:otherwise>
+        </c:choose>
         <hr>
         <br>
     </div>
@@ -61,29 +68,60 @@
 
     <div class="container">
         <!--<h3>Title</h3>-->
-        <form action="/NewArticle" method="post">
+        <c:choose>
+        <c:when test="${editing}">
+        <form action="/EditArticle" method="post">
+            <input type="hidden" value="${articleId}" name = "articleId">
+        </c:when>
+            <c:otherwise>
+            <form action="/NewArticle" method="post">
+            </c:otherwise>
+                </c:choose>
             <!--<div class="form-group">-->
                 <!--<textarea class="form-control" rows="5" id="articleTitle"></textarea>-->
             <!--</div>-->
             <br><br>
-
-            <select class="dropdown" name="category">
-                <option value="Technology">Technology</option>
-                <option value="Politics">Politics</option>
-                <option value="Business">Business</option>
-            </select>
+            <c:choose>
+                <c:when test="${articleGenre != null}">
+                    <h4>${articleGenre}</h4>
+                    <input type= "hidden" name="category" value="${articleGenre}">
+                </c:when>
+                <c:otherwise>
+                    <select class="dropdown" name="category">
+                        <option value="Technology">Technology</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </c:otherwise>
+            </c:choose>
 
             <br><br>
 
             <div class="input-group">
                 <span class="input-group-addon" style="font-size: large"><strong>Title</strong></span>
-                <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here"
-                       style="font-size: large;
-                            font-family: 'Helvetica';">
+                <c:choose>
+                    <c:when test="${articleName != null}">
+                        <input id="articleTitle" type="text" class="form-control" name="articleTitle"
+                               style="font-size: large;
+                                font-family: 'Helvetica';" value="${articleName}">
+                    </c:when>
+                    <c:otherwise>
+                        <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here"
+                               style="font-size: large;
+                                font-family: 'Helvetica';">
+                    </c:otherwise>
+                </c:choose>
             </div>
             <h4>Tell your story below..</h4>
             <div class="form-group">
-                <textarea class="form-control" rows="5" id="articleBody" name="articleBody"></textarea>
+                <c:choose>
+                    <c:when test="${articleContent != null}">
+                        <textarea class="form-control" rows="5" id="articleBody" name="articleBody">${articleContent}</textarea>
+                    </c:when>
+                    <c:otherwise>
+                        <textarea class="form-control" rows="5" id="articleBody" name="articleBody"></textarea>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <input type="hidden" value="${User.getUerName()}" name="author">
             <input type="submit" value="Publish" class="button">
