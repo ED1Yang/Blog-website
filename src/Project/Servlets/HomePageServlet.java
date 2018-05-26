@@ -17,7 +17,7 @@ import java.util.List;
 public class HomePageServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (ArticleDAO articles = new ArticleDAO()){
+        try (ArticleDAO articles = new ArticleDAO()) {
             //Get the articles for the home page
             List<Article> articlesListTech = articles.getArticlesByGenre("Technology");
             List<Article> articlesListPol = articles.getArticlesByGenre("Politics");
@@ -27,20 +27,19 @@ public class HomePageServlet extends HttpServlet{
             request.setAttribute("PolArticle", articlesListPol.get(0).getContent());
             List<Article> allArticles = articles.getAllArticles();
             request.setAttribute("AllArticles", allArticles);
-
-            //Check if the user is logged in
-            try (UserDAO user = new UserDAO()) {
-                if (user.getUserBySession(request.getSession().getId()) != null) {
-                    request.setAttribute("LoggedIn", true);
-                    request.setAttribute("user", user.getUserBySession(request.getSession().getId()));
-                }
-            }
-
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ApolloWebPage.jsp");
-            dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        try (UserDAO user = new UserDAO()) {
+            if (user.getUserBySession(request.getSession().getId()) != null) {
+                request.setAttribute("LoggedIn", true);
+                request.setAttribute("user", user.getUserBySession(request.getSession().getId()));
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ApolloWebPage.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override

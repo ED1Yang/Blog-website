@@ -76,7 +76,7 @@ public class NewUserInformation extends HttpServlet {
                 req.setAttribute("noChange",true);
             }
             req.setAttribute("user",newUser);
-            new UserDAO().updateUser(newUser,oldUser);
+            userDAO.updateUser(newUser,oldUser);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Account_Settings.jsp");
             dispatcher.forward(req, resp);
         } catch (SQLException e) {
