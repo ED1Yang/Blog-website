@@ -85,7 +85,7 @@ public class ArticleDAO implements AutoCloseable {
     }
 
     public void addArticle(Article article) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO articles (title, content, genre, author_id) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO articles (article_name, article_content, genre, author_id) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, article.getTitle());
             stmt.setString(2, article.getContent());
             stmt.setString(3, article.getGenre());

@@ -94,6 +94,16 @@
         <url-pattern>/ArticleCreation</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewArticle</servlet-name>
+        <servlet-class>Project.Servlets.NewArticleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewArticle</servlet-name>
+        <url-pattern>/NewArticle</url-pattern>
+    </servlet-mapping>
+
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>

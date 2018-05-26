@@ -25,14 +25,10 @@
     <!-- Creating the NavBar -->
     <header>
         <div class="container">
-            <img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg">
+            <a href="/UserProfileServlet"><img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg"></a>
             <nav>
                 <ul>
                     <li><a href="Home.jsp">Home</a></li>
-                    <li><a href="#">Publish</a></li>
-                    <li><a href="#">Draft</a></li>
-                    <!--<li><a href="#">Saved</a></li>-->
-
                 </ul>
             </nav>
         </div>
@@ -56,61 +52,44 @@
 
     <div class="container">
         <div class="media-left">
-            <img src="Avatars/${User.getImage()}" class="media-object" style="width:60px">
+            <img src="Avatars/${User.getImage()}" class="media-object" style="width:60px; border-radius: 60px">
         </div>
         <div class="media-body">
             <h3 class="media-heading">${User.getUerName()}</h3>
-            <p>This text should to "Draft" as soon as user starts typing</p>
         </div>
     </div>
-
-    <br><br>
-
-    <div class="container">
-
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Category
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Politics</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <br><br>
 
     <div class="container">
         <!--<h3>Title</h3>-->
-        <form>
+        <form action="/NewArticle" method="post">
             <!--<div class="form-group">-->
                 <!--<textarea class="form-control" rows="5" id="articleTitle"></textarea>-->
             <!--</div>-->
+            <br><br>
+
+            <select class="dropdown" name="category">
+                <option value="Technology">Technology</option>
+                <option value="Politics">Politics</option>
+                <option value="Business">Business</option>
+            </select>
+
+            <br><br>
 
             <div class="input-group">
                 <span class="input-group-addon" style="font-size: large"><strong>Title</strong></span>
                 <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here"
                        style="font-size: large;
-                            font-family: 'Times New Roman';">
+                            font-family: 'Helvetica';">
             </div>
-
-        </form>
-    </div>
-
-    <br>
-
-    <div class="container">
-        <h4>Tell your story below..</h4>
-        <form>
+            <h4>Tell your story below..</h4>
             <div class="form-group">
-                <textarea class="form-control" rows="5" id="articleBody"></textarea>
+                <textarea class="form-control" rows="5" id="articleBody" name="articleBody"></textarea>
             </div>
+            <input type="hidden" value="${User.getUerName()}" name="author">
+            <input type="submit" value="Publish" class="button">
         </form>
     </div>
-
-
-
+    <br>
 
     <!--</div>-->
     <!--<div class="container">-->
@@ -136,11 +115,11 @@
 
     <br><br>
 
-    <div class="container">
-        <button type="button" class="btn btn-primary">Image</button>
-        <button type="button" class="btn btn-primary">Video</button>
-        <button type="button" class="btn btn-primary">Embed</button>
-    </div>
+    <%--<div class="container">--%>
+        <%--<button type="button" class="btn btn-primary">Image</button>--%>
+        <%--<button type="button" class="btn btn-primary">Video</button>--%>
+        <%--<button type="button" class="btn btn-primary">Embed</button>--%>
+    <%--</div>--%>
 
     <br><br><br>
 

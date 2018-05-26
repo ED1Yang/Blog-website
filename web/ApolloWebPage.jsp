@@ -186,8 +186,18 @@
                     </div>
                 </div>
             </c:forEach>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center">
             <c:if test="${LoggedIn}">
-                <h1>YOUR ARTICLES</h1>
+                <%--<c:if test="${Added}">--%>
+                    <%--<h3 style="font-weight: bold;color: #4CAF50">Article successfully added!</h3>--%>
+                <%--</c:if>--%>
+                <h1 id="user-articles">YOUR ARTICLES</h1>
+                <c:if test="${Added}">
+                    <h3 style="font-weight: bold; color: #4CAF50;">Article Added!</h3>
+                </c:if>
                 <c:forEach items="${AllArticles}" var="article">
                     <c:set var="userName" value="${user.getUerName()}"></c:set>
                     <c:if test="${article.getAuthor() == userName}">

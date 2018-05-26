@@ -54,6 +54,7 @@
     <p>
         ${article.getContent()}
     </p><br>
+
     <form action="/html/tags/html_form_tag_action.cfm" method="post">
             <textarea name="comments" id="comments"
                       style="width: 30%;

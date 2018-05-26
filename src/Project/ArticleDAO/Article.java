@@ -26,6 +26,13 @@ public class Article {
         this.date = date;
     }
 
+    public Article(String title, String content, String genre, String authorID) {
+        this.title = title;
+        this.content = content;
+        this.genre = genre;
+        this.author = authorID;
+    }
+
     public Integer getId() {
         return id;
     }
