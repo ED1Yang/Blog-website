@@ -17,9 +17,8 @@ import java.util.List;
 public class HomePageServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+        try (ArticleDAO articles = new ArticleDAO()){
             //Get the articles for the home page
-            ArticleDAO articles = new ArticleDAO();
             List<Article> articlesListTech = articles.getArticlesByGenre("Technology");
             List<Article> articlesListPol = articles.getArticlesByGenre("Politics");
             List<Article> articlesListBus = articles.getArticlesByGenre("Business");
@@ -30,10 +29,11 @@ public class HomePageServlet extends HttpServlet{
             request.setAttribute("AllArticles", allArticles);
 
             //Check if the user is logged in
-            UserDAO user = new UserDAO();
-            if(user.getUserBySession(request.getSession().getId()) != null) {
-                request.setAttribute("LoggedIn", true);
-                request.setAttribute("user", user.getUserBySession(request.getSession().getId()));
+            try (UserDAO user = new UserDAO()) {
+                if (user.getUserBySession(request.getSession().getId()) != null) {
+                    request.setAttribute("LoggedIn", true);
+                    request.setAttribute("user", user.getUserBySession(request.getSession().getId()));
+                }
             }
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ApolloWebPage.jsp");

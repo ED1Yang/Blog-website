@@ -58,7 +58,7 @@ public class RegistrationServlet extends HttpServlet{
 
         ServletFileUpload upload = new ServletFileUpload(factory);
 
-        try {
+        try (UserDAO userDAO = new UserDAO()){
 
             List<FileItem> fileItems = upload.parseRequest(req);
 
@@ -106,7 +106,7 @@ public class RegistrationServlet extends HttpServlet{
 
                 else if (fi.getFieldName().equals("uname")) {
                     username = fi.getString();
-                    if(new UserDAO().userNameValidation(username)) {
+                    if(userDAO.userNameValidation(username)) {
                         user.setUerName(fi.getString());
                         System.out.println(fi.getString());
                     }
@@ -141,7 +141,7 @@ public class RegistrationServlet extends HttpServlet{
                 }
 
             }
-            new UserDAO().addUser(user);
+            userDAO.addUser(user);
         }
 
 

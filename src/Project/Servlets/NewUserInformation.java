@@ -26,10 +26,10 @@ public class NewUserInformation extends HttpServlet {
         System.out.println(country);
         System.out.println(firstname);
 
-        try {
+        try (UserDAO userDAO = new UserDAO()){
             boolean isChanged = false;
-            User newUser = new UserDAO().getUserBySession(req.getSession().getId());
-            User oldUser = new UserDAO().getUserBySession(req.getSession().getId());
+            User newUser = userDAO.getUserBySession(req.getSession().getId());
+            User oldUser = userDAO.getUserBySession(req.getSession().getId());
 
 
             System.out.println(newUser);

@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class LogOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("LoggedIn", false);
-        try {
-            new UserDAO().deleteUserSession(req.getSession().getId());
+        try (UserDAO userDAO = new UserDAO()){
+            userDAO.deleteUserSession(req.getSession().getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }

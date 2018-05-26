@@ -16,8 +16,7 @@ public class LogInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        try {
-            UserDAO login = new UserDAO();
+        try (UserDAO login = new UserDAO()){
             if (login.logIn(req.getSession().getId(), username, password)) {
                 req.setAttribute("LoggedIn", true);
                 req.setAttribute("user", login.getUserInfo(username));
