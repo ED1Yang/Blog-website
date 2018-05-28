@@ -9,11 +9,28 @@ public class Comment {
 
     private String date;
 
-    public Comment(int article_id, String userName, String text, String date) {
+    private int comment_id;
+
+    public Comment(int article_id, String userName, String text) {
+        this.article_id = article_id;
+        this.userName = userName;
+        this.text = text;
+    }
+
+    public Comment(int article_id, String userName, String text,String date) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
         this.date = date;
+    }
+
+
+    public Comment(int article_id, String userName, String text,String date,int comment_id) {
+        this.article_id = article_id;
+        this.userName = userName;
+        this.text = text;
+        this.date = date;
+        this.comment_id=comment_id;
     }
 
     public int getArticle_id() {
@@ -46,5 +63,12 @@ public class Comment {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getComment_id() {
+        return comment_id;
+    }
+    public void setComment_id(int comment_id) {
+        this.comment_id = comment_id;
     }
 }

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="MainCSS.css">
 
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<body id="myPage" data-spy="scroll" data-target=".navbar">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">

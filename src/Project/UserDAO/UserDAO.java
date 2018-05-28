@@ -44,6 +44,19 @@ public class UserDAO implements AutoCloseable {
         }
     }
 
+    public String getUserImage(String username) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT image FROM users WHERE userName = ?")) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString(1);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
     public void deleteUserSession(String session) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("UPDATE users SET session = NULL WHERE session = ?")) {
             stmt.setString(1, session);

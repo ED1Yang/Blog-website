@@ -57,7 +57,7 @@
     <p>
         ${article.getContent()}
     </p><br>
-    <c:if test="${LoggedIn}">
+    <c:if test="${Owner}">
         <form action="/ArticleCreation"  style="display: inline">
             <input type="submit" class="btn" style="background-color: #4CAF50" value="Edit">
             <input type="hidden" value="${article.getId()}" name="article">
@@ -76,42 +76,47 @@
         </div>
         <div class="actionBox">
             <ul class="commentList">
-                <li>
-                    <div class="commenterImage">
-                        <img src="../avatar.jpeg" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                        <img src="../avatar.jpeg" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                        <img src="../avatar.jpeg" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                    </div>
-                </li>
+                <c:choose>
+                    <c:when test="${comments.size()!=0}">
+                        <c:forEach items="${comments}" var="c">
+                            <li>
+                                <div class="commenterImage">
+                                    <img src="Avatars/${icons.get(c.getUserName())}" style="display:inline;">
+                                    <p style="display: inline"><strong>${c.getUserName()}</strong></p>
+                                </div>
+                                <div class="commentText">
+                                    <p class="">${c.getText()}</p>
+                                    <br>
+                                    <span class="date sub-text">on ${c.getDate()}</span>
+                                </div>
+                                <br>
+                                <c:if test="${LoggedIn&&(username==c.getUserName()||username==article.getAuthor())}">
+                                    <form action="/DeleteComment" method="post">
+                                        <input hidden value="${c.getComment_id()}" name="comment_id">
+                                        <input hidden value="${article.getId()}" name="article_id">
+                                        <input type="submit" value="Delete">
+                                    </form>
+                                </c:if>
+                            </li>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <p><strong>There are not comments on this article</strong></p>
+                    </c:otherwise>
+                </c:choose>
             </ul>
-            <form class="form-inline" role="form">
+            <c:if test="${LoggedIn}">
+            <form class="form-inline" role="form" action="/NewComment" method="post">
+                <input value="${username}" name="username" hidden>
+                <input value="${article.getId()}" name="articleId" hidden>
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Your comments" />
+                    <input class="form-control" type="text" placeholder="Your comments" name="comments">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-default">Post</button>
                 </div>
             </form>
+            </c:if>
         </div>
     </div>
     <br>
@@ -121,7 +126,7 @@
 
 <div class="bgimg-2">
     <div class="caption">
-        <a href="Home.jsp"> <span class="border">More stories here</span> </a>
+        <a href="Home.jsp"><span class="border">Home</span> </a>
     </div>
 </div>
 

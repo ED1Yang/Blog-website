@@ -124,6 +124,26 @@
         <url-pattern>/ArticleDeletion</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CommentCreationServlet</servlet-name>
+        <servlet-class>Project.Servlets.CommentCreationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CommentCreationServlet</servlet-name>
+        <url-pattern>/NewComment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommentDeleteServlet</servlet-name>
+        <servlet-class>Project.Servlets.CommentDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CommentDeleteServlet</servlet-name>
+        <url-pattern>/DeleteComment</url-pattern>
+    </servlet-mapping>
+
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
