@@ -31,7 +31,7 @@ public class ArticleViewerServlet extends HttpServlet {
         }
 
         try(UserDAO userDAO = new UserDAO()) {
-            if(userDAO.getUserBySession(req.getSession().getId()).getUerName().equals(username)){
+            if(userDAO.getUserBySession(req.getSession().getId()) != null && userDAO.getUserBySession(req.getSession().getId()).getUerName().equals(username)){
                 req.setAttribute("LoggedIn", true);
             }
         }

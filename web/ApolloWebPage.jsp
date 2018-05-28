@@ -39,7 +39,7 @@
                 </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
-                    <li><a href="RegistrationForm.jsp">SIGN UP</a></li>
+                    <li><a href="Registration_Form.jsp">SIGN UP</a></li>
                 </c:if>
                 <c:if test="${LoggedIn}">
                     <li><a href="/LogOut">LOG OUT</a></li>

@@ -35,10 +35,10 @@ public class RegistrationServlet extends HttpServlet{
         }
 
         // Ditto with the temp folder that the file-upload mechanism needs.
-//        this.tempFolder = new File(getServletContext().getRealPath("/WEB-INF/temp"));
-//        if (!tempFolder.exists()) {
-//            tempFolder.mkdirs();
-//        }
+        this.tempFolder = new File(getServletContext().getRealPath("/WEB-INF/temp"));
+        if (!tempFolder.exists()) {
+            tempFolder.mkdirs();
+        }
     }
 
     @Override
@@ -77,6 +77,7 @@ public class RegistrationServlet extends HttpServlet{
                     try {
                         fi.write(fullsizeImageFile);
                         thumbnail = generateThumbnail(uploadsFolder, fullsizeImageFile, fileName);
+                        fi.write(generateThumbnail(tempFolder, fullsizeImageFile, fileName));
                         try {
                             fi.write(thumbnail);
                             System.out.println("Thumbnail written");
@@ -89,6 +90,7 @@ public class RegistrationServlet extends HttpServlet{
                         System.out.println("Filename changed");
                         user.setImage(newFileName);
                     } catch (FileNotFoundException e) {
+                        e.printStackTrace();
                         System.out.println("Not uploading photo");
                     }
                 }
@@ -106,7 +108,7 @@ public class RegistrationServlet extends HttpServlet{
 
                 else if (fi.getFieldName().equals("uname")) {
                     username = fi.getString();
-                    if(userDAO.userNameValidation(username)) {
+                    if(new UserDAO().userNameValidation(username)) {
                         user.setUerName(fi.getString());
                         System.out.println(fi.getString());
                     }

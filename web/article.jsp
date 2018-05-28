@@ -69,46 +69,55 @@
         <br>
         <br>
     </c:if>
-    <form action="/html/tags/html_form_tag_action.cfm" method="post">
-            <textarea name="comments" id="comments"
-                      style="width: 30%;
-              height: 70px;
-              padding: 2%;
-              font-size: 1.2em;
-              background-color: snow;
-              color: gray;
-              font-family: Tahoma;
-              font-size: small;
-              text-align: left">Hey.... say something nice!</textarea><br>
-        <input type="submit" value="Submit" style="background-color: lightgray">
-    </form>
+    <!--REPLACES THE COMMENT BOX SECTION-->
+    <div class="detailBox">
+        <div class="titleBox">
+            <label>Comment Box</label>
+        </div>
+        <div class="actionBox">
+            <ul class="commentList">
+                <li>
+                    <div class="commenterImage">
+                        <img src="../avatar.jpeg" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                        <img src="../avatar.jpeg" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                        <img src="../avatar.jpeg" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Your comments" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <br>
     <p><a href="#top">Back To Top</a></p>
 </div>
 
-<!--<div class="bgimg-2">-->
-<!--<div class="caption">-->
-<!--<span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">More texts below</span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div style="position:relative;">-->
-<!--<div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">-->
-<!--<p>Dicam quaeque an duo, usu in meliore adversarium, eos ad affert iisque. Euismod interpretaris est in, eu quo tempor dicunt eligendi. Altera aliquam et vel. In etiam principes duo, no semper debitis commune ius. Facete mediocrem mea ea.</p>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="bgimg-3">-->
-<!--<div class="caption">-->
-<!--<span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div style="position:relative;">-->
-<!--<div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">-->
-<!--<p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>-->
-<!--</div>-->
-<!--</div>-->
 
 <div class="bgimg-2">
     <div class="caption">
