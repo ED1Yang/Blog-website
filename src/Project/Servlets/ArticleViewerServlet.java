@@ -43,9 +43,7 @@ public class ArticleViewerServlet extends HttpServlet {
             if(userDAO.getUserBySession(req.getSession().getId()) != null){
                 req.setAttribute("LoggedIn", true);
                 req.setAttribute("username",userDAO.getUserBySession(req.getSession().getId()).getUerName());
-                if(userDAO.getUserBySession(req.getSession().getId()).getUerName().equals(username)){
-                    req.setAttribute("Owner", true);
-                }
+                OwnershipChecking(username, req);
             }
 
         } catch (SQLException e) {
@@ -63,5 +61,15 @@ public class ArticleViewerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
+    }
+
+    public static void OwnershipChecking(String username, HttpServletRequest req) {
+        try(UserDAO userDAO = new UserDAO()) {
+            if (userDAO.getUserBySession(req.getSession().getId()).getUerName().equals(username)) {
+                req.setAttribute("Owner", true);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

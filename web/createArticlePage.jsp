@@ -70,11 +70,11 @@
         <!--<h3>Title</h3>-->
         <c:choose>
         <c:when test="${editing}">
-        <form action="/EditArticle" method="post">
+        <form action="/EditArticle#user-articles" method="post">
             <input type="hidden" value="${articleId}" name = "articleId">
         </c:when>
             <c:otherwise>
-            <form action="/NewArticle" method="post">
+            <form action="/NewArticle#user-articles" method="post">
             </c:otherwise>
                 </c:choose>
             <!--<div class="form-group">-->

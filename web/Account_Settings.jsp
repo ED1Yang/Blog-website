@@ -7,6 +7,29 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Account.css">
+
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".uname").change(function(){
+                var uname = $(this).val();
+                $(".status").html("<img src='Resources/loading.gif'><p> Checking availability...</p>");
+
+                $.ajax({
+                    type: "POST",
+                    url: "check",
+                    data: "uname="+ uname,
+                    success: function(msg){
+                        $(".status").html(msg);
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
+
 </head>
 <body>
 <div class="container">
@@ -72,10 +95,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required>
+                    <input type="text" class="uname" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required>
                     <!--<span class="settingsEditList">Edit</span>-->
                     &nbsp;&nbsp;
                     <button class="btn btn-primary" type="button">Edit</button>
+                    &nbsp;
+                    <span class="status"></span>
                     <div class="invalid-feedback">
                         Please choose a username.
                     </div>

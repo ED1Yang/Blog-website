@@ -144,6 +144,26 @@
         <url-pattern>/DeleteComment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>check</servlet-name>
+        <servlet-class>Project.Servlets.CheckAvailability</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check</servlet-name>
+        <url-pattern>/check</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrationPageSetUp</servlet-name>
+        <servlet-class>Project.Servlets.RegistrationPageSetUp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationPageSetUp</servlet-name>
+        <url-pattern>/RegistrationSetUp</url-pattern>
+    </servlet-mapping>
+
+
+
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>

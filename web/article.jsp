@@ -62,7 +62,7 @@
             <input type="submit" class="btn" style="background-color: #4CAF50" value="Edit">
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
-        <form action="/ArticleDeletion" style="display: inline">
+        <form action="/ArticleDeletion#user-articles" style="display: inline">
             <input type="submit" class="btn" style="background-color: #fb2525" value="Delete">
             <input type="hidden" value="${article.getId()}" name="article">
         </form>

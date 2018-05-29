@@ -26,6 +26,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h1 class="w3layouts_head">Sign up to Apollo</h1>
 				<div class="w3layouts_main_grid">
 					<form action="/Registration" method="post" class="w3_form_post" id="registration" enctype="multipart/form-data">
+
+						<c:if test="${UsernameTaken}">
+							<p style="color: red;font-weight: bold">Username is taken, try again</p>
+						</c:if>
+
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>First Name</label>
@@ -41,12 +46,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>User Name</label>
-								<input type="text" name="uname" placeholder="Username" required>
-								        <c:if test="${UsernameTaken}">
-											<p style="color: red">Username is taken, please choose another</p>
-										</c:if>
+								<input type="text" name="uname" class="uname" placeholder="Username" required>
 								</span>
 						</div>
+						<span class="status" style="margin-left: 25%"></span><br>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Password</label>
@@ -78,14 +81,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									   name="profile_photo" placeholder="Photo">
 							</span>
 							<br>
-							<%
-								File folder = new File("H:\\echome\\PGCertInfoTech\\Lectures_Labs\\Project\\web\\Avatars");
-								File[] listOfFiles = folder.listFiles();
-
-								for (int i = 0; i < listOfFiles.length; i++) {
-							%> <img src="Avatars/<%=listOfFiles[i].getName() %>" width="50px" data-value= "<%=listOfFiles[i].getName()%>"> <%
-							}
-						%>
+							<c:forEach items="${defaultAvatars}" var="i">
+								<img src="Avatars/${i}" width="50px" data-value= "${i}">
+							</c:forEach>
 							<input type="hidden" id="image-value" name = "avatar">
 						</div>					<div class="w3_main_grid">
 						<div class="w3_main_grid_right">
@@ -116,5 +114,26 @@ $('#registration img').removeClass('highlighted');
 $(this).addClass('highlighted');
 });
 </script>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".uname").change(function(){
+            var uname = $(this).val();
+            $(".status").html("<img src='Resources/loading.gif'><p> Checking availability...</p>");
+
+            $.ajax({
+                type: "POST",
+                url: "check",
+                data: "uname="+ uname,
+                success: function(msg){
+                    $(".status").html(msg);
+                }
+            });
+
+        });
+    });
+</script>
+
 
 </html>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="MainCSS.css">
 
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -39,7 +39,7 @@
                 </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
-                    <li><a href="Registration_Form.jsp">SIGN UP</a></li>
+                    <li><a href="/RegistrationSetUp">SIGN UP</a></li>
                 </c:if>
                 <c:if test="${LoggedIn}">
                     <li><a href="/LogOut">LOG OUT</a></li>
@@ -52,7 +52,7 @@
 
 <br><br><br>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="position: relative; top: -25px; ">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -188,13 +188,11 @@
             </c:forEach>
         </div>
     </div>
+    <div class="bg-1" id = "user-articles">
     <div class="container">
         <div class="row text-center">
             <c:if test="${LoggedIn}">
-                <%--<c:if test="${Added}">--%>
-                    <%--<h3 style="font-weight: bold;color: #4CAF50">Article successfully added!</h3>--%>
-                <%--</c:if>--%>
-                <h1 id="user-articles">YOUR ARTICLES</h1>
+                <h1>YOUR ARTICLES</h1>
                 <c:if test="${Added}">
                     <h3 style="font-weight: bold; color: #4CAF50;">Article Added</h3>
                 </c:if>
@@ -229,6 +227,7 @@
                 </c:forEach>
             </c:if>
         </div>
+    </div>
     </div>
 </div>
 

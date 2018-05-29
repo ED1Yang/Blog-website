@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 public class CommentCreationServlet extends HttpServlet{
@@ -23,6 +24,7 @@ public class CommentCreationServlet extends HttpServlet{
         String comment=req.getParameter("comments");
         int id=Integer.parseInt(req.getParameter("articleId"));
         String username=req.getParameter("username");
+        HashMap<String,String> userImages = new HashMap<>();
 
         try(CommentDAO commentDAO=new CommentDAO(); ArticleDAO articleDAO=new ArticleDAO(); UserDAO userDAO=new UserDAO()){
             Comment newComment=new Comment(id,username,comment);
@@ -33,10 +35,17 @@ public class CommentCreationServlet extends HttpServlet{
             List<Comment> comments= commentDAO.getComments(article.getId());
             req.setAttribute("comments",comments);
 
+            List<String> users = commentDAO.getUsers(article.getId());
+            for (String user:users) {
+                userImages.put(user, userDAO.getUserImage(user));
+            }
+            req.setAttribute("icons", userImages);
+
             User user = userDAO.getUserBySession(req.getSession().getId());
             if(user!=null){
                 req.setAttribute("LoggedIn",true);
                 req.setAttribute("username",user.getUerName());
+                ArticleViewerServlet.OwnershipChecking(username, req);
             }
         }catch (SQLException e){
             e.printStackTrace();

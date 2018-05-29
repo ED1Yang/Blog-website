@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -21,6 +22,7 @@ public class CommentDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int comment_id = Integer.parseInt(req.getParameter("comment_id"));
+        HashMap<String,String> userImages = new HashMap<>();
         try (CommentDAO commentDAO = new CommentDAO(); ArticleDAO articleDAO = new ArticleDAO(); UserDAO userDAO = new UserDAO()) {
             commentDAO.deleteComment(comment_id);
 
@@ -33,7 +35,14 @@ public class CommentDeleteServlet extends HttpServlet {
             if (user != null) {
                 req.setAttribute("LoggedIn", true);
                 req.setAttribute("username", user.getUerName());
+                ArticleViewerServlet.OwnershipChecking(user.getUerName(), req);
             }
+
+            List<String> users = commentDAO.getUsers(article.getId());
+            for (String s:users) {
+                userImages.put(s, userDAO.getUserImage(s));
+            }
+            req.setAttribute("icons", userImages);
         } catch (SQLException e) {
             e.printStackTrace();
         }

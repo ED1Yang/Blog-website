@@ -114,7 +114,7 @@ public class RegistrationServlet extends HttpServlet{
                     }
                     else{
                         req.setAttribute("UsernameTaken", true);
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RegistrationForm.jsp");
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RegistrationSetUp");
                         dispatcher.forward(req, resp);
                         return;
                     }
