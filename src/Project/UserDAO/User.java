@@ -93,6 +93,10 @@ public class User {
         return session;
     }
 
+    public void setSession(String session) {
+        this.session = session;
+    }
+
     public String getImage() {
         return image;
     }

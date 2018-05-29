@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="createPageStylesheet.css">
 
 
@@ -38,7 +35,6 @@
 
     <!--Creating the Contents-->
 
-    <!--<div style="background-image: url('Resources/imageMainArticle1.jpg')"></div>-->
 
     <div class="container">
         <c:choose>
@@ -77,9 +73,6 @@
             <form action="/NewArticle#user-articles" method="post">
             </c:otherwise>
                 </c:choose>
-            <!--<div class="form-group">-->
-                <!--<textarea class="form-control" rows="5" id="articleTitle"></textarea>-->
-            <!--</div>-->
             <br><br>
             <c:choose>
                 <c:when test="${articleGenre != null}">
@@ -114,14 +107,8 @@
             </div>
             <h4>Tell your story below..</h4>
             <div class="form-group">
-                <c:choose>
-                    <c:when test="${articleContent != null}">
-                        <textarea class="form-control" rows="5" id="articleBody" name="articleBody">${articleContent}</textarea>
-                    </c:when>
-                    <c:otherwise>
-                        <textarea class="form-control" rows="5" id="articleBody" name="articleBody"></textarea>
-                    </c:otherwise>
-                </c:choose>
+                <jsp:include page="Text_Editor.jsp"/>
+                <input type="hidden" id = "articleBody" name="articleBody">
             </div>
             <input type="hidden" value="${User.getUerName()}" name="author">
             <input type="submit" value="Publish" class="button">
@@ -129,35 +116,7 @@
     </div>
     <br>
 
-    <!--</div>-->
-    <!--<div class="container">-->
-
-        <!--<div class="postArticle-content"-->
-             <!--contenteditable="true"-->
-             <!--data-default-value="Title-->
-                                     <!--Tell your story…">-->
-            <!--<section class="section">-->
-                <!--<div class="section-content">-->
-                    <!--<div class="articleDetails">-->
-                        <!--<h3 class="articleTitle">-->
-                            <!--<span ><strong>Title</strong></span><br>-->
-                        <!--</h3>-->
-                        <!--<p class="articleBody" data-scroll="native">-->
-                            <!--<span >Tell your story…<br></span><br>-->
-                        <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</section>-->
-        <!--</div>-->
-    <!--</div>-->
-
     <br><br>
-
-    <%--<div class="container">--%>
-        <%--<button type="button" class="btn btn-primary">Image</button>--%>
-        <%--<button type="button" class="btn btn-primary">Video</button>--%>
-        <%--<button type="button" class="btn btn-primary">Embed</button>--%>
-    <%--</div>--%>
 
     <br><br><br>
 
@@ -167,6 +126,19 @@
         </a><br><br>
         <p>copyright <a href="https://www.apollo.com" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
     </footer>
+
+    <script>
+        $(this).submit(function () {
+            $('#articleBody').val(document.getElementById('textfield').contentWindow.document.body.innerHTML);
+        });
+    </script>
+    <c:if test="${articleContent != null}">
+        <script>
+            $(document).ready(function () {
+                document.getElementById('textfield').contentWindow.document.body.innerHTML = '${articleContent}';
+            });
+        </script>
+    </c:if>
 
 </body>
 </html>

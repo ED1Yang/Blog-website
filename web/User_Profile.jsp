@@ -15,6 +15,13 @@
 
 
 <div class="container">
+    <c:if test="${updated}">
+        <p>User profile picture updated successfully!</p>
+    </c:if>
+
+    <c:if test="${removed}">
+        <p>User profile picture removed successfully!</p>
+    </c:if>
     <div class="row profile">
         <div class="col-md-3">
             <div class="profile-sidebar">
@@ -38,8 +45,12 @@
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Change</button>
-                    <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                    <a href="UploadImage.jsp">
+                        <button type="button" class="btn btn-success btn-sm">Change</button>
+                    </a>
+                    <a href="/RemoveImage">
+                        <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                    </a>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
                 <!-- SIDEBAR MENU -->
@@ -47,7 +58,7 @@
                     <ul class="nav">
                         <li class="active">
                             <a href="#">
-                                <i class="glyphicon glyphicon-home"></i>
+                                <i class="glyphicon glyphicon-ok"></i>
                                 Overview </a>
                         </li>
                         <li>
@@ -56,9 +67,9 @@
                                 Account Settings </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
-                                <i class="glyphicon glyphicon-ok"></i>
-                                Tasks </a>
+                            <a href="Home.jsp" target="_blank">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Home </a>
                         </li>
                         <li>
                             <a href="#">

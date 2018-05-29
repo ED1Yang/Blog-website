@@ -162,8 +162,25 @@
         <url-pattern>/RegistrationSetUp</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UploadImage</servlet-name>
+        <servlet-class>Project.Servlets.ImageSave</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>UploadImage</servlet-name>
+        <url-pattern>/UploadImage</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ImageRemove</servlet-name>
+        <servlet-class>Project.Servlets.ImageRemove</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ImageRemove</servlet-name>
+        <url-pattern>/RemoveImage</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
