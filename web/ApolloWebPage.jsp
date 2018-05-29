@@ -202,7 +202,7 @@
                 <c:forEach items="${AllArticles}" var="article">
                     <c:set var="userName" value="${user.getUerName()}"></c:set>
                     <c:if test="${article.getAuthor() == userName}">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5 col-sm-offset-1">
                         <div class="thumbnail">
                             <c:choose>
                                 <c:when test="${article.getGenre() == 'Business'}">
