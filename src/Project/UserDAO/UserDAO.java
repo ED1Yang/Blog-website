@@ -151,6 +151,22 @@ public class UserDAO implements AutoCloseable {
             }
         }
     }
+
+    public boolean isAdmin(String username) throws SQLException{
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT isAdmin FROM users WHERE username = ?")) {
+            stmt.setString(1, username);
+            try(ResultSet rs = stmt.executeQuery()) {
+                rs.next();
+                if (rs.getInt(1) == 1) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+    }
+
     @Override
     public void close() throws SQLException {
         this.conn.close();

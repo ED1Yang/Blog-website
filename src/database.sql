@@ -8,6 +8,7 @@ CREATE TABLE users(
   description TEXT,
   image VARCHAR(30),
   session VARCHAR(50) DEFAULT NULL,
+  isAdmin BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (userName)
 );
 

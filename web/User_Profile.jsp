@@ -83,7 +83,14 @@
         </div>
         <div class="col-md-9">
             <div class="profile-content">
-                <p>Some user related content goes here...</p>
+                <c:choose>
+                    <c:when test="${user.getDescription() != null}">
+                        <p>${user.getDescription()}</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>Add a description about yourself!</p>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
