@@ -85,10 +85,10 @@
             <div class="profile-content">
                 <c:choose>
                     <c:when test="${user.getDescription() != null}">
-                        <p>${user.getDescription()}</p>
+                        <p style="color: black">${user.getDescription()}</p>
                     </c:when>
                     <c:otherwise>
-                        <p>Add a description about yourself!</p>
+                        <p style="color: black">Add a description about yourself!</p>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -96,7 +96,7 @@
     </div>
 </div>
 <center>
-    <strong>Powered by Apollo <a href="" target="_blank"></a></strong>
+    <strong>Powered by <span id = "webname">Apollo</span> <a href="" target="_blank"></a></strong>
 </center>
 <br>
 <br>

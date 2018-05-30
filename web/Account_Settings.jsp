@@ -123,7 +123,7 @@
         </div>
 
 
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-danger" type="submit">Save</button>
     </form>
 
 </div> <!-- /container -->

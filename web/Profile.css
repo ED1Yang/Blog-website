@@ -1,5 +1,9 @@
 body {
-    background: #F1F3FA;
+    color: white;
+    background: url(Resources/bgAccount.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 /* Profile container */
@@ -104,4 +108,8 @@ body {
     padding: 20px;
     background: #fff;
     min-height: 460px;
+}
+
+#webname{
+    color: red;
 }
