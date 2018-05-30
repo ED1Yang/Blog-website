@@ -79,6 +79,7 @@
                 <c:choose>
                     <c:when test="${comments.size()!=0}">
                         <c:forEach items="${comments}" var="c">
+                            <c:if test="${!c.isHidden() || isAdmin}">
                             <li>
                                 <div class="commenterImage">
                                     <img src="Avatars/${icons.get(c.getUserName())}" style="display:inline;">
@@ -97,7 +98,26 @@
                                         <input type="submit" value="Delete">
                                     </form>
                                 </c:if>
+                                <c:choose>
+                                    <c:when test="${isAdmin && c.isHidden()}">
+                                        <form action="/CommentViewChange" method="post">
+                                            <input hidden value="${c.getComment_id()}" name="comment_id">
+                                            <input hidden value="${c.isHidden()}" name="visibility">
+                                            <input hidden value="${article.getId()}" name="article">
+                                            <input type="submit" value="Show" style="background-color: #4CAF50">
+                                        </form>
+                                    </c:when>
+                                    <c:when test="${isAdmin && !c.isHidden()}">
+                                        <form action="/CommentViewChange" method="post">
+                                            <input hidden value="${c.getComment_id()}" name="comment_id">
+                                            <input hidden value="${c.isHidden()}" name="visibility">
+                                            <input hidden value="${article.getId()}" name="article">
+                                            <input type="submit" value="Hide" style="background-color: orange">
+                                        </form>
+                                    </c:when>
+                                </c:choose>
                             </li>
+                            </c:if>
                         </c:forEach>
                     </c:when>
                     <c:otherwise>

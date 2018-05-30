@@ -42,7 +42,9 @@ public class ArticleViewerServlet extends HttpServlet {
 
             if(userDAO.getUserBySession(req.getSession().getId()) != null){
                 req.setAttribute("LoggedIn", true);
-                req.setAttribute("username",userDAO.getUserBySession(req.getSession().getId()).getUerName());
+                String uname = userDAO.getUserBySession(req.getSession().getId()).getUerName();
+                req.setAttribute("username",uname);
+                req.setAttribute("isAdmin", userDAO.isAdmin(uname));
                 OwnershipChecking(username, req);
             }
 

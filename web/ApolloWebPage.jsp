@@ -163,28 +163,51 @@
     <div class="container">
         <div class="row text-center">
             <h1 style="color: white">ALL ARTICLES</h1>
+            <c:if test="${visChanged}">
+                <h3 style="font-weight: bold; color: coral;">Article Visibility Changed</h3>
+            </c:if>
             <c:forEach items="${AllArticles}" var="article">
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <c:choose>
-                            <c:when test="${article.getGenre() == 'Business'}">
-                                <img src="Resources/business.jpg">
-                            </c:when>
-                            <c:when test="${article.getGenre() == 'Technology'}">
-                                <img src="Resources/technology.jpg">
-                            </c:when>
-                            <c:when test="${article.getGenre() == 'Politics'}">
-                                <img src="Resources/politics.jpg">
-                            </c:when>
-                        </c:choose>
-                        <h3><strong>${article.getTitle()}</strong></h3>
-                        <p>${article.getDate().substring(0,11)}</p>
-                        <form action="/ArticleViewer">
-                            <input type="hidden" name="article" value="${article.getId()}">
-                            <input type="submit" value="Read..." class="btn">
-                        </form>
+                <c:if test="${!article.isHidden() || user.isAdmin()}">
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <c:choose>
+                                <c:when test="${article.getGenre() == 'Business'}">
+                                    <img src="Resources/business.jpg">
+                                </c:when>
+                                <c:when test="${article.getGenre() == 'Technology'}">
+                                    <img src="Resources/technology.jpg">
+                                </c:when>
+                                <c:when test="${article.getGenre() == 'Politics'}">
+                                    <img src="Resources/politics.jpg">
+                                </c:when>
+                            </c:choose>
+                            <h3><strong>${article.getTitle()}</strong></h3>
+                            <p>${article.getDate().substring(0,11)}</p>
+                            <form action="/ArticleViewer">
+                                <input type="hidden" name="article" value="${article.getId()}">
+                                <input type="submit" value="Read..." class="btn">
+                            </form>
+                            <c:choose>
+                                <c:when test="${user.isAdmin() && article.isHidden()}">
+                                    <br>
+                                    <form action="/ArticleViewChange">
+                                        <input type="hidden" name="article" value="${article.getId()}">
+                                        <input type="hidden" name="visbility" value="${article.isHidden()}">
+                                        <input type="submit" value="Show" class="btn" style="background-color: #4CAF50">
+                                    </form>
+                                </c:when>
+                                <c:when test="${user.isAdmin() && !article.isHidden()}">
+                                    <br>
+                                    <form action="/ArticleViewChange">
+                                        <input type="hidden" name="article" value="${article.getId()}">
+                                        <input type="hidden" name="visibility" value="${article.isHidden()}">
+                                        <input type="submit" value="Hide" class="btn" style="background-color: orange">
+                                    </form>
+                                </c:when>
+                            </c:choose>
+                        </div>
                     </div>
-                </div>
+                </c:if>
             </c:forEach>
         </div>
     </div>

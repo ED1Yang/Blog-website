@@ -182,6 +182,26 @@
         <url-pattern>/RemoveImage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ArticleViewChange</servlet-name>
+        <servlet-class>Project.Servlets.ArticleViewChange</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ArticleViewChange</servlet-name>
+        <url-pattern>/ArticleViewChange</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommentViewChange</servlet-name>
+        <servlet-class>Project.Servlets.CommentViewChange</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CommentViewChange</servlet-name>
+        <url-pattern>/CommentViewChange</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>

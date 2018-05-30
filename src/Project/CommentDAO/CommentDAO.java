@@ -36,7 +36,7 @@ public class CommentDAO implements AutoCloseable {
 
 
     private Comment commentFromResultSet(ResultSet rs) throws SQLException {
-        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5));
+        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5), rs.getBoolean(6));
     }
 
 
@@ -77,8 +77,13 @@ public class CommentDAO implements AutoCloseable {
         }
     }
 
-
-
+    public void changeVisbility(int id, boolean isHidden) throws SQLException {
+        try(PreparedStatement stmt = conn.prepareStatement("UPDATE comments SET isHidden = ? WHERE commentID = ?")) {
+            stmt.setBoolean(1, isHidden);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        }
+    }
 
     @Override
     public void close() throws SQLException {

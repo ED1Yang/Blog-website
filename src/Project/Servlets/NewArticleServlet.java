@@ -22,7 +22,6 @@ public class NewArticleServlet extends HttpServlet{
         String category = req.getParameter("category");
         String title = req.getParameter("articleTitle");
         String content = req.getParameter("articleBody");
-        System.out.println(content);
         String author = req.getParameter("author");
         Article article = new Article(title, content, category, author);
 

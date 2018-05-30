@@ -19,9 +19,11 @@ public class User {
 
     private String image;
 
+    private boolean isAdmin;
+
     public User() {}
 
-    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description,String image, String session) {
+    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description,String image, String session, boolean isAdmin) {
         this.uerName = uerName;
         this.password = password;
         this.firstName = firstName;
@@ -31,6 +33,7 @@ public class User {
         this.description = description;
         this.session = session;
         this.image = image;
+        this.isAdmin = isAdmin;
     }
 
     public String getUerName() {
@@ -103,5 +106,13 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

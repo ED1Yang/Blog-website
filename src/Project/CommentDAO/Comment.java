@@ -11,6 +11,8 @@ public class Comment {
 
     private int comment_id;
 
+    private boolean isHidden;
+
     public Comment(int article_id, String userName, String text) {
         this.article_id = article_id;
         this.userName = userName;
@@ -31,6 +33,15 @@ public class Comment {
         this.text = text;
         this.date = date;
         this.comment_id=comment_id;
+    }
+
+    public Comment(int article_id, String userName, String text,String date,int comment_id, boolean isHidden) {
+        this.article_id = article_id;
+        this.userName = userName;
+        this.text = text;
+        this.date = date;
+        this.comment_id=comment_id;
+        this.isHidden = isHidden;
     }
 
     public int getArticle_id() {
@@ -70,5 +81,13 @@ public class Comment {
     }
     public void setComment_id(int comment_id) {
         this.comment_id = comment_id;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
     }
 }

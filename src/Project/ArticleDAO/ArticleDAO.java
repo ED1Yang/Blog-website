@@ -73,7 +73,8 @@ public class ArticleDAO implements AutoCloseable {
     }
 
     private Article articleFromResultSet(ResultSet rs) throws SQLException {
-        return new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+        return new Article(rs.getInt(1), rs.getString(2), rs.getString(3),
+                rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
     }
 
     public void saveArticle(Article article) throws SQLException {
@@ -111,6 +112,14 @@ public class ArticleDAO implements AutoCloseable {
     public void deleteArticle(int id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM articles WHERE article_id = ?")) {
             stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
+    public void changeVisbility(int id, boolean isHidden) throws SQLException {
+        try(PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET isHidden = ? WHERE article_id = ?")) {
+            stmt.setBoolean(1, isHidden);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
         }
     }

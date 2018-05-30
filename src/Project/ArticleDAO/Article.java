@@ -17,6 +17,18 @@ public class Article {
 
     private String date;
 
+    private boolean isHidden;
+
+    public Article(Integer id, String title, String content, String genre, String authorID, String date, boolean isHidden) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.genre = genre;
+        this.author = authorID;
+        this.date = date;
+        this.isHidden = isHidden;
+    }
+
     public Article(Integer id, String title, String content, String genre, String authorID, String date) {
         this.id = id;
         this.title = title;
@@ -87,5 +99,13 @@ public class Article {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
     }
 }
