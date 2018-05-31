@@ -30,8 +30,14 @@ public class ImageSave extends HttpServlet {
 
             req.setAttribute("user",user);
             req.setAttribute("updated",true);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/User_Profile.jsp");
-            dispatcher.forward(req, resp);
+            if(req.getParameter("adminUser") != null) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UserAdmin");
+                dispatcher.forward(req, resp);
+            }
+            else {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/User_Profile.jsp");
+                dispatcher.forward(req, resp);
+            }
 
         }catch (SQLException e){
             e.printStackTrace();

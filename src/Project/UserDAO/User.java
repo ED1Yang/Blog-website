@@ -21,9 +21,11 @@ public class User {
 
     private boolean isAdmin;
 
+    private String email;
+
     public User() {}
 
-    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description,String image, String session, boolean isAdmin) {
+    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description,String image, String session, boolean isAdmin, String email) {
         this.uerName = uerName;
         this.password = password;
         this.firstName = firstName;
@@ -34,6 +36,7 @@ public class User {
         this.session = session;
         this.image = image;
         this.isAdmin = isAdmin;
+        this.email=email;
     }
 
     public String getUerName() {
@@ -115,4 +118,8 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

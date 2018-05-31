@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("Duplicates")
 
@@ -16,6 +18,17 @@ public class UserDAO implements AutoCloseable {
 
     public UserDAO() throws SQLException {
         this.conn = HikariConnectionPool.getConnection();
+    }
+
+    public List<User> getUsersForAdmin() throws SQLException{
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users ORDER BY last_name ASC")) {
+            List<User> users = new ArrayList<>();
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                users.add(userFromResultSet(rs));
+            }
+            return users;
+        }
     }
 
     public User getUserInfo(String username) throws SQLException {
@@ -67,13 +80,16 @@ public class UserDAO implements AutoCloseable {
     private User userFromResultSet(ResultSet rs) throws SQLException {
         return new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                 rs.getString(5), rs.getString(6), rs.getString(7),
-                rs.getString(8), rs.getString(9), rs.getBoolean(10));
+                rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getString(11));
     }
+
 
     public void addUser(User user) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("" +
-                "INSERT INTO users (userName, pword, first_name, last_name, date_of_birth, country, description, image)" +
-                "VALUES (?, ?, ?, ?, ? ,? ,?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                "INSERT INTO users (userName, pword, first_name, last_name, date_of_birth, country, description, image, email)" +
+                "VALUES (?, ?, ?, ?, ? ,? ,?, ?,?)", Statement.RETURN_GENERATED_KEYS)) {
+            //dont know if email is ok to put here.
+
             stmt.setString(1, user.getUerName());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getFirstName());
@@ -82,6 +98,7 @@ public class UserDAO implements AutoCloseable {
             stmt.setString(6, user.getCountry());
             stmt.setString(7, user.getDescription());
             stmt.setString(8, user.getImage());
+            stmt.setString(9,user.getEmail());
             stmt.executeUpdate();
         }
     }
@@ -94,7 +111,8 @@ public class UserDAO implements AutoCloseable {
                 "date_of_birth = ?," +
                 "country = ?," +
                 "description = ?," +
-                "image = ?" +
+                "image = ?," +
+                "email = ?" +
                 " WHERE userName = ?")) {
             stmt.setString(1, user.getUerName());
             stmt.setString(2, user.getPassword());
@@ -104,14 +122,15 @@ public class UserDAO implements AutoCloseable {
             stmt.setString(6, user.getCountry());
             stmt.setString(7, user.getDescription());
             stmt.setString(8, user.getImage());
-            stmt.setString(9, oldUser.getUerName());
+            stmt.setString(9,user.getEmail());
+            stmt.setString(10, oldUser.getUerName());
             stmt.executeUpdate();
         }
     }
 
-    public void deleteUser(User user) throws SQLException {
+    public void deleteUser(String username) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM users WHERE userName = ?")) {
-            stmt.setString(1, user.getUerName());
+            stmt.setString(1, username);
             stmt.executeUpdate();
         }
     }

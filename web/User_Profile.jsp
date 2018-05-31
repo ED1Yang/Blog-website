@@ -72,9 +72,9 @@
                                 Home </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-flag"></i>
-                                Help </a>
+                            <a href="/SelfDeletion">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                Delete your account</a>
                         </li>
                     </ul>
                 </div>

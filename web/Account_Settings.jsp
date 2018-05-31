@@ -42,6 +42,9 @@
         <br>
     </c:if>
 
+    <button class="btn btn-info btn-sm" data-title="Back" data-toggle="modal" data-target="#home" onclick="location.href = '/UserProfileServlet'">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </button>
 
     <form class="needs-validation" novalidate method="post" action="NewUserInformation" >
         <div class="form-row">

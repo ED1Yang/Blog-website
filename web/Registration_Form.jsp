@@ -24,11 +24,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //js -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<c:choose>
+    <c:when test="${adminUserSetup}">
+        <body class="bodyAdmin">
+    </c:when>
+    <c:otherwise>
+        <body class="bodyNormal">
+    </c:otherwise>
+</c:choose>
 <!-- banner -->
 <div class="center-container">
     <div class="main">
-        <h1 class="w3layouts_head">Sign up to Apollo</h1>
+        <c:choose>
+            <c:when test="${adminUserSetup}">
+                <h1 class="w3layouts_head">Administrative user Setup</h1>
+            </c:when>
+            <c:otherwise>
+                <h1 class="w3layouts_head">Sign up to Apollo</h1>
+            </c:otherwise>
+        </c:choose>
         <div class="w3layouts_main_grid">
             <form action="/Registration" method="post" class="w3_form_post" id="registration">
                   <%--enctype="multipart/form-data">--%>
@@ -91,6 +105,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input type="hidden" id="image-value" name="avatar">
 
                     <div class="w3_main_grid_right" style="display: inline;position: relative; top: -15px;">
+                        <c:if test="${adminUserSetup}">
+                            <input type="hidden" value="adminUser" name ="adminUser">
+                        </c:if>
                         <input type="submit" value="Upload Image" onclick="isUploading()">
                     </div>
                 </div>
@@ -99,6 +116,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input hidden type="text" name="upload" id="uploading" value="">
 
                     <div class="w3_main_grid_right">
+                        <c:if test="${adminUserSetup}">
+                            <input type="hidden" value="adminUser" name ="adminUser">
+                        </c:if>
                         <input type="submit" value="Submit" onclick="noUploading()" >
                     </div>
 

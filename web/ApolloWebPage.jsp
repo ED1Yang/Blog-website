@@ -44,6 +44,9 @@
                 <c:if test="${LoggedIn}">
                     <li><a href="/LogOut">LOG OUT</a></li>
                 </c:if>
+                <c:if test="${user.isAdmin()}">
+                    <li><a href = "/UserAdmin">USER ADMINISTRATION</a></li>
+                </c:if>
                 <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>
         </div>

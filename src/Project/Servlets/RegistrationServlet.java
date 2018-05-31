@@ -51,10 +51,20 @@ public class RegistrationServlet extends HttpServlet {
         String isUploadingImage = req.getParameter("upload");
 
         if (isUploadingImage.equals("true")) {
+            if(req.getParameter("adminUser") != null) {
+                req.setAttribute("adminUser", true);
+            }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UploadImage.jsp");
             dispatcher.forward(req, resp);
 
-        } else {
+        }
+
+        else if(req.getParameter("adminUser") != null) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UserAdmin");
+            dispatcher.forward(req, resp);
+        }
+
+        else {
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Login_page.jsp");
             dispatcher.forward(req, resp);

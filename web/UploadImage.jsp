@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -27,6 +28,9 @@
             <input type="button" id="btnCrop" class="Btnsty_peyton" value="Cut">
             <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
             <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+            <c:if test="${adminUser}">
+                <input type="hidden" value="true" name="adminUser">
+            </c:if>
         </div>
         <div class="cropped"></div>
         <div id="text">

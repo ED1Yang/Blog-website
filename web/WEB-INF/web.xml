@@ -202,6 +202,36 @@
         <url-pattern>/CommentViewChange</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UserAdmin</servlet-name>
+        <servlet-class>Project.Servlets.UserAdminServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserAdmin</servlet-name>
+        <url-pattern>/UserAdmin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>Project.Servlets.DeleteUser</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/DeleteUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelfDeletion</servlet-name>
+        <servlet-class>Project.Servlets.SelfDeletionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelfDeletion</servlet-name>
+        <url-pattern>/SelfDeletion</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>

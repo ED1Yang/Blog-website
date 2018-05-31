@@ -1,0 +1,25 @@
+#container{
+    width: 350px;
+    margin: 0px auto;
+}
+
+body{
+    margin: 0;
+    padding: 50px;
+    background: url(Resources/imageMainArticle2.jpeg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+
+}
+
+.table-responsive {
+    position: center;
+}
+
+.container {
+    align-items: center;
+}
+
+

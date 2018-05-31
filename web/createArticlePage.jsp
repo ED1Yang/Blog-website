@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="Project.UserDAO.User" %>
 <!DOCTYPE html>
 <html>
 <head>

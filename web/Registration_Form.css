@@ -30,10 +30,6 @@ img{max-width:100%;}
 body{
 	margin:0;
 	padding:0;
-	background: url(Resources/Web-Design-solutions.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -41,6 +37,20 @@ body{
     -ms-background-size: cover;
 	 font-family: 'Roboto', sans-serif;
  }
+
+.bodyNormal{
+	background: url(Resources/Web-Design-solutions.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+.bodyAdmin{
+	background: url(Resources/imageMainArticle2.jpeg);
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+}
+
 h1,h2,h3,h4,h5,h6{
 	margin:0;	
 }	

@@ -14,6 +14,9 @@ public class RegistrationPageSetUp extends HttpServlet{
         if(req.getAttribute("UsernameTaken") != null) {
             req.setAttribute("UsernameTaken", true);
         }
+        if(req.getParameter("adminUserSetup") != null) {
+            req.setAttribute("adminUserSetup", true);
+        }
 
         String[] defaultAvatars = {"avatar.jpeg", "avatar2.png", "avatar5.png", "avatar6.png", "img_avatar.png", "img_avatar2.png"};
 
