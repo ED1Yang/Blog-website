@@ -11,7 +11,7 @@
 <div id="container" class="loginbox">
     <img src="Resources/avatarimg.png" class="avatar">
     <h1>Login Here</h1>
-    <form action = /LogIn method="post">
+    <form action = ./LogIn method="post">
         <p>Username</p>
         <input type="text" name="username" placeholder="Enter Username">
         <p>Password</p>
@@ -22,7 +22,7 @@
         </c:if>
         <input type="submit" name="" value="Login">
         <a href="#">Forgot your Password?</a>
-        <a href="/RegistrationSetUp">Don't Have an Account?</a>
+        <a href="./RegistrationSetUp">Don't Have an Account?</a>
     </form>
 
 

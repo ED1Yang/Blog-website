@@ -41,7 +41,7 @@
                             <td>${user.getCountry()}</td>
                             <td>${user.getEmail()}</td>
                             <td>
-                                <form action="/DeleteUser" method="post">
+                                <form action="./DeleteUser" method="post">
                                     <input type="hidden" value="${user.getUerName()}" name="username">
                                 <p data-placement="top" data-toggle="tooltip" title="Remove">
                                     <c:choose>
@@ -63,7 +63,7 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <form action="/RegistrationSetUp" method="post">
+                    <form action="./RegistrationSetUp" method="post">
                         <p data-placement="top" data-toggle="tooltip" title="Remove">
                             <input type="hidden" value="true" name="adminUserSetup">
                             <button type="submit" class="btn btn-primary btn-sm" data-title="Add User" data-toggle="modal" data-target="#remove" >

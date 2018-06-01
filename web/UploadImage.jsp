@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<form action="/UploadImage" method="post">
+<form action="./UploadImage" method="post">
     <div class="container">
         <div class="imageBox">
             <div class="thumbBox"></div>

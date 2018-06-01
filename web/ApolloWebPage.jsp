@@ -27,7 +27,7 @@
                     <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="/UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a></li>
+                    <li><a href="./UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a></li>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -35,17 +35,17 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">ABOUT</a></li>
                 <c:if test="${LoggedIn}">
-                    <li><a href="/ArticleCreation">ADD ARTICLE</a></li>
+                    <li><a href="./ArticleCreation">ADD ARTICLE</a></li>
                 </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
                 <c:if test="${!LoggedIn}">
-                    <li><a href="/RegistrationSetUp">SIGN UP</a></li>
+                    <li><a href="./RegistrationSetUp">SIGN UP</a></li>
                 </c:if>
                 <c:if test="${LoggedIn}">
-                    <li><a href="/LogOut">LOG OUT</a></li>
+                    <li><a href="./LogOut">LOG OUT</a></li>
                 </c:if>
                 <c:if test="${user.isAdmin()}">
-                    <li><a href = "/UserAdmin">USER ADMINISTRATION</a></li>
+                    <li><a href = "./UserAdmin">USER ADMINISTRATION</a></li>
                 </c:if>
                 <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>
@@ -186,14 +186,14 @@
                             </c:choose>
                             <h3><strong>${article.getTitle()}</strong></h3>
                             <p>${article.getDate().substring(0,11)}</p>
-                            <form action="/ArticleViewer">
+                            <form action="./ArticleViewer">
                                 <input type="hidden" name="article" value="${article.getId()}">
                                 <input type="submit" value="Read..." class="btn">
                             </form>
                             <c:choose>
                                 <c:when test="${user.isAdmin() && article.isHidden()}">
                                     <br>
-                                    <form action="/ArticleViewChange">
+                                    <form action="./ArticleViewChange">
                                         <input type="hidden" name="article" value="${article.getId()}">
                                         <input type="hidden" name="visbility" value="${article.isHidden()}">
                                         <input type="submit" value="Show" class="btn" style="background-color: #4CAF50">
@@ -201,7 +201,7 @@
                                 </c:when>
                                 <c:when test="${user.isAdmin() && !article.isHidden()}">
                                     <br>
-                                    <form action="/ArticleViewChange">
+                                    <form action="./ArticleViewChange">
                                         <input type="hidden" name="article" value="${article.getId()}">
                                         <input type="hidden" name="visibility" value="${article.isHidden()}">
                                         <input type="submit" value="Hide" class="btn" style="background-color: orange">
@@ -243,7 +243,7 @@
                             </c:choose>
                             <h3><strong>${article.getTitle()}</strong></h3>
                             <p>${article.getDate().substring(0,11)}</p>
-                            <form action="/ArticleViewer">
+                            <form action="./ArticleViewer">
                                 <input type="hidden" name="article" value="${article.getId()}">
                                 <input type="submit" value="Read..." class="btn">
                             </form>

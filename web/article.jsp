@@ -58,11 +58,11 @@
         ${article.getContent()}
     </p><br>
     <c:if test="${Owner}">
-        <form action="/ArticleCreation"  style="display: inline">
+        <form action="./ArticleCreation"  style="display: inline">
             <input type="submit" class="btn" style="background-color: #4CAF50" value="Edit">
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
-        <form action="/ArticleDeletion#user-articles" style="display: inline">
+        <form action="./ArticleDeletion#user-articles" style="display: inline">
             <input type="submit" class="btn" style="background-color: #fb2525" value="Delete">
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
@@ -92,7 +92,7 @@
                                 </div>
                                 <br>
                                 <c:if test="${LoggedIn&&(username==c.getUserName()||username==article.getAuthor())}">
-                                    <form action="/DeleteComment" method="post">
+                                    <form action="./DeleteComment" method="post">
                                         <input hidden value="${c.getComment_id()}" name="comment_id">
                                         <input hidden value="${article.getId()}" name="article_id">
                                         <input type="submit" value="Delete">
@@ -100,7 +100,7 @@
                                 </c:if>
                                 <c:choose>
                                     <c:when test="${isAdmin && c.isHidden()}">
-                                        <form action="/CommentViewChange" method="post">
+                                        <form action="./CommentViewChange" method="post">
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
@@ -108,7 +108,7 @@
                                         </form>
                                     </c:when>
                                     <c:when test="${isAdmin && !c.isHidden()}">
-                                        <form action="/CommentViewChange" method="post">
+                                        <form action="./CommentViewChange" method="post">
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
@@ -126,7 +126,7 @@
                 </c:choose>
             </ul>
             <c:if test="${LoggedIn}">
-            <form class="form-inline" role="form" action="/NewComment" method="post">
+            <form class="form-inline" role="form" action="./NewComment" method="post">
                 <input value="${username}" name="username" hidden>
                 <input value="${article.getId()}" name="articleId" hidden>
                 <div class="form-group">

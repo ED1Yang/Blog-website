@@ -39,13 +39,13 @@ body{
  }
 
 .bodyNormal{
-	background: url(Resources/Web-Design-solutions.jpg);
+	background: url(./Resources/Web-Design-solutions.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
 }
 .bodyAdmin{
-	background: url(Resources/imageMainArticle2.jpeg);
+	background: url(./Resources/imageMainArticle2.jpeg);
 	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
@@ -554,4 +554,14 @@ option{
 
 img.highlighted {
 	border: 3px solid red;
+}
+
+#g-recaptcha-response {
+	display: block !important;
+	position: absolute;
+	margin: -78px 0 0 0 !important;
+	width: 302px !important;
+	height: 76px !important;
+	z-index: -999999;
+	opacity: 0;
 }

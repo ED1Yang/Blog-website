@@ -21,6 +21,7 @@ public class NewUserInformation extends HttpServlet {
         String dob = req.getParameter("dob");
         String description = req.getParameter("description");
         String country = req.getParameter("country");
+        String email = req.getParameter("email");
         System.out.println(username);
         System.out.println(description);
         System.out.println(country);
@@ -53,6 +54,11 @@ public class NewUserInformation extends HttpServlet {
             }
             if (!newUser.getDateOfBirth().equals(dob)) {
                 newUser.setDateOfBirth(dob);
+                isChanged = true;
+
+            }
+            if (!newUser.getEmail().equals(email)) {
+                newUser.setEmail(email);
                 isChanged = true;
 
             }

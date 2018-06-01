@@ -23,14 +23,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
     <!-- //js -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <script src="//www.google.com/recaptcha/api.js"></script>
 </head>
 <c:choose>
-    <c:when test="${adminUserSetup}">
-        <body class="bodyAdmin">
-    </c:when>
-    <c:otherwise>
-        <body class="bodyNormal">
-    </c:otherwise>
+<c:when test="${adminUserSetup}">
+<body class="bodyAdmin">
+</c:when>
+<c:otherwise>
+<body class="bodyNormal">
+</c:otherwise>
 </c:choose>
 <!-- banner -->
 <div class="center-container">
@@ -45,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </c:choose>
         <div class="w3layouts_main_grid">
             <form action="/Registration" method="post" class="w3_form_post" id="registration">
-                  <%--enctype="multipart/form-data">--%>
+                <%--enctype="multipart/form-data">--%>
                 <c:if test="${UsernameTaken}">
                     <p style="color:red">Current username has been taken.</p>
                     <br>
@@ -69,7 +70,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="text" name="uname" class="uname" placeholder="Username" required>
 								</span>
                 </div>
-                      <span class="status"></span><br>
+                <span class="status"></span><br>
+                <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Email</label>
+								<input type="email" name="email" placeholder="Email" required>
+								</span>
+                </div>
                 <div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Password</label>
@@ -100,29 +107,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</span>
                     <br>
                     <c:forEach items="${defaultAvatars}" var="i">
-                        <img src="Avatars/${i}" width="50px" data-value= "${i}">
+                        <img src="Avatars/${i}" width="50px" data-value="${i}">
                     </c:forEach>
                     <input type="hidden" id="image-value" name="avatar">
 
                     <div class="w3_main_grid_right" style="display: inline;position: relative; top: -15px;">
                         <c:if test="${adminUserSetup}">
-                            <input type="hidden" value="adminUser" name ="adminUser">
+                            <input type="hidden" value="adminUser" name="adminUser">
                         </c:if>
                         <input type="submit" value="Upload Image" onclick="isUploading()">
                     </div>
                 </div>
+                <div class="g-recaptcha"
+                     data-sitekey="6LfzRVwUAAAAAHzmIDMMmKtAbp9YbUpPWuTp3Z7b"></div>
                 <div class="w3_main_grid">
 
                     <input hidden type="text" name="upload" id="uploading" value="">
 
                     <div class="w3_main_grid_right">
                         <c:if test="${adminUserSetup}">
-                            <input type="hidden" value="adminUser" name ="adminUser">
+                            <input type="hidden" value="adminUser" name="adminUser">
                         </c:if>
-                        <input type="submit" value="Submit" onclick="noUploading()" >
+                        <input type="submit" value="Submit" onclick="noUploading()">
                     </div>
 
                 </div>
+
             </form>
         </div>
         <div class="w3layouts_copy_right">
@@ -169,13 +179,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <script>
     function noUploading() {
-        document.getElementById("uploading").setAttribute("value","false");
+        document.getElementById("uploading").setAttribute("value", "false");
     }
 
     function isUploading() {
-        document.getElementById("uploading").setAttribute("value","true");
+        document.getElementById("uploading").setAttribute("value", "true");
     }
 
+</script>
+<script>
+    window.onload = function() {
+        var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+        if($recaptcha) {
+            $recaptcha.setAttribute("required", "required");
+        }
+    };
 </script>
 
 

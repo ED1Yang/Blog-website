@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Account Settings</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Account.css">
 
     <script src="js/jquery.js" type="text/javascript"></script>
@@ -42,17 +43,16 @@
         <br>
     </c:if>
 
-    <button class="btn btn-info btn-sm" data-title="Back" data-toggle="modal" data-target="#home" onclick="location.href = '/UserProfileServlet'">
-        <span class="glyphicon glyphicon-arrow-left"></span>
+    <button class="btn btn-info" data-title="Back" data-toggle="modal" data-target="#home" onclick="location.href = '/UserProfileServlet'">
+        &larr; Back
     </button>
 
+    <br><br>
     <form class="needs-validation" novalidate method="post" action="NewUserInformation" >
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">First name</label>
                 <input type="text" class="form-control" id="validationCustom01" value="${user.getFirstName()}" name="fname" required>
-                <!--<span class="settingsEditList">Edit</span>-->
-                <button class="btn btn-primary" type="button">Edit</button>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -63,8 +63,6 @@
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Last name</label>
                 <input type="text" class="form-control" id="validationCustom02" value="${user.getLastName()}" name="lname" required>
-                <!--<span class="settingsEditList">Edit</span>-->
-                <button class="btn btn-primary"  type="button">Edit</button>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -75,8 +73,6 @@
             <div class="col-md-3 mb-3">
                 <label for="date">DOB</label>
                 <input type="text" class="form-control" id="date" value="${user.getDateOfBirth()}" name="dob"  required>
-                <!--<span class="settingsEditList">Edit</span>-->
-                <button class="btn btn-primary" type="button">Edit</button>
                 <div class="invalid-feedback">
                     Please provide Date of Birth.
                 </div>
@@ -86,8 +82,6 @@
             <div class="col-md-6 mb-3">
                 <label for="validationCustom03">Password</label>
                 <input type="password" class="form-control" id="validationCustom03" value="${user.getPassword()}" name="pword" required>
-                <!--<span class="settingsEditList">Edit</span>-->
-                <button class="btn btn-primary" type="button">Edit</button>
                 <div class="invalid-feedback">
                     Please provide a valid city.
                 </div>
@@ -99,9 +93,7 @@
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                     </div>
                     <input type="text" class="uname" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required>
-                    <!--<span class="settingsEditList">Edit</span>-->
                     &nbsp;&nbsp;
-                    <button class="btn btn-primary" type="button">Edit</button>
                     &nbsp;
                     <span class="status"></span>
                     <div class="invalid-feedback">
@@ -112,11 +104,18 @@
             <div class="col-md-3 mb-3">
                 <label for="validationCustom04">Country</label>
                 <input type="text" class="form-control" id="validationCustom04" value="${user.getCountry()}" name="country" required>
-                <button class="btn btn-primary" type="button">Edit</button>
                 <div class="invalid-feedback">
                     Please provide a valid state.
                 </div>
             </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom04">Email</label>
+                <input type="email" class="form-control" id="validationCustom" value="${user.getEmail()}"  name ="email" required>
+                <div class="invalid-feedback">
+                    Please provide a valid state.
+                </div>
+            </div>
+
         </div>
         <div class="form-row">
             <div class="col-md-3 mb-3">
@@ -124,7 +123,6 @@
                 <input type="text" class="form-control" id="validationdesc" value="${user.getDescription()}" name="description" required>
             </div>
         </div>
-
 
         <button class="btn btn-danger" type="submit">Save</button>
     </form>

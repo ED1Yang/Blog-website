@@ -23,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
             user.setLastName(req.getParameter("lname"));
 
             String username = req.getParameter("uname");
-            if (new UserDAO().userNameValidation(username)) {
+            if (userDAO.userNameValidation(username)) {
                 user.setUerName(username);
             } else {
                 req.setAttribute("UsernameTaken", true);
@@ -34,6 +34,7 @@ public class RegistrationServlet extends HttpServlet {
             user.setDateOfBirth(req.getParameter("dob"));
             user.setCountry(req.getParameter("country"));
             user.setPassword(req.getParameter("pwd"));
+            user.setEmail(req.getParameter("email"));
             String avatar = req.getParameter("avatar");
             if (avatar != null) {
                 user.setImage(avatar);

@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
           id="bootstrap-css">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="Profile.css">
 </head>
 <body>
@@ -48,7 +48,7 @@
                     <a href="UploadImage.jsp">
                         <button type="button" class="btn btn-success btn-sm">Change</button>
                     </a>
-                    <a href="/RemoveImage">
+                    <a href="./RemoveImage">
                         <button type="button" class="btn btn-danger btn-sm">Remove</button>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                                 Overview </a>
                         </li>
                         <li>
-                            <a href="AccountSetting">
+                            <a href="./AccountSetting">
                                 <i class="glyphicon glyphicon-user"></i>
                                 Account Settings </a>
                         </li>
@@ -72,7 +72,7 @@
                                 Home </a>
                         </li>
                         <li>
-                            <a href="/SelfDeletion">
+                            <a href="./SelfDeletion">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 Delete your account</a>
                         </li>

@@ -23,7 +23,7 @@
     <!-- Creating the NavBar -->
     <header>
         <div class="container">
-            <a href="/UserProfileServlet"><img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg"></a>
+            <a href="./UserProfileServlet"><img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg"></a>
             <nav>
                 <ul>
                     <li><a href="Home.jsp">Home</a></li>
@@ -67,11 +67,11 @@
         <!--<h3>Title</h3>-->
         <c:choose>
         <c:when test="${editing}">
-        <form action="/EditArticle#user-articles" method="post">
+        <form action="./EditArticle#user-articles" method="post">
             <input type="hidden" value="${articleId}" name = "articleId">
         </c:when>
             <c:otherwise>
-            <form action="/NewArticle#user-articles" method="post">
+            <form action="./NewArticle#user-articles" method="post">
             </c:otherwise>
                 </c:choose>
             <br><br>
