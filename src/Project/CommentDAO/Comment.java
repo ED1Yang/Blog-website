@@ -13,6 +13,8 @@ public class Comment {
 
     private boolean isHidden;
 
+    private int parentComment;
+
     public Comment(int article_id, String userName, String text) {
         this.article_id = article_id;
         this.userName = userName;
@@ -24,6 +26,14 @@ public class Comment {
         this.userName = userName;
         this.text = text;
         this.date = date;
+    }
+
+    public Comment(int article_id, String userName, String text,int parentComment) {
+        this.article_id = article_id;
+        this.userName = userName;
+        this.text = text;
+        this.date = date;
+        this.parentComment = parentComment;
     }
 
 
@@ -42,6 +52,16 @@ public class Comment {
         this.date = date;
         this.comment_id=comment_id;
         this.isHidden = isHidden;
+    }
+
+    public Comment(int article_id, String userName, String text,String date,int comment_id, boolean isHidden, int parentComment) {
+        this.article_id = article_id;
+        this.userName = userName;
+        this.text = text;
+        this.date = date;
+        this.comment_id=comment_id;
+        this.isHidden = isHidden;
+        this.parentComment = parentComment;
     }
 
     public int getArticle_id() {
@@ -89,5 +109,13 @@ public class Comment {
 
     public void setHidden(boolean hidden) {
         isHidden = hidden;
+    }
+
+    public int getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(int parentComment) {
+        this.parentComment = parentComment;
     }
 }

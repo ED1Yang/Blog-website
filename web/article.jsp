@@ -92,15 +92,24 @@
                                 </div>
                                 <br>
                                 <c:if test="${LoggedIn&&(username==c.getUserName()||username==article.getAuthor())}">
-                                    <form action="./DeleteComment" method="post">
+                                    <form action="./DeleteComment" method="post" style="display: inline">
                                         <input hidden value="${c.getComment_id()}" name="comment_id">
                                         <input hidden value="${article.getId()}" name="article_id">
                                         <input type="submit" value="Delete">
                                     </form>
                                 </c:if>
+                                <c:if test="${LoggedIn}">
+                                    <form action="./NewComment" method="post" style="display: inline" id="subCommentForm">
+                                        <input hidden value="${c.getComment_id()}" name="comment_id">
+                                        <input hidden value="${article.getId()}" name="articleId">
+                                        <input value="${username}" name="username" hidden>
+                                        <input name = "comments" hidden id="subCommentContent" required>
+                                        <input type="submit" value="Reply" id="replyButton">
+                                    </form>
+                                </c:if>
                                 <c:choose>
                                     <c:when test="${isAdmin && c.isHidden()}">
-                                        <form action="./CommentViewChange" method="post">
+                                        <form action="./CommentViewChange" method="post" style="display: inline">
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
@@ -108,7 +117,7 @@
                                         </form>
                                     </c:when>
                                     <c:when test="${isAdmin && !c.isHidden()}">
-                                        <form action="./CommentViewChange" method="post">
+                                        <form action="./CommentViewChange" method="post" style="display: inline">
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
@@ -117,6 +126,49 @@
                                     </c:when>
                                 </c:choose>
                             </li>
+                                <c:if test="${childComments.containsKey(c.getComment_id())}">
+                                    <c:forEach items="${childComments.get(c.getComment_id())}" var="d">
+                                        <c:if test="${!d.isHidden() || isAdmin}">
+                                        <li style="margin-left: 50px">
+                                            <div class="commenterImage">
+                                                <img src="Avatars/${icons.get(d.getUserName())}" style="display:inline;">
+                                                <p style="display: inline"><strong>${d.getUserName()}</strong></p>
+                                            </div>
+                                            <div class="commentText">
+                                                <p class="">${d.getText()}</p>
+                                                <br>
+                                                <span class="date sub-text">on ${d.getDate()}</span>
+                                            </div>
+                                            <br>
+                                            <c:if test="${LoggedIn&&(username==d.getUserName()||username==article.getAuthor())}">
+                                                <form action="./DeleteComment" method="post" style="display: inline">
+                                                    <input hidden value="${d.getComment_id()}" name="comment_id">
+                                                    <input hidden value="${article.getId()}" name="article_id">
+                                                    <input type="submit" value="Delete">
+                                                </form>
+                                            </c:if>
+                                            <c:choose>
+                                                <c:when test="${isAdmin && d.isHidden()}">
+                                                    <form action="./CommentViewChange" method="post" style="display: inline">
+                                                        <input hidden value="${d.getComment_id()}" name="comment_id">
+                                                        <input hidden value="${d.isHidden()}" name="visibility">
+                                                        <input hidden value="${article.getId()}" name="article">
+                                                        <input type="submit" value="Show" style="background-color: #4CAF50">
+                                                    </form>
+                                                </c:when>
+                                                <c:when test="${isAdmin && !d.isHidden()}">
+                                                    <form action="./CommentViewChange" method="post" style="display: inline">
+                                                        <input hidden value="${d.getComment_id()}" name="comment_id">
+                                                        <input hidden value="${d.isHidden()}" name="visibility">
+                                                        <input hidden value="${article.getId()}" name="article">
+                                                        <input type="submit" value="Hide" style="background-color: orange">
+                                                    </form>
+                                                </c:when>
+                                            </c:choose>
+                                        </li>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:if>
                             </c:if>
                         </c:forEach>
                     </c:when>
@@ -130,7 +182,7 @@
                 <input value="${username}" name="username" hidden>
                 <input value="${article.getId()}" name="articleId" hidden>
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Your comments" name="comments">
+                    <input class="form-control" type="text" placeholder="Your comments" name="comments" id="commentBox" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-default">Post</button>
@@ -149,6 +201,12 @@
         <a href="Home.jsp"><span class="border">Home</span> </a>
     </div>
 </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+             $('#replyButton').click(function () {
+                 $('#subCommentContent').val($('#commentBox').val())
+             })
+        </script>
 
 </body>
 </html>

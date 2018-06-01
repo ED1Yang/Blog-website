@@ -23,7 +23,6 @@ public class CommentDAO implements AutoCloseable {
 
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM comments WHERE article_id = ?")) {
             stmt.setInt(1, articleID);
-//            stmt.executeUpdate();
             try (ResultSet rs = stmt.executeQuery()) {
                 List<Comment> comments = new ArrayList<>();
                 while (rs.next()) {
@@ -36,15 +35,16 @@ public class CommentDAO implements AutoCloseable {
 
 
     private Comment commentFromResultSet(ResultSet rs) throws SQLException {
-        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5), rs.getBoolean(6));
+        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5), rs.getBoolean(6), rs.getInt(7));
     }
 
 
     public void addComment(Comment comment) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO comments(article_id, userName, userComment) VALUES (?,?,?)")) {
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO comments(article_id, userName, userComment, parentComment) VALUES (?,?,?,?)")) {
             stmt.setInt(1, comment.getArticle_id());
             stmt.setString(2, comment.getUserName());
             stmt.setString(3, comment.getText());
+            stmt.setInt(4, comment.getParentComment());
             stmt.executeUpdate();
         }
     }
@@ -82,6 +82,19 @@ public class CommentDAO implements AutoCloseable {
             stmt.setBoolean(1, isHidden);
             stmt.setInt(2, id);
             stmt.executeUpdate();
+        }
+    }
+
+    public List<Comment> getChildComments(int id) throws SQLException {
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM comments WHERE parentComment = ?")) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                List<Comment> comments = new ArrayList<>();
+                while (rs.next()) {
+                    comments.add(commentFromResultSet(rs));
+                }
+                return comments;
+            }
         }
     }
 

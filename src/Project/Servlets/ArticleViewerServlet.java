@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,12 +34,36 @@ public class ArticleViewerServlet extends HttpServlet {
             req.setAttribute("article", article);
 
             List<Comment> comments= commentDAO.getComments(article.getId());
+
+            List<Comment> parentComments = new ArrayList<>();
+            List<Comment> subComment = new ArrayList<>();
+            HashMap<Integer,List<Comment>> subComments = new HashMap<>();
+            for (Comment c:comments) {
+                if(c.getParentComment() == 0) {
+                    parentComments.add(c);
+                }
+                else {
+                    subComment.add(c);
+                }
+            }
+            for (Comment c: parentComments) {
+                List<Comment> subs = new ArrayList<>();
+                for (Comment d: subComment) {
+                    if(d.getParentComment() == c.getComment_id()) {
+                        subs.add(d);
+                    }
+                }
+                subComments.put(c.getComment_id(), subs);
+            }
+
             List<String> users = commentDAO.getUsers(article.getId());
             for (String user:users) {
                 userImages.put(user, userDAO.getUserImage(user));
             }
             req.setAttribute("icons", userImages);
-            req.setAttribute("comments",comments);
+            req.setAttribute("comments",parentComments);
+            req.setAttribute("childComments", subComments);
+
 
             if(userDAO.getUserBySession(req.getSession().getId()) != null){
                 req.setAttribute("LoggedIn", true);

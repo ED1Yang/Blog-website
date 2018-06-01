@@ -21,37 +21,29 @@ public class CommentCreationServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
         String comment=req.getParameter("comments");
         int id=Integer.parseInt(req.getParameter("articleId"));
         String username=req.getParameter("username");
-        HashMap<String,String> userImages = new HashMap<>();
+        String parent = req.getParameter("comment_id");
+        System.out.println(parent);
 
         try(CommentDAO commentDAO=new CommentDAO(); ArticleDAO articleDAO=new ArticleDAO(); UserDAO userDAO=new UserDAO()){
-            Comment newComment=new Comment(id,username,comment);
+            Comment newComment = null;
+            if(parent != null) {
+                newComment=new Comment(id,username,comment, Integer.parseInt(parent));
+            } else {
+                newComment = new Comment(id,username,comment);
+            }
             commentDAO.addComment(newComment);
             Article article = articleDAO.getArticleById(id);
-            req.setAttribute("article", article);
+            req.setAttribute("article", article.getId());
 
-            List<Comment> comments= commentDAO.getComments(article.getId());
-            req.setAttribute("comments",comments);
-
-            List<String> users = commentDAO.getUsers(article.getId());
-            for (String user:users) {
-                userImages.put(user, userDAO.getUserImage(user));
-            }
-            req.setAttribute("icons", userImages);
-
-            User user = userDAO.getUserBySession(req.getSession().getId());
-            if(user!=null){
-                req.setAttribute("LoggedIn",true);
-                req.setAttribute("username",user.getUerName());
-                ArticleViewerServlet.OwnershipChecking(username, req);
-            }
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/article.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ArticleViewer");
         dispatcher.forward(req, resp);
     }
 }

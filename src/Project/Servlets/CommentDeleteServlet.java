@@ -25,29 +25,13 @@ public class CommentDeleteServlet extends HttpServlet {
         HashMap<String,String> userImages = new HashMap<>();
         try (CommentDAO commentDAO = new CommentDAO(); ArticleDAO articleDAO = new ArticleDAO(); UserDAO userDAO = new UserDAO()) {
             commentDAO.deleteComment(comment_id);
-
             int article_id = Integer.parseInt(req.getParameter("article_id"));
-            Article article = articleDAO.getArticleById(article_id);
-            req.setAttribute("article", article);
-            List<Comment> comments = commentDAO.getComments(article.getId());
-            req.setAttribute("comments", comments);
-            User user = userDAO.getUserBySession(req.getSession().getId());
-            if (user != null) {
-                req.setAttribute("LoggedIn", true);
-                req.setAttribute("username", user.getUerName());
-                ArticleViewerServlet.OwnershipChecking(user.getUerName(), req);
-            }
-
-            List<String> users = commentDAO.getUsers(article.getId());
-            for (String s:users) {
-                userImages.put(s, userDAO.getUserImage(s));
-            }
-            req.setAttribute("icons", userImages);
+            req.setAttribute("article", article_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/article.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ArticleViewer");
         dispatcher.forward(req, resp);
     }
 }
