@@ -232,6 +232,16 @@
         <url-pattern>/SelfDeletion</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Project.Servlets.SearchServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>

@@ -427,3 +427,15 @@ h6 {
 .form-group {
     height: 70px;
 }
+
+/*STYLING THE SEARCH PORTION*/
+
+#searchButton {
+    height: 30px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}

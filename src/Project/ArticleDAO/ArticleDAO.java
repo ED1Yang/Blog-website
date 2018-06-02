@@ -47,6 +47,21 @@ public class ArticleDAO implements AutoCloseable {
         }
     }
 
+    public List<Article> mainSearch(String keyword) throws SQLException {
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE article_name LIKE ? OR article_content LIKE ? OR author_id LIKE ?")) {
+            stmt.setString(1, "%"+keyword+"%");
+            stmt.setString(2, "%"+keyword+"%");
+            stmt.setString(3, "%"+keyword+"%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                List<Article> articles = new ArrayList<>();
+                while (rs.next()) {
+                    articles.add(articleFromResultSet(rs));
+                }
+                return articles;
+            }
+        }
+    }
+
     public List<Article> getArticlesByGenre(String genre) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE genre = ?")) {
             stmt.setString(1, genre);

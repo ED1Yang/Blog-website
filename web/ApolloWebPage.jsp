@@ -33,11 +33,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">ABOUT</a></li>
                 <c:if test="${LoggedIn}">
                     <li><a href="./ArticleCreation">ADD ARTICLE</a></li>
                 </c:if>
                 <li><a href="#articles">ARTICLES</a></li>
+                <c:if test="${LoggedIn}">
+                    <li><a href="#user-articles">YOUR ARTICLES</a></li>
+                </c:if>
                 <c:if test="${!LoggedIn}">
                     <li><a href="./RegistrationSetUp">SIGN UP</a></li>
                 </c:if>
@@ -47,7 +49,16 @@
                 <c:if test="${user.isAdmin()}">
                     <li><a href = "./UserAdmin">USER ADMINISTRATION</a></li>
                 </c:if>
-                <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+                <form class="navbar-form navbar-right" action="./Search" method="post">
+                    <div class="input-group">
+                        <input type="text" name="keyword" placeholder="search..." class="form-control" style="height: 30px; width: 200px; border-radius: 10px">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" id = "searchButton">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </ul>
         </div>
     </div>
