@@ -11,10 +11,10 @@
     <link rel="stylesheet" type="text/css" href="createPageStylesheet.css">
 
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -66,14 +66,14 @@
     <div class="container">
         <!--<h3>Title</h3>-->
         <c:choose>
-        <c:when test="${editing}">
-        <form action="./EditArticle#user-articles" method="post">
-            <input type="hidden" value="${articleId}" name = "articleId">
-        </c:when>
+            <c:when test="${editing}">
+            <form action="./EditArticle#user-articles" method="post">
+                <input type="hidden" value="${articleId}" name = "articleId">
+            </c:when>
             <c:otherwise>
             <form action="./NewArticle#user-articles" method="post">
             </c:otherwise>
-                </c:choose>
+        </c:choose>
             <br><br>
             <c:choose>
                 <c:when test="${articleGenre != null}">
@@ -82,6 +82,7 @@
                 </c:when>
                 <c:otherwise>
                     <select class="dropdown" name="category">
+                        <option selected disabled>Choose a category</option>
                         <option value="Technology">Technology</option>
                         <option value="Politics">Politics</option>
                         <option value="Business">Business</option>
@@ -112,6 +113,8 @@
                 <input type="hidden" id = "articleBody" name="articleBody">
             </div>
             <input type="hidden" value="${User.getUerName()}" name="author">
+            <input type="date" name="articleDate" id = "datePicker">
+            <br><br>
             <input type="submit" value="Publish" class="button">
         </form>
     </div>
@@ -140,6 +143,22 @@
             });
         </script>
     </c:if>
+    <c:choose>
+        <c:when test="${articleDate != null}">
+            <script>
+            $(this).ready(function () {
+            document.getElementById("datePicker").valueAsDate = new Date('${articleDate}')
+            })
+            </script>
+        </c:when>
+        <c:otherwise>
+            <script>
+            $(this).ready(function () {
+            document.getElementById("datePicker").valueAsDate = new Date()
+            })
+            </script>
+        </c:otherwise>
+    </c:choose>
 
 </body>
 </html>

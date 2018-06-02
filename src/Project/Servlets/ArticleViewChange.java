@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class ArticleViewChange extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int articleId = Integer.parseInt(req.getParameter("article"));
         boolean isHidden = Boolean.parseBoolean(req.getParameter("visbility"));
         try(ArticleDAO articleDAO = new ArticleDAO()) {
@@ -23,5 +23,10 @@ public class ArticleViewChange extends HttpServlet{
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
         dispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

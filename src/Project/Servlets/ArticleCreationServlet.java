@@ -30,6 +30,7 @@ public class ArticleCreationServlet extends HttpServlet{
                 req.setAttribute("articleName", article.getTitle());
                 req.setAttribute("articleContent", article.getContent());
                 req.setAttribute("articleGenre", article.getGenre());
+                req.setAttribute("articleDate", article.getDate().substring(0,10));
             }
             catch (SQLException e) {
                 e.printStackTrace();

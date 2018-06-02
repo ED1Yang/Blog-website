@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </c:otherwise>
         </c:choose>
         <div class="w3layouts_main_grid">
-            <form action="/Registration" method="post" class="w3_form_post" id="registration">
+            <form action="./Registration" method="post" class="w3_form_post" id="registration">
                 <%--enctype="multipart/form-data">--%>
                 <c:if test="${UsernameTaken}">
                     <p style="color:red">Current username has been taken.</p>
@@ -119,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </div>
                 <div class="g-recaptcha"
-                     data-sitekey="6LfzRVwUAAAAAHzmIDMMmKtAbp9YbUpPWuTp3Z7b"></div>
+                     data-sitekey="6LfV01wUAAAAABs5ANFS_rd39JbsetwQ5jCqfIC3"></div>
                 <div class="w3_main_grid">
 
                     <input hidden type="text" name="upload" id="uploading" value="">

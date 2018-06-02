@@ -23,7 +23,7 @@ public class ImageSave extends HttpServlet {
             User user = userDAO.getUserBySession(req.getSession().getId());
 
             String imagename=user.getUerName()+".png";
-            String fullpath=getServletContext().getRealPath("/Avatars") + "\\";
+            String fullpath=getServletContext().getRealPath("/Avatars") + "/";
             Base64.GenerateImage(pathname, fullpath+imagename);
             user.setImage(imagename);
             userDAO.updateUser(user,olduser);

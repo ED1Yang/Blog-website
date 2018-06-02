@@ -43,7 +43,7 @@
         <br>
     </c:if>
 
-    <button class="btn btn-info" data-title="Back" data-toggle="modal" data-target="#home" onclick="location.href = '/UserProfileServlet'">
+    <button class="btn btn-info" data-title="Back" data-toggle="modal" data-target="#home" onclick="location.href = './UserProfileServlet'">
         &larr; Back
     </button>
 

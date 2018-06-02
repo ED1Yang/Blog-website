@@ -23,7 +23,7 @@ public class CommentDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int comment_id = Integer.parseInt(req.getParameter("comment_id"));
         HashMap<String,String> userImages = new HashMap<>();
-        try (CommentDAO commentDAO = new CommentDAO(); ArticleDAO articleDAO = new ArticleDAO(); UserDAO userDAO = new UserDAO()) {
+        try (CommentDAO commentDAO = new CommentDAO()) {
             commentDAO.deleteComment(comment_id);
             int article_id = Integer.parseInt(req.getParameter("article_id"));
             req.setAttribute("article", article_id);

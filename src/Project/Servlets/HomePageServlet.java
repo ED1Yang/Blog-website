@@ -27,6 +27,8 @@ public class HomePageServlet extends HttpServlet{
             request.setAttribute("PolArticle", articlesListPol.get(0).getContent());
             List<Article> allArticles = articles.getAllArticles();
             request.setAttribute("AllArticles", allArticles);
+            List<Article> allArticlesDated = articles.getAllArticlesBeforeDate();
+            request.setAttribute("AllArticlesDated", allArticlesDated);
         } catch (SQLException e) {
             e.printStackTrace();
         }

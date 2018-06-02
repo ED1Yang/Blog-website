@@ -23,8 +23,9 @@ public class EditArticleServlet extends HttpServlet{
         String title = req.getParameter("articleTitle");
         String content = req.getParameter("articleBody");
         String author = req.getParameter("author");
+        String date = req.getParameter("articleDate");
         int articleId = Integer.parseInt(req.getParameter("articleId"));
-        Article article = new Article(articleId, title, content, category, author);
+        Article article = new Article(articleId, title, content, category, author, date);
 
         try(ArticleDAO articleDAO = new ArticleDAO()){
             articleDAO.updateArticle(article);

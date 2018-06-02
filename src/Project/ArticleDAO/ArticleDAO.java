@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @SuppressWarnings("Duplicates")
@@ -23,6 +24,19 @@ public class ArticleDAO implements AutoCloseable {
     public List<Article> getAllArticles() throws SQLException {
 
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles")) {
+            try (ResultSet rs = stmt.executeQuery()) {
+                List<Article> articles = new ArrayList<>();
+                while (rs.next()) {
+                    articles.add(articleFromResultSet(rs));
+                }
+                return articles;
+            }
+        }
+    }
+
+    public List<Article> getAllArticlesBeforeDate() throws SQLException {
+
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE date <= current_timestamp")) {
             try (ResultSet rs = stmt.executeQuery()) {
                 List<Article> articles = new ArrayList<>();
                 while (rs.next()) {
@@ -86,11 +100,12 @@ public class ArticleDAO implements AutoCloseable {
     }
 
     public void addArticle(Article article) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO articles (article_name, article_content, genre, author_id) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO articles (article_name, article_content, genre, author_id, date) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, article.getTitle());
             stmt.setString(2, article.getContent());
             stmt.setString(3, article.getGenre());
             stmt.setString(4, article.getAuthor());
+            stmt.setString(5, article.getDate());
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 rs.next();
@@ -101,10 +116,11 @@ public class ArticleDAO implements AutoCloseable {
 
 
     public void updateArticle(Article article) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET article_name = ?, article_content = ? WHERE article_id = ?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET article_name = ?, article_content = ?, date=? WHERE article_id = ?")) {
             stmt.setString(1, article.getTitle());
             stmt.setString(2, article.getContent());
-            stmt.setInt(3, article.getId());
+            stmt.setString(3, article.getDate());
+            stmt.setInt(4, article.getId());
             stmt.executeUpdate();
         }
     }

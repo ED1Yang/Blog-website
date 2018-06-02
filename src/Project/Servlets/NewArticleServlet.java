@@ -23,7 +23,8 @@ public class NewArticleServlet extends HttpServlet{
         String title = req.getParameter("articleTitle");
         String content = req.getParameter("articleBody");
         String author = req.getParameter("author");
-        Article article = new Article(title, content, category, author);
+        String date = req.getParameter("articleDate");
+        Article article = new Article(title, content, category, author, date);
 
         try(ArticleDAO articleDAO = new ArticleDAO()){
             articleDAO.addArticle(article);

@@ -169,7 +169,7 @@
             <c:if test="${visChanged}">
                 <h3 style="font-weight: bold; color: coral;">Article Visibility Changed</h3>
             </c:if>
-            <c:forEach items="${AllArticles}" var="article">
+            <c:forEach items="${AllArticlesDated}" var="article">
                 <c:if test="${!article.isHidden() || user.isAdmin()}">
                     <div class="col-sm-4">
                         <div class="thumbnail">
@@ -193,7 +193,7 @@
                             <c:choose>
                                 <c:when test="${user.isAdmin() && article.isHidden()}">
                                     <br>
-                                    <form action="./ArticleViewChange">
+                                    <form action="./ArticleViewChange#articles" method="post">
                                         <input type="hidden" name="article" value="${article.getId()}">
                                         <input type="hidden" name="visbility" value="${article.isHidden()}">
                                         <input type="submit" value="Show" class="btn" style="background-color: #4CAF50">
@@ -201,7 +201,7 @@
                                 </c:when>
                                 <c:when test="${user.isAdmin() && !article.isHidden()}">
                                     <br>
-                                    <form action="./ArticleViewChange">
+                                    <form action="./ArticleViewChange#articles" method="post">
                                         <input type="hidden" name="article" value="${article.getId()}">
                                         <input type="hidden" name="visibility" value="${article.isHidden()}">
                                         <input type="submit" value="Hide" class="btn" style="background-color: orange">

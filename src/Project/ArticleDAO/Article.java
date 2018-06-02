@@ -53,6 +53,14 @@ public class Article {
         this.author = authorID;
     }
 
+    public Article(String title, String content, String genre, String authorID, String date) {
+        this.title = title;
+        this.content = content;
+        this.genre = genre;
+        this.author = authorID;
+        this.date = date;
+    }
+
     public Integer getId() {
         return id;
     }

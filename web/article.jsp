@@ -103,8 +103,8 @@
                                         <input hidden value="${c.getComment_id()}" name="comment_id">
                                         <input hidden value="${article.getId()}" name="articleId">
                                         <input value="${username}" name="username" hidden>
-                                        <input name = "comments" hidden id="subCommentContent" required>
-                                        <input type="submit" value="Reply" id="replyButton">
+                                        <input name = "comments" hidden class="subCommentContent" required>
+                                        <input type="submit" value="Reply" class="replyButton">
                                     </form>
                                 </c:if>
                                 <c:choose>
@@ -173,7 +173,7 @@
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <p><strong>There are not comments on this article</strong></p>
+                        <p><strong>There are no comments on this article</strong></p>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -203,8 +203,8 @@
 </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
-             $('#replyButton').click(function () {
-                 $('#subCommentContent').val($('#commentBox').val())
+             $('.replyButton').click(function () {
+                 $('.subCommentContent').val($('#commentBox').val())
              })
         </script>
 
