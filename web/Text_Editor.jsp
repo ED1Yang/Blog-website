@@ -67,7 +67,7 @@ Background: <input type="color" onchange="execCommandWithArg('hiliteColor', this
 </div>
 <br>
 <br>
-<iframe name="richTextField" style="width: 1000px; height: 500px;" id = "textfield"></iframe>
+<iframe name="richTextField" style="height: 500px;" id = "textfield"></iframe>
 <script type="text/javascript">
 
     var showingSourceCode = false;

@@ -81,7 +81,7 @@
                     <input type= "hidden" name="category" value="${articleGenre}">
                 </c:when>
                 <c:otherwise>
-                    <select class="dropdown" name="category">
+                    <select class="dropdown" name="category" required>
                         <option selected disabled>Choose a category</option>
                         <option value="Technology">Technology</option>
                         <option value="Politics">Politics</option>
@@ -98,12 +98,12 @@
                     <c:when test="${articleName != null}">
                         <input id="articleTitle" type="text" class="form-control" name="articleTitle"
                                style="font-size: large;
-                                font-family: 'Helvetica';" value="${articleName}">
+                                font-family: 'Helvetica';" value="${articleName}" required>
                     </c:when>
                     <c:otherwise>
                         <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here"
                                style="font-size: large;
-                                font-family: 'Helvetica';">
+                                font-family: 'Helvetica';" required>
                     </c:otherwise>
                 </c:choose>
             </div>

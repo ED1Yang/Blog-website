@@ -16,8 +16,8 @@ public class HikariConnectionPool {
         hds = new HikariDataSource();
         hds.setJdbcUrl("jdbc:mysql://db.sporadic.nz:3306/Team_GREA");
         hds.setDriverClassName("com.mysql.jdbc.Driver");
-        hds.setUsername("amad295");
-        hds.setPassword("NumberThingJokeAccident");
+        hds.setUsername("gsik152");
+        hds.setPassword("FlyUseOnScienceDineDo");
         hds.setMaximumPoolSize(5);
     }
 
