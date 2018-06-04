@@ -63,7 +63,7 @@ public class ArticleDAO implements AutoCloseable {
     }
 
     public List<Article> getArticlesByGenre(String genre) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE genre = ?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE genre = ? ORDER BY date DESC")) {
             stmt.setString(1, genre);
             try (ResultSet rs = stmt.executeQuery()) {
                 List<Article> articles = new ArrayList<>();

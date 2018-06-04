@@ -124,7 +124,7 @@
     <div class="col-sm-4">
         <h3><strong>Technology</strong></h3><br>
         <a href="#technology" data-toggle="collapse">
-        <img src="Resources/technology.jpg" class="img-circle subject"
+        <img src="Resources/Technology.jpg" class="img-circle subject"
              style="width: 50%;
                     alignment: center;
                     margin-bottom: 5px;
@@ -140,7 +140,7 @@
     <div class="col-sm-4">
         <h3><strong>Business</strong></h3><br>
         <a href="#business" data-toggle="collapse">
-        <img src="Resources/business.jpg" class="img-circle subject"
+        <img src="Resources/Business.png" class="img-circle subject"
              style="width: 50%;
                     alignment: center;
                     margin-bottom: 5px;
@@ -187,10 +187,10 @@
                             <div class = "thumbChild">
                                 <c:choose>
                                     <c:when test="${article.getGenre() == 'Business'}">
-                                        <img src="Resources/business.jpg">
+                                        <img src="Resources/Business.png">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Technology'}">
-                                        <img src="Resources/technology.jpg">
+                                        <img src="Resources/Technology.jpg">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Politics'}">
                                         <img src="Resources/politics.jpg">
@@ -246,10 +246,10 @@
                             <div class="thumbChild">
                                 <c:choose>
                                     <c:when test="${article.getGenre() == 'Business'}">
-                                        <img src="Resources/business.jpg">
+                                        <img src="Resources/Business.png">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Technology'}">
-                                        <img src="Resources/technology.jpg">
+                                        <img src="Resources/Technology.jpg">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Politics'}">
                                         <img src="Resources/politics.jpg">

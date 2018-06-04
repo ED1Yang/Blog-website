@@ -36,7 +36,7 @@ public class SendEmail {
         Session session = Session.getDefaultInstance(properties,new Authenticator(){
             public PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication("apollo.teamgrea@gmail.com", "grea1234"); //发件人邮件用户名、密码
+                return new PasswordAuthentication("apollo.teamgrea@gmail.com", "grea1234");
             }
         });
 

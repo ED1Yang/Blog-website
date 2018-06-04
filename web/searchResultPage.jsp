@@ -70,7 +70,7 @@
 
 <br>
 
-<div class="bg-1" id = "articles">
+<div class="bg-1" id = "articles" style="top:-9px; position: relative">
     <div class="container">
         <div class="row text-center">
 
@@ -133,10 +133,10 @@
                             <div class = "thumbChild">
                                 <c:choose>
                                     <c:when test="${article.getGenre() == 'Business'}">
-                                        <img src="Resources/business.jpg">
+                                        <img src="Resources/Business.png">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Technology'}">
-                                        <img src="Resources/technology.jpg">
+                                        <img src="Resources/Technology.jpg">
                                     </c:when>
                                     <c:when test="${article.getGenre() == 'Politics'}">
                                         <img src="Resources/politics.jpg">
