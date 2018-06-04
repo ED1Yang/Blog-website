@@ -28,7 +28,7 @@ public class CommentCreationServlet extends HttpServlet{
         String parent = req.getParameter("comment_id");
         System.out.println(parent);
 
-        try(CommentDAO commentDAO=new CommentDAO(); ArticleDAO articleDAO=new ArticleDAO(); UserDAO userDAO=new UserDAO()){
+        try(CommentDAO commentDAO=new CommentDAO(); ArticleDAO articleDAO=new ArticleDAO()){
             Comment newComment = null;
             if(parent != null) {
                 newComment=new Comment(id,username,comment, Integer.parseInt(parent));

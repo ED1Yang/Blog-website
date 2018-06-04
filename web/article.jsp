@@ -62,15 +62,13 @@
     </p><br>
     <c:if test="${Owner}">
         <form action="./ArticleCreation"  style="display: inline">
-            <button type="submit" class="btn btn-success btn-md" data-title="Edit"
-                    data-toggle="modal" data-target="#remove">
+            <button type="submit" class="btn btn-success btn-md" data-title="Edit">
                 <span class="glyphicon glyphicon-pencil"></span> Edit
             </button>
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
         <form action="./ArticleDeletion#user-articles" style="display: inline">
-            <button type="submit" class="btn btn-danger btn-md" data-title="Delete"
-                    data-toggle="modal" data-target="#remove">
+            <button type="submit" class="btn btn-danger btn-md" data-title="Delete">
                 <span class="glyphicon glyphicon-minus-sign"></span> Delete
             </button>
             <input type="hidden" value="${article.getId()}" name="article">
@@ -104,8 +102,7 @@
                                     <form action="./DeleteComment" method="post" style="display: inline">
                                         <input hidden value="${c.getComment_id()}" name="comment_id">
                                         <input hidden value="${article.getId()}" name="article_id">
-                                        <button type="submit" class="btn btn-danger btn-xs" data-title="Delete"
-                                                data-toggle="modal" data-target="#remove">
+                                        <button type="submit" class="btn btn-danger btn-xs" data-title="Delete">
                                             <span class="glyphicon glyphicon-minus-sign"></span>
                                         </button>
                                     </form>
@@ -116,8 +113,7 @@
                                         <input hidden value="${article.getId()}" name="articleId">
                                         <input value="${username}" name="username" hidden>
                                         <input name = "comments" hidden class="subCommentContent" required>
-                                        <button type="submit" class="btn btn-info btn-xs replyButton" data-title="Reply"
-                                                data-toggle="modal" data-target="#remove">
+                                        <button type="submit" class="btn btn-info btn-xs replyButton" data-title="Reply">
                                             <span class="glyphicon glyphicon-share-alt"></span>
                                         </button>
                                     </form>
@@ -128,8 +124,7 @@
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
-                                            <button type="submit" class="btn btn-warning btn-xs" data-title="Show"
-                                                    data-toggle="modal" data-target="#remove">
+                                            <button type="submit" class="btn btn-warning btn-xs" data-title="Show">
                                                 <span class="glyphicon glyphicon-eye-close"></span>
                                             </button>
                                         </form>
@@ -139,8 +134,7 @@
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
-                                            <button type="submit" class="btn btn-success btn-xs" data-title="Show"
-                                                    data-toggle="modal" data-target="#remove">
+                                            <button type="submit" class="btn btn-success btn-xs" data-title="Show">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </button>
                                         </form>
@@ -165,8 +159,7 @@
                                                 <form action="./DeleteComment" method="post" style="display: inline">
                                                     <input hidden value="${d.getComment_id()}" name="comment_id">
                                                     <input hidden value="${article.getId()}" name="article_id">
-                                                    <button type="submit" class="btn btn-danger btn-xs" data-title="Delete"
-                                                            data-toggle="modal" data-target="#remove">
+                                                    <button type="submit" class="btn btn-danger btn-xs" data-title="Delete">
                                                         <span class="glyphicon glyphicon-minus-sign"></span>
                                                     </button>
                                                 </form>
@@ -177,8 +170,7 @@
                                                         <input hidden value="${d.getComment_id()}" name="comment_id">
                                                         <input hidden value="${d.isHidden()}" name="visibility">
                                                         <input hidden value="${article.getId()}" name="article">
-                                                        <button type="submit" class="btn btn-warning btn-xs" data-title="Show"
-                                                                data-toggle="modal" data-target="#remove">
+                                                        <button type="submit" class="btn btn-warning btn-xs" data-title="Show">
                                                             <span class="glyphicon glyphicon-eye-close"></span>
                                                         </button>
                                                     </form>
@@ -188,8 +180,7 @@
                                                         <input hidden value="${d.getComment_id()}" name="comment_id">
                                                         <input hidden value="${d.isHidden()}" name="visibility">
                                                         <input hidden value="${article.getId()}" name="article">
-                                                        <button type="submit" class="btn btn-success btn-xs" data-title="Show"
-                                                                data-toggle="modal" data-target="#remove">
+                                                        <button type="submit" class="btn btn-success btn-xs" data-title="Show">
                                                             <span class="glyphicon glyphicon-eye-open"></span>
                                                         </button>
                                                     </form>

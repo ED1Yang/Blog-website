@@ -367,17 +367,28 @@ h6 {
 }
 
 .avatar {
-    height: 50px;
-    border-radius: 50px;
+    height: 40px;
+    border-radius: 40px;
+    margin-top: 5px;
 }
 
 /*STYLING THE ARTICLE VIEW PAGE MODIFYING THE COMMENT BOX*/
 
-.detailBox {
-    width:400px;
-    border:1px solid #bbb;
-    margin:50px;
+@media screen and (min-width: 768px){
+    .detailBox {
+        width:400px;
+        border:1px solid #bbb;
+        margin:50px;
+    }
 }
+
+@media screen and (max-width: 768px){
+    .detailBox {
+        width:100%;
+        border:1px solid #bbb;
+    }
+}
+
 .titleBox {
     background-color: dodgerblue;
     padding:10px;
@@ -465,4 +476,5 @@ h6 {
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    padding: 7px;
 }

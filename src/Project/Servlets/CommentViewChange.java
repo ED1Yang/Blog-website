@@ -15,7 +15,7 @@ public class CommentViewChange extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int commentId = Integer.parseInt(req.getParameter("comment_id"));
-        boolean isHidden = Boolean.parseBoolean(req.getParameter("visbility"));
+        boolean isHidden = Boolean.parseBoolean(req.getParameter("visibility"));
         try(CommentDAO commentDAO = new CommentDAO()) {
             commentDAO.changeVisbility(commentId, !isHidden);
             req.setAttribute("visChanged", true);

@@ -85,18 +85,6 @@ public class CommentDAO implements AutoCloseable {
         }
     }
 
-    public List<Comment> getChildComments(int id) throws SQLException {
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM comments WHERE parentComment = ?")) {
-            stmt.setInt(1, id);
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Comment> comments = new ArrayList<>();
-                while (rs.next()) {
-                    comments.add(commentFromResultSet(rs));
-                }
-                return comments;
-            }
-        }
-    }
 
     @Override
     public void close() throws SQLException {

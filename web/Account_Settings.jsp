@@ -11,22 +11,27 @@
 
     <script src="js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $(".uname").change(function(){
-                var uname = $(this).val();
+        var existing = "";
+        $(document).ready(function () {
+            existing = $('#validationCustomUsername').val();
+        });
+        function validate() {
+            var uname = $('#validationCustomUsername').val();
+            if(uname == "" || uname == existing) {
+                $(".status").html("");
+            }
+            else {
                 $(".status").html("<img src='Resources/loading.gif'><p> Checking availability...</p>");
-
                 $.ajax({
                     type: "POST",
                     url: "check",
-                    data: "uname="+ uname,
-                    success: function(msg){
+                    data: "uname=" + uname,
+                    success: function (msg) {
                         $(".status").html(msg);
                     }
                 });
-
-            });
-        });
+            }
+        }
     </script>
 
 
@@ -92,7 +97,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                     </div>
-                    <input type="text" class="uname" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required>
+                    <input type="text" class="uname" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required oninput="validate()">
                     &nbsp;&nbsp;
                     &nbsp;
                     <span class="status"></span>

@@ -67,7 +67,7 @@
                                 Account Settings </a>
                         </li>
                         <li>
-                            <a href="Home.jsp" target="_blank">
+                            <a href="Home.jsp">
                                 <i class="glyphicon glyphicon-home"></i>
                                 Home </a>
                         </li>

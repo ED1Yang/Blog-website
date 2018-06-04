@@ -29,10 +29,10 @@
             </button>
             <c:choose>
                 <c:when test="${!LoggedIn}">
-                    <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
+                    <a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="./UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a></li>
+                    <a href="./UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a>
                 </c:otherwise>
             </c:choose>
         </div>

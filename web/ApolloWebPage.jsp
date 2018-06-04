@@ -24,10 +24,10 @@
             </button>
             <c:choose>
                 <c:when test="${!LoggedIn}">
-                    <li><a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a></li>
+                    <a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="./UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a></li>
+                    <a href="./UserProfileServlet"><img src="Avatars/${user.getImage()}" alt="Name" class="avatar"></a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -66,7 +66,7 @@
 
 <br><br><br>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="position: relative; top: -25px; ">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="position: relative; top: -35px; ">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -259,7 +259,7 @@
                                 <p>${article.getDate().substring(0,11)}</p>
                                 <form action="./ArticleViewer">
                                     <input type="hidden" name="article" value="${article.getId()}">
-                                    <input type="submit" value="Read..." class="btn" style="border-radius: 5px">
+                                    <input type="submit" value="Modify..." class="btn" style="border-radius: 5px">
                                 </form>
                             </div>
                         </div>
@@ -276,7 +276,7 @@
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a><br><br>
-    <p>copyright <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
+    <p>Copyright <a href="http://sporadic.nz/Apollo_GREA" data-toggle="tooltip" title="Visit apolloblogs">www.apollo.com</a></p>
 </footer>
 
 <script>
