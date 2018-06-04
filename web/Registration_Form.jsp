@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>User Name</label>
-								<input type="text" name="uname" class="uname" placeholder="Username" required>
+								<input type="text" name="uname" class="uname" placeholder="Username" required oninput="checkUname()" id="uname">
 								</span>
                 </div>
                 <span class="status"></span><br>
@@ -160,9 +160,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".uname").change(function () {
-            var uname = $(this).val();
+    function checkUname() {
+        var uname = $('#uname').val();
+        if(uname != "") {
             $(".status").html("<img src='Resources/loading.gif'><p> Checking availability...</p>");
 
             $.ajax({
@@ -172,10 +172,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 success: function (msg) {
                     $(".status").html(msg);
                 }
-            });
-
-        });
-    });
+            })
+        }
+    }
 </script>
 <script>
     function noUploading() {

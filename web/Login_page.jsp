@@ -21,7 +21,7 @@
             <br>
         </c:if>
         <input type="submit" name="" value="Login">
-        <a href="#">Forgot your Password?</a>
+        <a href="/ForgetPassword.jsp">Forgot your Password?</a>
         <a href="./RegistrationSetUp">Don't Have an Account?</a>
     </form>
 

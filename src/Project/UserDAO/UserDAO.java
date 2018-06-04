@@ -80,7 +80,7 @@ public class UserDAO implements AutoCloseable {
     private User userFromResultSet(ResultSet rs) throws SQLException {
         return new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                 rs.getString(5), rs.getString(6), rs.getString(7),
-                rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getString(11));
+                rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getString(11),rs.getString(12),rs.getLong(13));
     }
 
 
@@ -88,7 +88,6 @@ public class UserDAO implements AutoCloseable {
         try (PreparedStatement stmt = conn.prepareStatement("" +
                 "INSERT INTO users (userName, pword, first_name, last_name, date_of_birth, country, description, image, email)" +
                 "VALUES (?, ?, ?, ?, ? ,? ,?, ?,?)", Statement.RETURN_GENERATED_KEYS)) {
-            //dont know if email is ok to put here.
 
             stmt.setString(1, user.getUerName());
             stmt.setString(2, user.getPassword());
@@ -112,7 +111,9 @@ public class UserDAO implements AutoCloseable {
                 "country = ?," +
                 "description = ?," +
                 "image = ?," +
-                "email = ?" +
+                "email = ?," +
+                "validateCode = ?," +
+                "ExpireTime = ?" +
                 " WHERE userName = ?")) {
             stmt.setString(1, user.getUerName());
             stmt.setString(2, user.getPassword());
@@ -123,7 +124,9 @@ public class UserDAO implements AutoCloseable {
             stmt.setString(7, user.getDescription());
             stmt.setString(8, user.getImage());
             stmt.setString(9,user.getEmail());
-            stmt.setString(10, oldUser.getUerName());
+            stmt.setString(10,user.getValidateCode());
+            stmt.setLong(11,user.getExpireTime());
+            stmt.setString(12, oldUser.getUerName());
             stmt.executeUpdate();
         }
     }

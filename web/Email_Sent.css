@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: url(Resources/Web-Design-solutions.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+
+}
+
+.EmailSent{
+    width: 390px;
+    height: 300px;
+    background: rgba(0,0,0,0.5);
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.EmailSent input[type="submit"]{
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    margin-left: 120px;
+    height: 40px;
+    background: #fb2525;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+ul{
+    list-style: none;
+}
+
+p{
+    margin-left: 30px;
+}

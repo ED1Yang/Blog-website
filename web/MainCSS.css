@@ -163,6 +163,14 @@ img:hover {
         border: none;
         border-radius: 5px;
         margin: 30px;
+        height: 428px;
+        width: 230px;
+        display: table;
+    }
+
+    .thumbChild {
+        display: table-cell;
+        vertical-align: middle;
     }
 }
 

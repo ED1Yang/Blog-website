@@ -26,6 +26,7 @@ public class SearchServlet extends HttpServlet{
             String searchTerm = request.getParameter("keyword");
             List<Article> searchResults = articleDAO.mainSearch(searchTerm);
             request.setAttribute("ArticlesSearched", searchResults);
+            request.setAttribute("keyword",searchTerm);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/searchResultPage.jsp");
             dispatcher.forward(request, response);
         }
@@ -33,4 +34,5 @@ public class SearchServlet extends HttpServlet{
             e.printStackTrace();
         }
     }
+
 }

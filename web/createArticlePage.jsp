@@ -82,7 +82,7 @@
                 </c:when>
                 <c:otherwise>
                     <select class="dropdown" name="category" required>
-                        <option selected disabled>Choose a category</option>
+                        <option value="" selected disabled>Choose a category</option>
                         <option value="Technology">Technology</option>
                         <option value="Politics">Politics</option>
                         <option value="Business">Business</option>
@@ -98,12 +98,12 @@
                     <c:when test="${articleName != null}">
                         <input id="articleTitle" type="text" class="form-control" name="articleTitle"
                                style="font-size: large;
-                                font-family: 'Helvetica';" value="${articleName}" required>
+                                font-family: 'Helvetica';" value="${articleName}" required maxlength="50">
                     </c:when>
                     <c:otherwise>
-                        <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here"
+                        <input id="articleTitle" type="text" class="form-control" name="articleTitle" placeholder="Type your heading here - max 50 characters"
                                style="font-size: large;
-                                font-family: 'Helvetica';" required>
+                                font-family: 'Helvetica';" required maxlength="50">
                     </c:otherwise>
                 </c:choose>
             </div>

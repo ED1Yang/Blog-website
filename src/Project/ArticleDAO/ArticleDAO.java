@@ -131,11 +131,12 @@ public class ArticleDAO implements AutoCloseable {
 
 
     public void updateArticle(Article article) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET article_name = ?, article_content = ?, date=? WHERE article_id = ?")) {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET article_name = ?, article_content = ?, date=?, genre = ? WHERE article_id = ?")) {
             stmt.setString(1, article.getTitle());
             stmt.setString(2, article.getContent());
             stmt.setString(3, article.getDate());
-            stmt.setInt(4, article.getId());
+            stmt.setString(4, article.getGenre());
+            stmt.setInt(5, article.getId());
             stmt.executeUpdate();
         }
     }

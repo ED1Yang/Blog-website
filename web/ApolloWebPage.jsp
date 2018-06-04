@@ -175,50 +175,52 @@
 
 <div class="bg-1" id = "articles">
     <div class="container">
-        <div class="row text-center">
+        <div class="row row-eq text-center">
             <h1 style="color: white">ALL ARTICLES</h1>
             <c:if test="${visChanged}">
                 <h3 style="font-weight: bold; color: coral;">Article Visibility Changed</h3>
             </c:if>
             <c:forEach items="${AllArticlesDated}" var="article">
                 <c:if test="${!article.isHidden() || user.isAdmin()}">
-                    <div class="col-md-4 col-sm-10 col-xs-12">
+                    <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
                         <div class="thumbnail">
-                            <c:choose>
-                                <c:when test="${article.getGenre() == 'Business'}">
-                                    <img src="Resources/business.jpg">
-                                </c:when>
-                                <c:when test="${article.getGenre() == 'Technology'}">
-                                    <img src="Resources/technology.jpg">
-                                </c:when>
-                                <c:when test="${article.getGenre() == 'Politics'}">
-                                    <img src="Resources/politics.jpg">
-                                </c:when>
-                            </c:choose>
-                            <h3><strong>${article.getTitle()}</strong></h3>
-                            <p>${article.getDate().substring(0,11)}</p>
-                            <form action="./ArticleViewer">
-                                <input type="hidden" name="article" value="${article.getId()}">
-                                <input type="submit" value="Read..." class="btn">
-                            </form>
-                            <c:choose>
-                                <c:when test="${user.isAdmin() && article.isHidden()}">
-                                    <br>
-                                    <form action="./ArticleViewChange#articles" method="post">
-                                        <input type="hidden" name="article" value="${article.getId()}">
-                                        <input type="hidden" name="visbility" value="${article.isHidden()}">
-                                        <input type="submit" value="Show" class="btn" style="background-color: #4CAF50">
-                                    </form>
-                                </c:when>
-                                <c:when test="${user.isAdmin() && !article.isHidden()}">
-                                    <br>
-                                    <form action="./ArticleViewChange#articles" method="post">
-                                        <input type="hidden" name="article" value="${article.getId()}">
-                                        <input type="hidden" name="visibility" value="${article.isHidden()}">
-                                        <input type="submit" value="Hide" class="btn" style="background-color: orange">
-                                    </form>
-                                </c:when>
-                            </c:choose>
+                            <div class = "thumbChild">
+                                <c:choose>
+                                    <c:when test="${article.getGenre() == 'Business'}">
+                                        <img src="Resources/business.jpg">
+                                    </c:when>
+                                    <c:when test="${article.getGenre() == 'Technology'}">
+                                        <img src="Resources/technology.jpg">
+                                    </c:when>
+                                    <c:when test="${article.getGenre() == 'Politics'}">
+                                        <img src="Resources/politics.jpg">
+                                    </c:when>
+                                </c:choose>
+                                <h3><strong>${article.getTitle()}</strong></h3>
+                                <p>${article.getDate().substring(0,11)}</p>
+                                <form action="./ArticleViewer">
+                                    <input type="hidden" name="article" value="${article.getId()}">
+                                    <input type="submit" value="Read..." class="btn" style="border-radius: 5px">
+                                </form>
+                                <c:choose>
+                                    <c:when test="${user.isAdmin() && article.isHidden()}">
+                                        <br>
+                                        <form action="./ArticleViewChange#articles" method="post">
+                                            <input type="hidden" name="article" value="${article.getId()}">
+                                            <input type="hidden" name="visbility" value="${article.isHidden()}">
+                                            <input type="submit" value="Show" class="btn" style="background-color: #4CAF50; border-radius: 5px">
+                                        </form>
+                                    </c:when>
+                                    <c:when test="${user.isAdmin() && !article.isHidden()}">
+                                        <br>
+                                        <form action="./ArticleViewChange#articles" method="post">
+                                            <input type="hidden" name="article" value="${article.getId()}">
+                                            <input type="hidden" name="visibility" value="${article.isHidden()}">
+                                            <input type="submit" value="Hide" class="btn" style="background-color: orange; border-radius: 5px">
+                                        </form>
+                                    </c:when>
+                                </c:choose>
+                            </div>
                         </div>
                     </div>
                 </c:if>
@@ -239,25 +241,27 @@
                 <c:forEach items="${AllArticles}" var="article">
                     <c:set var="userName" value="${user.getUerName()}"></c:set>
                     <c:if test="${article.getAuthor() == userName}">
-                        <div class="col-md-5 col-sm-offset-1 col-sm-9 col-xs-12">
+                        <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
                         <div class="thumbnail">
-                            <c:choose>
-                                <c:when test="${article.getGenre() == 'Business'}">
-                                    <img src="Resources/business.jpg">
-                                </c:when>
-                                <c:when test="${article.getGenre() == 'Technology'}">
-                                    <img src="Resources/technology.jpg">
-                                </c:when>
-                                <c:when test="${article.getGenre() == 'Politics'}">
-                                    <img src="Resources/politics.jpg">
-                                </c:when>
-                            </c:choose>
-                            <h3><strong>${article.getTitle()}</strong></h3>
-                            <p>${article.getDate().substring(0,11)}</p>
-                            <form action="./ArticleViewer">
-                                <input type="hidden" name="article" value="${article.getId()}">
-                                <input type="submit" value="Read..." class="btn">
-                            </form>
+                            <div class="thumbChild">
+                                <c:choose>
+                                    <c:when test="${article.getGenre() == 'Business'}">
+                                        <img src="Resources/business.jpg">
+                                    </c:when>
+                                    <c:when test="${article.getGenre() == 'Technology'}">
+                                        <img src="Resources/technology.jpg">
+                                    </c:when>
+                                    <c:when test="${article.getGenre() == 'Politics'}">
+                                        <img src="Resources/politics.jpg">
+                                    </c:when>
+                                </c:choose>
+                                <h3><strong>${article.getTitle()}</strong></h3>
+                                <p>${article.getDate().substring(0,11)}</p>
+                                <form action="./ArticleViewer">
+                                    <input type="hidden" name="article" value="${article.getId()}">
+                                    <input type="submit" value="Read..." class="btn" style="border-radius: 5px">
+                                </form>
+                            </div>
                         </div>
                     </div>
                     </c:if>

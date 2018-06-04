@@ -58,7 +58,12 @@ public class ArticleViewerServlet extends HttpServlet {
 
             List<String> users = commentDAO.getUsers(article.getId());
             for (String user:users) {
-                userImages.put(user, userDAO.getUserImage(user));
+                if(userDAO.getUserImage(user) != null) {
+                    userImages.put(user, userDAO.getUserImage(user));
+                }
+                else {
+                    userImages.put(user, "avatarimg.png");
+                }
             }
             req.setAttribute("icons", userImages);
             req.setAttribute("comments",parentComments);

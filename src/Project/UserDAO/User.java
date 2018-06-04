@@ -23,9 +23,13 @@ public class User {
 
     private String email;
 
+    private String validateCode;
+
+    private long expireTime;
+
     public User() {}
 
-    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description,String image, String session, boolean isAdmin, String email) {
+    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description, String image, String session, boolean isAdmin, String email, String validateCode, long expireTime) {
         this.uerName = uerName;
         this.password = password;
         this.firstName = firstName;
@@ -37,6 +41,8 @@ public class User {
         this.image = image;
         this.isAdmin = isAdmin;
         this.email=email;
+        this.validateCode=validateCode;
+        this.expireTime=expireTime;
     }
 
     public String getUerName() {
@@ -122,4 +128,20 @@ public class User {
     public String getEmail() { return email; }
 
     public void setEmail(String email) { this.email = email; }
+
+    public String getValidateCode() {
+        return validateCode;
+    }
+
+    public void setValidateCode(String validateCode) {
+        this.validateCode = validateCode;
+    }
+
+    public long getExpireTime() {
+        return expireTime;
+    }
+
+    public void setExpireTime(long expireTime) {
+        this.expireTime = expireTime;
+    }
 }

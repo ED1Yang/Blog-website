@@ -14,8 +14,11 @@
 
     <link rel="stylesheet" type="text/css" href="MainCSS.css">
 
+    <link href="Https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="addcreate.css">
+
 </head>
-<body>
+<body style="padding: 0">
 
 <c:choose>
     <c:when test="${article.getGenre() == 'Business'}">
@@ -59,11 +62,17 @@
     </p><br>
     <c:if test="${Owner}">
         <form action="./ArticleCreation"  style="display: inline">
-            <input type="submit" class="btn" style="background-color: #4CAF50" value="Edit">
+            <button type="submit" class="btn btn-success btn-md" data-title="Edit"
+                    data-toggle="modal" data-target="#remove">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </button>
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
         <form action="./ArticleDeletion#user-articles" style="display: inline">
-            <input type="submit" class="btn" style="background-color: #fb2525" value="Delete">
+            <button type="submit" class="btn btn-danger btn-md" data-title="Delete"
+                    data-toggle="modal" data-target="#remove">
+                <span class="glyphicon glyphicon-minus-sign"></span> Delete
+            </button>
             <input type="hidden" value="${article.getId()}" name="article">
         </form>
         <br>
@@ -95,7 +104,10 @@
                                     <form action="./DeleteComment" method="post" style="display: inline">
                                         <input hidden value="${c.getComment_id()}" name="comment_id">
                                         <input hidden value="${article.getId()}" name="article_id">
-                                        <input type="submit" value="Delete">
+                                        <button type="submit" class="btn btn-danger btn-xs" data-title="Delete"
+                                                data-toggle="modal" data-target="#remove">
+                                            <span class="glyphicon glyphicon-minus-sign"></span>
+                                        </button>
                                     </form>
                                 </c:if>
                                 <c:if test="${LoggedIn}">
@@ -104,7 +116,10 @@
                                         <input hidden value="${article.getId()}" name="articleId">
                                         <input value="${username}" name="username" hidden>
                                         <input name = "comments" hidden class="subCommentContent" required>
-                                        <input type="submit" value="Reply" class="replyButton">
+                                        <button type="submit" class="btn btn-info btn-xs replyButton" data-title="Reply"
+                                                data-toggle="modal" data-target="#remove">
+                                            <span class="glyphicon glyphicon-share-alt"></span>
+                                        </button>
                                     </form>
                                 </c:if>
                                 <c:choose>
@@ -113,7 +128,10 @@
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
-                                            <input type="submit" value="Show" style="background-color: #4CAF50">
+                                            <button type="submit" class="btn btn-warning btn-xs" data-title="Show"
+                                                    data-toggle="modal" data-target="#remove">
+                                                <span class="glyphicon glyphicon-eye-close"></span>
+                                            </button>
                                         </form>
                                     </c:when>
                                     <c:when test="${isAdmin && !c.isHidden()}">
@@ -121,7 +139,10 @@
                                             <input hidden value="${c.getComment_id()}" name="comment_id">
                                             <input hidden value="${c.isHidden()}" name="visibility">
                                             <input hidden value="${article.getId()}" name="article">
-                                            <input type="submit" value="Hide" style="background-color: orange">
+                                            <button type="submit" class="btn btn-success btn-xs" data-title="Show"
+                                                    data-toggle="modal" data-target="#remove">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </button>
                                         </form>
                                     </c:when>
                                 </c:choose>
@@ -144,7 +165,10 @@
                                                 <form action="./DeleteComment" method="post" style="display: inline">
                                                     <input hidden value="${d.getComment_id()}" name="comment_id">
                                                     <input hidden value="${article.getId()}" name="article_id">
-                                                    <input type="submit" value="Delete">
+                                                    <button type="submit" class="btn btn-danger btn-xs" data-title="Delete"
+                                                            data-toggle="modal" data-target="#remove">
+                                                        <span class="glyphicon glyphicon-minus-sign"></span>
+                                                    </button>
                                                 </form>
                                             </c:if>
                                             <c:choose>
@@ -153,7 +177,10 @@
                                                         <input hidden value="${d.getComment_id()}" name="comment_id">
                                                         <input hidden value="${d.isHidden()}" name="visibility">
                                                         <input hidden value="${article.getId()}" name="article">
-                                                        <input type="submit" value="Show" style="background-color: #4CAF50">
+                                                        <button type="submit" class="btn btn-warning btn-xs" data-title="Show"
+                                                                data-toggle="modal" data-target="#remove">
+                                                            <span class="glyphicon glyphicon-eye-close"></span>
+                                                        </button>
                                                     </form>
                                                 </c:when>
                                                 <c:when test="${isAdmin && !d.isHidden()}">
@@ -161,7 +188,10 @@
                                                         <input hidden value="${d.getComment_id()}" name="comment_id">
                                                         <input hidden value="${d.isHidden()}" name="visibility">
                                                         <input hidden value="${article.getId()}" name="article">
-                                                        <input type="submit" value="Hide" style="background-color: orange">
+                                                        <button type="submit" class="btn btn-success btn-xs" data-title="Show"
+                                                                data-toggle="modal" data-target="#remove">
+                                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                                        </button>
                                                     </form>
                                                 </c:when>
                                             </c:choose>
