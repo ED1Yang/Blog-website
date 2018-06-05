@@ -282,7 +282,6 @@
         <url-pattern>/Sort</url-pattern>
     </servlet-mapping>
 
-
     <welcome-file-list>
         <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>

@@ -39,8 +39,9 @@ public class ForgetPassword extends HttpServlet {
                         dispatcher.forward(req, resp);
                         return;
                     } else {
-                        SendEmail sendEmail = new SendEmail();
                         String link = generateLink(userDAO, user, olduser, req);
+
+                        SendEmail sendEmail = new SendEmail();
                         sendEmail.sendEmail(email, username, link);
                         req.setAttribute("username", username);
                         req.setAttribute("email", email);

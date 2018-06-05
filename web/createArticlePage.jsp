@@ -23,8 +23,7 @@
     <!-- Creating the NavBar -->
     <header>
         <div class="container">
-            <a href="./UserProfileServlet"><img src="Avatars/${User.getImage()}" alt="profileimg" class="profileimg"></a>
-            <nav>
+            <nav style="height: 50px">
                 <ul>
                     <li><a href="Home.jsp">Home</a></li>
                 </ul>
@@ -56,7 +55,7 @@
 
     <div class="container">
         <div class="media-left">
-            <img src="Avatars/${User.getImage()}" class="media-object" style="width:60px; border-radius: 60px">
+            <a href="./UserProfileServlet"><img src="Avatars/${User.getImage()}" class="media-object" style="width:60px; border-radius: 60px"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">${User.getUerName()}</h3>

@@ -11,7 +11,6 @@ import java.util.Properties;
 public class SendEmail {
     public void sendEmail(String userEmail,String username,String link) throws GeneralSecurityException{
 
-
         // email send to
         String to = userEmail;
 
@@ -19,7 +18,7 @@ public class SendEmail {
         String from = "apollo.teamgrea@gmail.com";
 
         // host: smtp.gmail.com
-        String host = "smtp.gmail.com";  //gmail 邮件服务器
+        String host = "smtp.gmail.com";
 
         // system properties
         Properties properties = System.getProperties();
@@ -32,13 +31,17 @@ public class SendEmail {
         sf.setTrustAllHosts(true);
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.ssl.socketFactory", sf);
+        properties.put("mail.smtp.port", 465);
         // default session object
         Session session = Session.getDefaultInstance(properties,new Authenticator(){
             public PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication("apollo.teamgrea@gmail.com", "grea1234");
+                return new PasswordAuthentication("apollo.teamgrea@gmail.com", "zyenshlojevtbnba");
             }
         });
+
+        session.setDebug(true);
+
 
         try{
             // default MimeMessage object
@@ -55,11 +58,10 @@ public class SendEmail {
 
 
             StringBuilder bodyText = new StringBuilder();
-            bodyText.append("<div>")
-                    .append("Hi "+username+",<br/><br/>")
+            bodyText.append("<div>").append("Hi ").append(username).append(",<br/><br/>")
                     .append("You recently requested to reset your password for your Apollo account.<br/>")
-                    .append("Please click <a href=\""+link+"\">here</a> or copy the link below to the browser to reset it.<br/>")
-                    .append("<a href=\""+link+"\">"+link+"</a><br><br>")
+                    .append("Please click <a href=\"").append(link).append("\">here</a> or copy the link below to the browser to reset it.<br/>")
+                    .append("<a href=\"").append(link).append("\">").append(link).append("</a><br><br>")
                     .append("Please notice that this password reset is only valid for the next 24 hours.")
                     .append("<br/><br/>")
                     .append("Thanks,<br/>")
