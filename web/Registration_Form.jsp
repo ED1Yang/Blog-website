@@ -86,10 +86,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Country</label>
-								<select name="country">
-									<option value="none" selected disabled>Select Country</option>
+								<select name="country" required>
+									<option value="" selected disabled>Select Country</option>
 									<option value="AU">Australia</option>
-									<option value="EU">Europe</option>
+									<option value="UK">United Kingdom</option>
+                                    <option value="US">United States</option>
 									<option value="IN">India</option>
 									<option value="CHN">China</option>
 									<option value="NZ">New Zealand</option>
@@ -100,7 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="agileinfo_grid">
 								<label>Birthday</label>
 								<div class="agileits_w3layouts_main_gridl">
-									<input class="date" id="datepicker" name="dob" type="date" value="mm/dd/yyyy">
+									<input class="date" id="datepicker" name="dob" type="date" value="mm/dd/yyyy" required>
 								</div>
 									<div class="clear"> </div>
 								<label>Profile Picture</label>

@@ -114,7 +114,7 @@
             <input type="hidden" value="${User.getUerName()}" name="author">
             <input type="date" name="articleDate" id = "datePicker">
             <br><br>
-            <input type="submit" value="Publish" class="button">
+            <input type="submit" value="Publish" class="button" id = "submitButton">
         </form>
     </div>
     <br>
@@ -133,6 +133,7 @@
     <script>
         $(this).submit(function () {
             $('#articleBody').val(document.getElementById('textfield').contentWindow.document.body.innerHTML);
+            $('#submitButton').prop('disabled', true);
         });
     </script>
     <c:if test="${articleContent != null}">
