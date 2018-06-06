@@ -19,10 +19,13 @@ public class SearchServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try(UserDAO userDAO = new UserDAO(); ArticleDAO articleDAO = new ArticleDAO()) {
             User user = userDAO.getUserBySession(request.getSession().getId());
+            //info for the nav bar.
             if(user != null) {
                 request.setAttribute("user", user);
                 request.setAttribute("LoggedIn", true);
             }
+
+            //search with keyword.
             String searchTerm = request.getParameter("keyword");
             List<Article> searchResults = articleDAO.mainSearch(searchTerm);
             request.setAttribute("ArticlesSearched", searchResults);

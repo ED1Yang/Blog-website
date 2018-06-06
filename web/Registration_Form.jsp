@@ -114,17 +114,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </c:forEach>
                     <input type="hidden" id="image-value" name="avatar">
 
-                    <div class="w3_main_grid_right" style="display: inline;position: relative; top: -15px;">
-                        <c:if test="${adminUserSetup}">
-                            <input type="hidden" value="adminUser" name="adminUser">
-                        </c:if>
-                        <input type="submit" value="Upload Image" onclick="isUploading()">
-                    </div>
+                    <c:if test="${!adminUserSetup}">
+                        <div class="w3_main_grid_right" style="display: inline;position: relative; top: -15px;">
+                            <c:if test="${adminUserSetup}">
+                                <input type="hidden" value="adminUser" name="adminUser">
+                            </c:if>
+                            <input type="submit" value="Upload Image" onclick="isUploading()">
+                        </div>
+                    </c:if>
                 </div>
-                <div class="g-recaptcha"
-                     data-sitekey="6LfV01wUAAAAABs5ANFS_rd39JbsetwQ5jCqfIC3"></div>
-                <div class="w3_main_grid">
-
+                <c:if test="${!adminUserSetup}">
+                    <div class="g-recaptcha"
+                         data-sitekey="6Leegl0UAAAAALdHcjpttQiD1RaZe7WEjIdbUnTy"></div>
+                    <div class="w3_main_grid">
+                </c:if>
                     <input hidden type="text" name="upload" id="uploading" value="">
 
                     <div class="w3_main_grid_right">

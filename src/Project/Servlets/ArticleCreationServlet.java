@@ -3,7 +3,6 @@ package Project.Servlets;
 import Project.ArticleDAO.Article;
 import Project.ArticleDAO.ArticleDAO;
 import Project.UserDAO.UserDAO;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +14,13 @@ import java.sql.SQLException;
 public class ArticleCreationServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Gets user who is adding the new article
         try (UserDAO userDAO = new UserDAO()){
             req.setAttribute("User", userDAO.getUserBySession(req.getSession().getId()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        //Checks is article is being edited, and makes forwards attributes to fill the page
         if(req.getParameter("article") != null) {
             int articleId = Integer.parseInt(req.getParameter("article"));
             try(ArticleDAO articleDAO = new ArticleDAO()) {

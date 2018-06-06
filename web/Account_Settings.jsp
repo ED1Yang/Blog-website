@@ -98,7 +98,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                     </div>
-                    <input type="text" class="uname" id="validationCustomUsername" value="${user.getUerName()}" aria-describedby="inputGroupPrepend" name="username" required oninput="validate()">
+                    <input type="text" class="uname" id="validationCustomUsername" value="${user.getUserName()}" aria-describedby="inputGroupPrepend" name="username" required oninput="validate()">
                     &nbsp;&nbsp;
                     &nbsp;
                     <span class="status"></span>

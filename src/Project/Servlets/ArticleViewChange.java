@@ -13,10 +13,11 @@ import java.sql.SQLException;
 public class ArticleViewChange extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Modifies the visibility of the article on server side
         int articleId = Integer.parseInt(req.getParameter("article"));
-        boolean isHidden = Boolean.parseBoolean(req.getParameter("visbility"));
+        boolean isHidden = Boolean.parseBoolean(req.getParameter("visibility"));
         try(ArticleDAO articleDAO = new ArticleDAO()) {
-            articleDAO.changeVisbility(articleId, !isHidden);
+            articleDAO.changeVisibility(articleId, !isHidden);
             req.setAttribute("visChanged", true);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -27,6 +28,6 @@ public class ArticleViewChange extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req,resp);
+        doPost(req,resp);
     }
 }

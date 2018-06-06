@@ -29,12 +29,12 @@ public class SortServlet extends HttpServlet {
             }
             String searchTerm = request.getParameter("keyword");
             String sortTerm = request.getParameter("category");
-            //original db based sorting.
-//            List<Article> searchResults = articleDAO.sortBy(searchTerm, sortTerm);
-            //current java based sorting.
+
             List<Article> allResults = articleDAO.mainSearch(searchTerm);
             List<Article> searchResults = sortArticle(allResults,sortTerm);
 
+
+            //change the icon displayed next to the search term, showing the order of the sorting.
             String logoName = request.getParameter("logo_name");
             switch (sortTerm) {
                 case "article_name":
@@ -50,11 +50,8 @@ public class SortServlet extends HttpServlet {
                     setOrder(request.getParameter("order_date"), request, searchResults, logoName, "orderD");
                     break;
             }
-
             request.setAttribute("ArticlesSearched", searchResults);
             request.setAttribute("keyword", searchTerm);
-//            request.setAttribute("Sorted", true);
-//            request.setAttribute("order_by", sortTerm.toUpperCase());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/searchResultPage.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
@@ -62,6 +59,10 @@ public class SortServlet extends HttpServlet {
         }
     }
 
+    /*change the icon class using bootstrap.
+      default order is in ascending order,
+      so if sorting is in descending order, reverse the order.
+     */
 
     private void setOrder(String sortOrder, HttpServletRequest request, List<Article> searchResults, String logo, String orderinfo) {
         if (sortOrder == null || sortOrder.equals("")) {
@@ -77,6 +78,9 @@ public class SortServlet extends HttpServlet {
         }
     }
 
+
+
+    //sort articles by using comparator.
 
     private List<Article> sortArticle(List<Article> list, String sortTerm) {
        Collections.sort(list, new Comparator<Article>() {

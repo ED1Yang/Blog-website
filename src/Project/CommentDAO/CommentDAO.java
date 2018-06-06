@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CommentDAO implements AutoCloseable {
 
     private final Connection conn;
@@ -31,9 +32,8 @@ public class CommentDAO implements AutoCloseable {
         }
     }
 
-
     private Comment commentFromResultSet(ResultSet rs) throws SQLException {
-        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5), rs.getBoolean(6), rs.getInt(7));
+        return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getBoolean(6), rs.getInt(7));
     }
 
 
@@ -47,14 +47,15 @@ public class CommentDAO implements AutoCloseable {
         }
     }
 
-    public void deleteComment(int comment_id) throws SQLException{
+
+    public void deleteComment(int comment_id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM comments WHERE commentID = ?")) {
             stmt.setInt(1, comment_id);
             stmt.executeUpdate();
         }
     }
 
-    public List<String> getUsers(int articleId) throws SQLException{
+    public List<String> getUsers(int articleId) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT DISTINCT userName FROM comments WHERE article_id = ?")) {
             stmt.setInt(1, articleId);
             List<String> users = new ArrayList<>();
@@ -67,8 +68,8 @@ public class CommentDAO implements AutoCloseable {
         }
     }
 
-    public void changeVisbility(int id, boolean isHidden) throws SQLException {
-        try(PreparedStatement stmt = conn.prepareStatement("UPDATE comments SET isHidden = ? WHERE commentID = ?")) {
+    public void changeVisibility(int id, boolean isHidden) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE comments SET isHidden = ? WHERE commentID = ?")) {
             stmt.setBoolean(1, isHidden);
             stmt.setInt(2, id);
             stmt.executeUpdate();

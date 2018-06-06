@@ -16,20 +16,30 @@ public class ImageSave extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //get pathname.
         String text=req.getParameter("pathname");
         String pathname = text.substring(text.indexOf(",")+1);
+
+
         try(UserDAO userDAO=new UserDAO()){
-            User olduser = userDAO.getUserBySession(req.getSession().getId());
+            User oldUser = userDAO.getUserBySession(req.getSession().getId());
             User user = userDAO.getUserBySession(req.getSession().getId());
 
-            String imagename=user.getUerName()+".png";
-            String fullpath=getServletContext().getRealPath("/Avatars") + "/";
-            Base64.GenerateImage(pathname, fullpath+imagename);
-            user.setImage(imagename);
-            userDAO.updateUser(user,olduser);
+            //get image title and full path.
+            String imageName=user.getUserName()+".png";
+            String fullPath=getServletContext().getRealPath("/Avatars") + "/";
+
+            //decode the image and save it.
+            Base64.GenerateImage(pathname, fullPath+imageName);
+
+            //set the image to user's avatar.
+            user.setImage(imageName);
+            userDAO.updateUser(user,oldUser);
 
             req.setAttribute("user",user);
             req.setAttribute("updated",true);
+
+            //Takes administrator back to appropriate page
             if(req.getParameter("adminUser") != null) {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UserAdmin");
                 dispatcher.forward(req, resp);

@@ -19,6 +19,7 @@ public class NewArticleServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Gets new article information, and constructs an article
         String category = req.getParameter("category");
         String title = req.getParameter("articleTitle");
         String content = req.getParameter("articleBody");
@@ -26,6 +27,7 @@ public class NewArticleServlet extends HttpServlet{
         String date = req.getParameter("articleDate");
         Article article = new Article(title, content, category, author, date);
 
+        //Submits the article on server side
         try(ArticleDAO articleDAO = new ArticleDAO()){
             articleDAO.addArticle(article);
             req.setAttribute("Added", true);

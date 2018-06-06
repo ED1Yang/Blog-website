@@ -42,15 +42,15 @@
                         <tr>
                             <td>${user.getFirstName()}</td>
                             <td>${user.getLastName()}</td>
-                            <td>${user.getUerName()}</td>
+                            <td>${user.getUserName()}</td>
                             <td>${user.getCountry()}</td>
                             <td>${user.getEmail()}</td>
                             <td>
                                 <form action="./DeleteUser" method="post">
-                                    <input type="hidden" value="${user.getUerName()}" name="username">
+                                    <input type="hidden" value="${user.getUserName()}" name="username">
                                     <p data-placement="top" data-toggle="tooltip" title="Remove">
                                         <c:choose>
-                                            <c:when test="${currentUser.getUerName() == user.getUerName()}">
+                                            <c:when test="${currentUser.getUserName() == user.getUserName()}">
                                                 <button disabled type="submit" class="btn btn-danger btn-xs"
                                                         data-title="Remove" data-toggle="modal" data-target="#remove">
                                                     <span class="glyphicon glyphicon-minus-sign"></span>
@@ -68,7 +68,7 @@
                             </td>
                             <td>
                                 <form action="./ForgetPassword" method="post">
-                                    <input type="hidden" value="${user.getUerName()}" name="username">
+                                    <input type="hidden" value="${user.getUserName()}" name="username">
                                     <input type="hidden" value="${user.getEmail()}" name="email">
                                     <input type="hidden" value="false" name="isFromUser">
                                     <p data-placement="top" data-toggle="tooltip" title="Reset Password">

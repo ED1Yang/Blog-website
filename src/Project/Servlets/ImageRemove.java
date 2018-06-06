@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ImageRemove extends HttpServlet {
+
+    //set the avatar of the user to the default image.
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(UserDAO userDAO=new UserDAO()){

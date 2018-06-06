@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class DeleteArticleServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Deletes article by ID
         try(ArticleDAO articleDAO = new ArticleDAO()) {
             articleDAO.deleteArticle(Integer.parseInt(req.getParameter("article")));
             req.setAttribute("deleted", true);

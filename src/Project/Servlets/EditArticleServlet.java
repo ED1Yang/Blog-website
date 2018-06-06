@@ -19,6 +19,7 @@ public class EditArticleServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Gets the new article information, and constructs an article
         String category = req.getParameter("category");
         String title = req.getParameter("articleTitle");
         String content = req.getParameter("articleBody");
@@ -27,6 +28,7 @@ public class EditArticleServlet extends HttpServlet{
         int articleId = Integer.parseInt(req.getParameter("articleId"));
         Article article = new Article(articleId, title, content, category, author, date);
 
+        //Updates the article on server side
         try(ArticleDAO articleDAO = new ArticleDAO()){
             articleDAO.updateArticle(article);
             req.setAttribute("Edited", true);

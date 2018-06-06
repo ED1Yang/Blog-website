@@ -210,7 +210,7 @@
                                         <br>
                                         <form action="./ArticleViewChange#articles" method="post">
                                             <input type="hidden" name="article" value="${article.getId()}">
-                                            <input type="hidden" name="visbility" value="${article.isHidden()}">
+                                            <input type="hidden" name="visibility" value="${article.isHidden()}">
                                             <input type="submit" value="Show" class="btn" style="background-color: #4CAF50; border-radius: 5px">
                                         </form>
                                     </c:when>
@@ -242,7 +242,7 @@
                     <h3 style="font-weight: bold; color: #fb2525;">Article Deleted</h3>
                 </c:if>
                 <c:forEach items="${AllArticles}" var="article">
-                    <c:set var="userName" value="${user.getUerName()}"></c:set>
+                    <c:set var="userName" value="${user.getUserName()}"></c:set>
                     <c:if test="${article.getAuthor() == userName}">
                         <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
                         <div class="thumbnail">

@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class DeleteUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Deletes user by username
         try(UserDAO userDAO = new UserDAO()) {
             String username = req.getParameter("username");
             userDAO.deleteUser(username);

@@ -1,8 +1,5 @@
 package Project.ArticleDAO;
 
-/**
- * Represents an article.
- */
 public class Article {
 
     private Integer id;
@@ -89,16 +86,8 @@ public class Article {
         return genre;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public String getAuthor() {
         return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getDate() {

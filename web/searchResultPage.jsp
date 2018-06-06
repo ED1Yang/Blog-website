@@ -149,7 +149,7 @@
                                         <br>
                                         <form action="./ArticleViewChange#articles" method="post">
                                             <input type="hidden" name="article" value="${article.getId()}">
-                                            <input type="hidden" name="visbility" value="${article.isHidden()}">
+                                            <input type="hidden" name="visibility" value="${article.isHidden()}">
                                             <input type="submit" value="Show" class="btn" style="background-color: #4CAF50; border-radius: 5px">
                                         </form>
                                     </c:when>

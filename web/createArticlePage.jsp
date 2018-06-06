@@ -58,7 +58,7 @@
             <a href="./UserProfileServlet"><img src="Avatars/${User.getImage()}" class="media-object" style="width:60px; border-radius: 60px"></a>
         </div>
         <div class="media-body">
-            <h3 class="media-heading">${User.getUerName()}</h3>
+            <h3 class="media-heading">${User.getUserName()}</h3>
         </div>
     </div>
 
@@ -113,7 +113,7 @@
                 <jsp:include page="Text_Editor.jsp"/>
                 <input type="hidden" id = "articleBody" name="articleBody">
             </div>
-            <input type="hidden" value="${User.getUerName()}" name="author">
+            <input type="hidden" value="${User.getUserName()}" name="author">
             <input type="date" name="articleDate" id = "datePicker">
             <br><br>
             <input type="submit" value="Publish" class="button" id = "submitButton">

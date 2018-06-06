@@ -33,11 +33,13 @@ public class ArticleViewerServlet extends HttpServlet {
             username = article.getAuthor();
             req.setAttribute("article", article);
 
+            //Gets all the comments for this article, both parent and sub
             List<Comment> comments= commentDAO.getComments(article.getId());
 
             List<Comment> parentComments = new ArrayList<>();
             List<Comment> subComment = new ArrayList<>();
             HashMap<Integer,List<Comment>> subComments = new HashMap<>();
+            //Filters the comments into main comments and sub comments
             for (Comment c:comments) {
                 if(c.getParentComment() == 0) {
                     parentComments.add(c);
@@ -46,6 +48,7 @@ public class ArticleViewerServlet extends HttpServlet {
                     subComment.add(c);
                 }
             }
+            //For each parent comment, allocates a list of sub comments using a Hashmap
             for (Comment c: parentComments) {
                 List<Comment> subs = new ArrayList<>();
                 for (Comment d: subComment) {
@@ -56,6 +59,7 @@ public class ArticleViewerServlet extends HttpServlet {
                 subComments.put(c.getComment_id(), subs);
             }
 
+            //Gets the filenames of users and allocates it to their UserID using a Hashmap
             List<String> users = commentDAO.getUsers(article.getId());
             for (String user:users) {
                 if(userDAO.getUserImage(user) != null) {
@@ -69,10 +73,10 @@ public class ArticleViewerServlet extends HttpServlet {
             req.setAttribute("comments",parentComments);
             req.setAttribute("childComments", subComments);
 
-
+            //Checks if user is admin, or owns the article
             if(userDAO.getUserBySession(req.getSession().getId()) != null){
                 req.setAttribute("LoggedIn", true);
-                String uname = userDAO.getUserBySession(req.getSession().getId()).getUerName();
+                String uname = userDAO.getUserBySession(req.getSession().getId()).getUserName();
                 req.setAttribute("username",uname);
                 req.setAttribute("isAdmin", userDAO.isAdmin(uname));
                 OwnershipChecking(username, req);
@@ -97,7 +101,7 @@ public class ArticleViewerServlet extends HttpServlet {
 
     public static void OwnershipChecking(String username, HttpServletRequest req) {
         try(UserDAO userDAO = new UserDAO()) {
-            if (userDAO.getUserBySession(req.getSession().getId()).getUerName().equals(username)) {
+            if (userDAO.getUserBySession(req.getSession().getId()).getUserName().equals(username)) {
                 req.setAttribute("Owner", true);
             }
         } catch (SQLException e) {

@@ -1,7 +1,7 @@
 package Project.UserDAO;
 
 public class User {
-    private String uerName;
+    private String userName;
 
     private String password;
 
@@ -27,10 +27,11 @@ public class User {
 
     private long expireTime;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String uerName, String password, String firstName, String lastName, String dateOfBirth, String country, String description, String image, String session, boolean isAdmin, String email, String validateCode, long expireTime) {
-        this.uerName = uerName;
+    public User(String userName, String password, String firstName, String lastName, String dateOfBirth, String country, String description, String image, String session, boolean isAdmin, String email, String validateCode, long expireTime) {
+        this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,17 +41,17 @@ public class User {
         this.session = session;
         this.image = image;
         this.isAdmin = isAdmin;
-        this.email=email;
-        this.validateCode=validateCode;
-        this.expireTime=expireTime;
+        this.email = email;
+        this.validateCode = validateCode;
+        this.expireTime = expireTime;
     }
 
-    public String getUerName() {
-        return uerName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUerName(String uerName) {
-        this.uerName = uerName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -105,10 +106,6 @@ public class User {
         return session;
     }
 
-    public void setSession(String session) {
-        this.session = session;
-    }
-
     public String getImage() {
         return image;
     }
@@ -121,13 +118,9 @@ public class User {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     public String getEmail() { return email; }
 
-    public void setEmail(String email) { this.email = email; }
+    public void setEmail(String email) {this.email = email;}
 
     public String getValidateCode() {
         return validateCode;

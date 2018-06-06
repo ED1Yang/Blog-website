@@ -17,7 +17,7 @@
         <p>Password</p>
         <input type="password" name="password" placeholder="Enter Password">
         <c:if test="${FailedLogIn}">
-            <p style="color:red">Sorry, Incorrect password</p>
+            <p style="color:red">Sorry, Incorrect username or password</p>
             <br>
         </c:if>
         <input type="submit" name="" value="Login">

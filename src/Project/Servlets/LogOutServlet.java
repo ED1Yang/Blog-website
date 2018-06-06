@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 public class LogOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Removes session if user logs out
         req.setAttribute("LoggedIn", false);
         try (UserDAO userDAO = new UserDAO()){
             userDAO.deleteUserSession(req.getSession().getId());

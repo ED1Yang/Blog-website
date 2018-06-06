@@ -17,6 +17,7 @@ public class LogInServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try (UserDAO login = new UserDAO()){
+            //check whether input is valid.
             if (login.logIn(req.getSession().getId(), username, password)) {
                 req.setAttribute("LoggedIn", true);
                 req.setAttribute("user", login.getUserInfo(username));

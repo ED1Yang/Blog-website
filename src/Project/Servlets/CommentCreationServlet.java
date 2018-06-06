@@ -28,6 +28,7 @@ public class CommentCreationServlet extends HttpServlet{
         String parent = req.getParameter("comment_id");
         System.out.println(parent);
 
+        //Checks if comment is main or reply, and executes constructor accordingly
         try(CommentDAO commentDAO=new CommentDAO(); ArticleDAO articleDAO=new ArticleDAO()){
             Comment newComment = null;
             if(parent != null) {

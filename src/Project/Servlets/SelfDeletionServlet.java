@@ -14,7 +14,7 @@ public class SelfDeletionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(UserDAO userDAO = new UserDAO()) {
-            userDAO.deleteUser(userDAO.getUserBySession(req.getSession().getId()).getUerName());
+            userDAO.deleteUser(userDAO.getUserBySession(req.getSession().getId()).getUserName());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Account_Deleted.html");
             dispatcher.forward(req, resp);
         } catch (SQLException e) {

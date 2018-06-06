@@ -13,12 +13,16 @@ import java.sql.SQLException;
 
 public class CheckAvailability extends HttpServlet {
 
+
+    //check whether username is taken.
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         try (UserDAO userDAO=new UserDAO(); PrintWriter out = response.getWriter()){
             String uname = request.getParameter("uname");
             boolean isValidate = userDAO.userNameValidation(uname);
+
+            //result will be shown in real time.
             if (isValidate) {
                 out.println("<font color=green><b>" + uname + "</b> is avaliable");
             } else {

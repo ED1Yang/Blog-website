@@ -33,11 +33,20 @@
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        <p>${user.getUerName()}</p>
+                        <p>${user.getUserName()}</p>
                     </div>
-                    <div class="profile-usertitle-job">
-                        Blogger
-                    </div>
+                    <c:choose>
+                        <c:when test="${user.isAdmin()}">
+                            <div class="profile-usertitle-job">
+                                Administrator
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="profile-usertitle-job">
+                                Blogger
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
@@ -68,11 +77,13 @@
                                 <i class="glyphicon glyphicon-home"></i>
                                 Home </a>
                         </li>
-                        <li>
-                            <a href="./SelfDeletion">
-                                <i class="glyphicon glyphicon-remove"></i>
-                                Delete your account</a>
-                        </li>
+                        <c:if test="${!user.isAdmin()}">
+                            <li>
+                                <a href="./SelfDeletion">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Delete your account</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </div>
                 <!-- END MENU -->

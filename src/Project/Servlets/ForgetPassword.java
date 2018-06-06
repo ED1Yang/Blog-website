@@ -25,7 +25,12 @@ public class ForgetPassword extends HttpServlet {
         try (UserDAO userDAO = new UserDAO()) {
             User olduser = userDAO.getUserInfo(username);
             User user = userDAO.getUserInfo(username);
+
+
+            //check whether the password-reset is triggered by the user.
             if (req.getParameter("isFromUser").equals("true")) {
+
+                //username check.
                 if (user == null) {
                     req.setAttribute("wrongUsername", true);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ForgetPassword.jsp");
@@ -33,6 +38,7 @@ public class ForgetPassword extends HttpServlet {
                     return;
                 } else {
                     String rightEmail = user.getEmail();
+                    //email address check.
                     if (!email.equals(rightEmail)) {
                         req.setAttribute("wrongEmail", true);
                         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ForgetPassword.jsp");
@@ -50,6 +56,9 @@ public class ForgetPassword extends HttpServlet {
                     }
                 }
             } else {
+                /*password is reset by admin.
+                  send email directly to the user.
+                 */
                 SendEmail sendEmail = new SendEmail();
                 String link = generateLink(userDAO, user, olduser, req);
                 sendEmail.sendEmail(email, username, link);
@@ -64,25 +73,33 @@ public class ForgetPassword extends HttpServlet {
 
     }
 
+
+    //generate a secret link consists of digital signature and username.
     private String generateLink(UserDAO userDAO, User user, User olduser, HttpServletRequest request) throws SQLException {
-        String secretKey = UUID.randomUUID().toString();  //key
-        Timestamp ExpireTime = new Timestamp(System.currentTimeMillis() + 24 * 60 * 60 * 1000);//expire after 24 hours
+        String secretKey = UUID.randomUUID().toString();
+
+        //expire after 24 hours
+        Timestamp ExpireTime = new Timestamp(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
         long date = ExpireTime.getTime() / 1000 * 1000;//
         user.setValidateCode(secretKey);
         user.setExpireTime(date);
 
 
         userDAO.updateUser(user, olduser);
-        String key = user.getUerName() + "$" + date + "$" + secretKey;
-        String digitalSignature = crypt(key);                 //sig
+        String key = user.getUserName() + "$" + date + "$" + secretKey;
+
+        //generate a digital signature by username, date and a random secret key.
+        String digitalSignature = crypt(key);
 
 
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-        String resetPassHref = basePath + "passwordValidation?sid=" + digitalSignature + "&userName=" + user.getUerName();
+        String resetPassHref = basePath + "passwordValidation?sid=" + digitalSignature + "&userName=" + user.getUserName();
         return resetPassHref;
     }
 
+
+    //encrypt a string.
     public static String crypt(String str) {
         if (str == null || str.length() == 0) {
             throw new IllegalArgumentException("String to encrypt cannot be null or zero length");

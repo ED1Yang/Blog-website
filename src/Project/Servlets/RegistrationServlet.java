@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@SuppressWarnings("Duplicates")
-
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +22,7 @@ public class RegistrationServlet extends HttpServlet {
 
             String username = req.getParameter("uname");
             if (userDAO.userNameValidation(username)) {
-                user.setUerName(username);
+                user.setUserName(username);
             } else {
                 req.setAttribute("UsernameTaken", true);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RegistrationForm.jsp");
@@ -42,7 +40,9 @@ public class RegistrationServlet extends HttpServlet {
 
             userDAO.addUser(user);
 
-            userDAO.logIn(req.getSession().getId(), username, req.getParameter("pwd"));
+            if(req.getParameter("adminUser") == null) {
+                userDAO.logIn(req.getSession().getId(), username, req.getParameter("pwd"));
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

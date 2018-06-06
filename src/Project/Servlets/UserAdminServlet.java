@@ -28,6 +28,7 @@ public class UserAdminServlet extends HttpServlet{
                 dispatcher.forward(req, resp);
             }
             else{
+                //Sends not allowed error if user tries to navigate here without appropriate permission
                 resp.sendError(401);
             }
         } catch (SQLException e) {

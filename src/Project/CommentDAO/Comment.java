@@ -21,45 +21,44 @@ public class Comment {
         this.text = text;
     }
 
-    public Comment(int article_id, String userName, String text,String date) {
+    public Comment(int article_id, String userName, String text, String date) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
         this.date = date;
     }
 
-    public Comment(int article_id, String userName, String text,int parentComment) {
+    public Comment(int article_id, String userName, String text, int parentComment) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
-        this.date = date;
         this.parentComment = parentComment;
     }
 
 
-    public Comment(int article_id, String userName, String text,String date,int comment_id) {
+    public Comment(int article_id, String userName, String text, String date, int comment_id) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
         this.date = date;
-        this.comment_id=comment_id;
+        this.comment_id = comment_id;
     }
 
-    public Comment(int article_id, String userName, String text,String date,int comment_id, boolean isHidden) {
+    public Comment(int article_id, String userName, String text, String date, int comment_id, boolean isHidden) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
         this.date = date;
-        this.comment_id=comment_id;
+        this.comment_id = comment_id;
         this.isHidden = isHidden;
     }
 
-    public Comment(int article_id, String userName, String text,String date,int comment_id, boolean isHidden, int parentComment) {
+    public Comment(int article_id, String userName, String text, String date, int comment_id, boolean isHidden, int parentComment) {
         this.article_id = article_id;
         this.userName = userName;
         this.text = text;
         this.date = date;
-        this.comment_id=comment_id;
+        this.comment_id = comment_id;
         this.isHidden = isHidden;
         this.parentComment = parentComment;
     }
@@ -68,17 +67,11 @@ public class Comment {
         return article_id;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
-    }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getText() {
         return text;
@@ -99,9 +92,6 @@ public class Comment {
     public int getComment_id() {
         return comment_id;
     }
-    public void setComment_id(int comment_id) {
-        this.comment_id = comment_id;
-    }
 
     public boolean isHidden() {
         return isHidden;
@@ -115,7 +105,4 @@ public class Comment {
         return parentComment;
     }
 
-    public void setParentComment(int parentComment) {
-        this.parentComment = parentComment;
-    }
 }

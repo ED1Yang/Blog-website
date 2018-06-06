@@ -16,13 +16,11 @@ public class PasswordReset extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try (UserDAO userDAO = new UserDAO()){
             String username=req.getParameter("username");
-            User olduser = userDAO.getUserInfo(username);
+            User oldUser = userDAO.getUserInfo(username);
             User user = userDAO.getUserInfo(username);
-            System.out.println("user is :"+ user);
-            //not sure if the session works here.
             String newPassword=req.getParameter("password");
             user.setPassword(newPassword);
-            userDAO.updateUser(user,olduser);
+            userDAO.updateUser(user,oldUser);
 
 
             req.setAttribute("newPasswordSet",true);

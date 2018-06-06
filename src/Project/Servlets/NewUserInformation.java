@@ -14,32 +14,28 @@ import java.sql.SQLException;
 public class NewUserInformation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get all info from form.
         String username = req.getParameter("username");
         String password = req.getParameter("pword");
-        String firstname = req.getParameter("fname");
-        String lastname = req.getParameter("lname");
+        String firstName = req.getParameter("fname");
+        String lastName = req.getParameter("lname");
         String dob = req.getParameter("dob");
         String description = req.getParameter("description");
         String country = req.getParameter("country");
         String email = req.getParameter("email");
-        System.out.println(username);
-        System.out.println(description);
-        System.out.println(country);
-        System.out.println(firstname);
 
         try (UserDAO userDAO = new UserDAO()){
             boolean isChanged = false;
             User newUser = userDAO.getUserBySession(req.getSession().getId());
             User oldUser = userDAO.getUserBySession(req.getSession().getId());
 
+            /*check one by one if user's info has been changed.
+              update the info if it's modified.
+             */
 
-            System.out.println(newUser);
-            System.out.println("getting here...");
-//           if(oldUser.getUerName()==null){
-//                System.out.println("123");
-//            }
-            if (!newUser.getUerName().equals(username)) {
-                newUser.setUerName(username);
+            if (!newUser.getUserName().equals(username)) {
+                newUser.setUserName(username);
                 isChanged = true;
             }
             if (!newUser.getPassword().equals(password)) {
@@ -62,13 +58,13 @@ public class NewUserInformation extends HttpServlet {
                 isChanged = true;
 
             }
-            if (!newUser.getFirstName().equals(firstname)) {
-                newUser.setFirstName(firstname);
+            if (!newUser.getFirstName().equals(firstName)) {
+                newUser.setFirstName(firstName);
                 isChanged = true;
 
             }
-            if (!newUser.getLastName().equals(lastname)) {
-                newUser.setLastName(lastname);
+            if (!newUser.getLastName().equals(lastName)) {
+                newUser.setLastName(lastName);
                 isChanged = true;
 
             }
@@ -76,6 +72,8 @@ public class NewUserInformation extends HttpServlet {
                 newUser.setDescription(description);
                 isChanged = true;
             }
+
+            //set boolean to get feedback from website.
             if(isChanged){
                 req.setAttribute("isChanged",true);
             }else{

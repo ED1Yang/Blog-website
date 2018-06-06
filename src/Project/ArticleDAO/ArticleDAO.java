@@ -2,16 +2,13 @@ package Project.ArticleDAO;
 
 import Project.HikariConnectionPool;
 import com.mysql.jdbc.Statement;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-@SuppressWarnings("Duplicates")
 
 public class ArticleDAO implements AutoCloseable {
 
@@ -24,56 +21,43 @@ public class ArticleDAO implements AutoCloseable {
     public List<Article> getAllArticles() throws SQLException {
 
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles")) {
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Article> articles = new ArrayList<>();
-                while (rs.next()) {
-                    articles.add(articleFromResultSet(rs));
-                }
-                return articles;
-            }
+            return selectResult(stmt);
         }
     }
+
+
+
+    //get all articles posted before current time.
 
     public List<Article> getAllArticlesBeforeDate() throws SQLException {
 
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE date <= current_timestamp")) {
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Article> articles = new ArrayList<>();
-                while (rs.next()) {
-                    articles.add(articleFromResultSet(rs));
-                }
-                return articles;
-            }
+            return selectResult(stmt);
         }
     }
+
+
+
+    //search the title, author and content of all articles containing the keyword.
 
     public List<Article> mainSearch(String keyword) throws SQLException {
         try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE article_name LIKE ? OR article_content LIKE ? OR author_id LIKE ?")) {
             stmt.setString(1, "%"+keyword+"%");
             stmt.setString(2, "%"+keyword+"%");
             stmt.setString(3, "%"+keyword+"%");
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Article> articles = new ArrayList<>();
-                while (rs.next()) {
-                    articles.add(articleFromResultSet(rs));
-                }
-                return articles;
-            }
+            return selectResult(stmt);
+
         }
     }
 
     public List<Article> getArticlesByGenre(String genre) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE genre = ? ORDER BY date DESC")) {
             stmt.setString(1, genre);
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Article> articles = new ArrayList<>();
-                while (rs.next()) {
-                    articles.add(articleFromResultSet(rs));
-                }
-                return articles;
-            }
+            return selectResult(stmt);
+
         }
     }
+
 
     public Article getArticleById(int id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE article_id = ?")) {
@@ -92,6 +76,7 @@ public class ArticleDAO implements AutoCloseable {
         return new Article(rs.getInt(1), rs.getString(2), rs.getString(3),
                 rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
     }
+
 
     public void addArticle(Article article) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO articles (article_name, article_content, genre, author_id, date) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
@@ -127,7 +112,7 @@ public class ArticleDAO implements AutoCloseable {
         }
     }
 
-    public void changeVisbility(int id, boolean isHidden) throws SQLException {
+    public void changeVisibility(int id, boolean isHidden) throws SQLException {
         try(PreparedStatement stmt = conn.prepareStatement("UPDATE articles SET isHidden = ? WHERE article_id = ?")) {
             stmt.setBoolean(1, isHidden);
             stmt.setInt(2, id);
@@ -138,5 +123,18 @@ public class ArticleDAO implements AutoCloseable {
     @Override
     public void close() throws SQLException {
         this.conn.close();
+    }
+
+
+    //method frequently used to get articles.
+
+    private List<Article> selectResult(PreparedStatement stmt) throws SQLException{
+        try (ResultSet rs = stmt.executeQuery()) {
+            List<Article> articles = new ArrayList<>();
+            while (rs.next()) {
+                articles.add(articleFromResultSet(rs));
+            }
+            return articles;
+        }
     }
 }

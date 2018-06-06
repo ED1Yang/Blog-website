@@ -15,17 +15,20 @@ import java.sql.Timestamp;
 public class passwordValidation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get parameter from the link.
         String username = req.getParameter("userName");
         String sid = req.getParameter("sid");
-        System.out.println(username);
-        System.out.println(sid);
+
+        //check if the link is valid.
         if (sid==null||username==null||sid.equals("") || username.equals("")) {
             resetFailed("linkNotValid", req, resp);
             return;
         } else {
             try (UserDAO userDAO = new UserDAO()) {
-                User olduser = userDAO.getUserInfo(username);
                 User user = userDAO.getUserInfo(username);
+
+                //username check.
                 if (user == null) {
                     resetFailed("invalidUser", req, resp);
                     return;
@@ -33,13 +36,14 @@ public class passwordValidation extends HttpServlet {
                     Timestamp currentDate = new Timestamp(System.currentTimeMillis());
                     long currentTime = currentDate.getTime() / 1000 * 1000;
                     long expireTime = user.getExpireTime();
+
+                    //expiration check.
                     if (currentTime >= expireTime) {
                         resetFailed("expired", req, resp);
                         return;
                     } else {
                         req.setAttribute("username", username);
                         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Password_Reset.jsp");
-                        //jsp need to create. #2
                         dispatcher.forward(req, resp);
                     }
                 }
@@ -50,10 +54,10 @@ public class passwordValidation extends HttpServlet {
 
     }
 
+    //lead to reset-failed page showing the corresponding reason.
     private void resetFailed(String reason, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute(reason, true);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Reset_Failed.jsp");
-        //jsp need to create. #1
         dispatcher.forward(req, resp);
     }
 }

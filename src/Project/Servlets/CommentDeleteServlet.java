@@ -22,6 +22,7 @@ public class CommentDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int comment_id = Integer.parseInt(req.getParameter("comment_id"));
+        //Deletes comment on server by ID
         try (CommentDAO commentDAO = new CommentDAO()) {
             commentDAO.deleteComment(comment_id);
             int article_id = Integer.parseInt(req.getParameter("article_id"));
