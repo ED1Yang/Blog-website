@@ -75,19 +75,6 @@ public class ArticleDAO implements AutoCloseable {
         }
     }
 
-    public List<Article> getArticlesByAuthor(String id) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE author_id = ?")) {
-            stmt.setString(1, id);
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<Article> articles = new ArrayList<>();
-                while (rs.next()) {
-                    articles.add(articleFromResultSet(rs));
-                }
-                return articles;
-            }
-        }
-    }
-
     public Article getArticleById(int id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM articles WHERE article_id = ?")) {
             stmt.setInt(1, id);
@@ -104,14 +91,6 @@ public class ArticleDAO implements AutoCloseable {
     private Article articleFromResultSet(ResultSet rs) throws SQLException {
         return new Article(rs.getInt(1), rs.getString(2), rs.getString(3),
                 rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
-    }
-
-    public void saveArticle(Article article) throws SQLException {
-        if (article.getId() == null) {
-            addArticle(article);
-        } else {
-            updateArticle(article);
-        }
     }
 
     public void addArticle(Article article) throws SQLException {

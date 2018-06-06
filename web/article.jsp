@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsik152
-  Date: 24/05/2018
-  Time: 11:02 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -12,14 +5,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="MainCSS.css">
+    <link rel="stylesheet" type="text/css" href="CSS/MainCSS.css">
 
     <link href="Https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" type="text/css" href="addcreate.css">
+    <link rel="stylesheet" type="text/css" href="CSS/addcreate.css">
 
 </head>
 <body style="padding: 0">
-
+<!-- Display image depending on genre -->
 <c:choose>
     <c:when test="${article.getGenre() == 'Business'}">
         <div class="bgimg-2">
@@ -32,6 +25,7 @@
     </c:when>
 </c:choose>
     <div class="caption">
+        <!-- Display text depending on Genre -->
         <c:choose>
             <c:when test="${article.getGenre() == 'Business'}">
                 <span class="border">BUSINESS</span>
@@ -60,6 +54,7 @@
     <p>
         ${article.getContent()}
     </p><br>
+    <!-- Gives user control to edit depending on privilage -->
     <c:if test="${Owner}">
         <form action="./ArticleCreation"  style="display: inline">
             <button type="submit" class="btn btn-success btn-md" data-title="Edit">
@@ -76,7 +71,7 @@
         <br>
         <br>
     </c:if>
-    <!--REPLACES THE COMMENT BOX SECTION-->
+    <!--Comment box and its contents, generated from DB-->
     <div class="detailBox">
         <div class="titleBox">
             <label>Comment Box</label>
@@ -224,6 +219,7 @@
 </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
+            //Extracts text from comment box for replies
              $('.replyButton').click(function () {
                  $('.subCommentContent').val($('#commentBox').val())
              })

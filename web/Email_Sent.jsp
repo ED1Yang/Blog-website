@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Email_Sent.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Email_Sent.css">
     <title>Email_Sent</title>
 </head>
 <body>

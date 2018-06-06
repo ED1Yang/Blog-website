@@ -4,11 +4,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Reset_Failed.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Reset_Failed.css">
     <title>Reset_Failed</title>
 </head>
 <body>
 <div id="Container" class="resetfailed">
+    <!-- Explanation of why validation failed -->
     <c:choose>
         <c:when test="${linkNotValid}">
             <p>Link not valid, password reset failed.</p>
@@ -20,8 +21,6 @@
             <p>Time expired, password reset failed.</p>
         </c:when>
     </c:choose>
-    <%--or change to if ???--%>
-
     <input type="submit" name="" value="Reset">
 </div>
 </body>

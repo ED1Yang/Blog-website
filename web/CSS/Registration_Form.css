@@ -39,13 +39,13 @@ body{
  }
 
 .bodyNormal{
-	background: url(./Resources/Web-Design-solutions.jpg);
+	background: url(../Resources/Web-Design-solutions.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
 }
 .bodyAdmin{
-	background: url(./Resources/imageMainArticle2.jpeg);
+	background: url(../Resources/imageMainArticle2.jpeg);
 	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;

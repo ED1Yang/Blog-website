@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="Account.css">
+    <link rel="stylesheet" href="CSS/Account.css">
 
     <script src="js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -15,6 +15,7 @@
         $(document).ready(function () {
             existing = $('#validationCustomUsername').val();
         });
+        //Real time username validation
         function validate() {
             var uname = $('#validationCustomUsername').val();
             if(uname == "" || uname == existing) {
@@ -140,6 +141,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <script>
+    //Prepares date picker
     $(document).ready(function(){
         var date_input=$('input[name="date"]'); //our date input has the name "date"
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";

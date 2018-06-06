@@ -1,4 +1,3 @@
-<%@ page import="Project.UserDAO.User" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +8,7 @@
           id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="CSS/Profile.css">
 </head>
 <body>
 
@@ -29,14 +28,12 @@
                 <div class="profile-userpic">
                     <img src="Avatars/${user.getImage()}" class="img-responsive"
                          alt="">
-                    <%--Question 1: Built link to the picture folder--%>
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
                         <p>${user.getUerName()}</p>
-                        <%--Marcus Doe--%>
                     </div>
                     <div class="profile-usertitle-job">
                         Blogger

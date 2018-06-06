@@ -295,18 +295,18 @@ body, html {
 }
 
 .bgimg-1 {
-    background-image: url("Resources/imageBackgroundTechnology1.jpg");
+    background-image: url("../Resources/imageBackgroundTechnology1.jpg");
     min-height: 40%;
 
 }
 
 .bgimg-2 {
-    background-image: url("Resources/imageBackgroundBusiness1.jpg");
+    background-image: url("../Resources/imageBackgroundBusiness1.jpg");
     min-height: 400px;
 }
 
 .bgimg-3 {
-    background-image: url("Resources/imageBackgroundPolitics1.jpg");
+    background-image: url("../Resources/imageBackgroundPolitics1.jpg");
     min-height: 250px;
 }
 

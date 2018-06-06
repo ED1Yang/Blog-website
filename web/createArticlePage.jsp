@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="createPageStylesheet.css">
+    <link rel="stylesheet" type="text/css" href="CSS/createPageStylesheet.css">
 
 
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -63,7 +63,6 @@
     </div>
 
     <div class="container">
-        <!--<h3>Title</h3>-->
         <c:choose>
             <c:when test="${editing}">
             <form action="./EditArticle#user-articles" method="post">
@@ -74,6 +73,7 @@
             </c:otherwise>
         </c:choose>
             <br><br>
+                <!-- Check is user is editing or creating new article -->
             <c:choose>
                 <c:when test="${articleGenre != null}">
                     <h4>${articleGenre}</h4>
@@ -93,6 +93,7 @@
 
             <div class="input-group">
                 <span class="input-group-addon" style="font-size: large"><strong>Title</strong></span>
+                <!-- Check is user is editing or creating new article -->
                 <c:choose>
                     <c:when test="${articleName != null}">
                         <input id="articleTitle" type="text" class="form-control" name="articleTitle"
@@ -108,6 +109,7 @@
             </div>
             <h4>Tell your story below..</h4>
             <div class="form-group">
+                <!-- Adds WYSIWYG text editor -->
                 <jsp:include page="Text_Editor.jsp"/>
                 <input type="hidden" id = "articleBody" name="articleBody">
             </div>
@@ -131,6 +133,7 @@
     </footer>
 
     <script>
+        //Gets content of text box for storage, and disables add button to prevent spamming
         $(this).submit(function () {
             $('#articleBody').val(document.getElementById('textfield').contentWindow.document.body.innerHTML);
             $('#submitButton').prop('disabled', true);
@@ -138,6 +141,7 @@
     </script>
     <c:if test="${articleContent != null}">
         <script>
+            //If editing, html placed into textbox
             $(document).ready(function () {
                 document.getElementById('textfield').contentWindow.document.body.innerHTML = '${articleContent}';
             });
@@ -146,6 +150,7 @@
     <c:choose>
         <c:when test="${articleDate != null}">
             <script>
+            //Defaults date picker to preset user date if editing
             $(this).ready(function () {
             document.getElementById("datePicker").valueAsDate = new Date('${articleDate}')
             })
@@ -153,6 +158,7 @@
         </c:when>
         <c:otherwise>
             <script>
+            //Defaults date picker to current date
             $(this).ready(function () {
             document.getElementById("datePicker").valueAsDate = new Date()
             })

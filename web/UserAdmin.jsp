@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Project.UserDAO.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
     <title>Adding and Deleting Users</title>
 
     <link href="Https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" type="text/css" href="addcreate.css">
+    <link rel="stylesheet" type="text/css" href="CSS/addcreate.css">
 
 </head>
 <body>
@@ -38,6 +37,7 @@
                     <th>Reset</th>
                     </thead>
                     <tbody>
+                    <!-- Populates tables with users -->
                     <c:forEach items="${users}" var="user">
                         <tr>
                             <td>${user.getFirstName()}</td>

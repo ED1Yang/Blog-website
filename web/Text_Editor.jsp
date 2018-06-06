@@ -6,7 +6,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
             integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Text_Editor.css">
+    <link rel="stylesheet" href="CSS/Text_Editor.css">
 </head>
 <body onload="enableEditMode();">
 <div>
@@ -21,7 +21,6 @@
     <button type="button" onclick="execCmd('cut');"><i class="fa fa-cut"></i></button>
     <button type="button" onclick="execCmd('copy');"><i class="fa fa-copy"></i></button>
     <button type="button" onclick="execCmd('indent');"><i class="fa fa-indent"></i></button>
-    <!--<button type="button" onclick="execCmd('outdent');"><i class="fa fa-dedent"></i></button>-->
     <button type="button" onclick="execCmd('subscript');"><i class="fa fa-subscript"></i></button>
     <button type="button" onclick="execCmd('superscript');"><i class="fa fa-superscript"></i></button>
     <button type="button" onclick="execCmd('undo');"><i class="fa fa-undo"></i></button>

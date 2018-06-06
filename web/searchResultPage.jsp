@@ -14,8 +14,8 @@
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="MainCSS.css">
-    <link rel="stylesheet" type="text/css" href="searchResults.css">
+    <link rel="stylesheet" type="text/css" href="CSS/MainCSS.css">
+    <link rel="stylesheet" type="text/css" href="CSS/searchResults.css">
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -73,13 +73,9 @@
 <div class="bg-1" id = "articles" style="top:-9px; position: relative">
     <div class="container">
         <div class="row text-center">
-
-
             <br>
-
-                    <h1 style="color: white">RESULTS</h1>
+            <h1 style="color: white">RESULTS</h1>
             <br>
-
             <form action="./Sort" method="post" style="margin: 0; padding: 0;display: inline">
                 <input type="hidden" value="${keyword}" name="keyword">
                 <input type="hidden" value="article_name" name="category">

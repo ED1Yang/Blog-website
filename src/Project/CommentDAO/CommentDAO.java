@@ -9,8 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("Duplicates")
-
 public class CommentDAO implements AutoCloseable {
 
     private final Connection conn;
@@ -45,14 +43,6 @@ public class CommentDAO implements AutoCloseable {
             stmt.setString(2, comment.getUserName());
             stmt.setString(3, comment.getText());
             stmt.setInt(4, comment.getParentComment());
-            stmt.executeUpdate();
-        }
-    }
-
-    public void deleteComment1(Comment comment) throws SQLException{
-        try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM comments WHERE article_id = ? AND userName = ?")) {
-            stmt.setInt(1, comment.getArticle_id());
-            stmt.setString(2, comment.getUserName());
             stmt.executeUpdate();
         }
     }

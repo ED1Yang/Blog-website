@@ -1,4 +1,3 @@
-<%@ page import="java.io.File" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,21 +8,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Event Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
     <!-- //for-mobile-apps -->
     <!-- //custom-theme -->
-    <link href="Registration_Form.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="CSS/Registration_Form.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- js -->
-    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <!-- //js -->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-    <script src="//www.google.com/recaptcha/api.js"></script>
+    <link href='Https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <script src="Https://www.google.com/recaptcha/api.js"></script>
 </head>
 <c:choose>
 <c:when test="${adminUserSetup}">
@@ -36,6 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- banner -->
 <div class="center-container">
     <div class="main">
+        <!-- Slightly different interface for administrators -->
         <c:choose>
             <c:when test="${adminUserSetup}">
                 <h1 class="w3layouts_head">Administrative user Setup</h1>
@@ -46,7 +48,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </c:choose>
         <div class="w3layouts_main_grid">
             <form action="./Registration" method="post" class="w3_form_post" id="registration">
-                <%--enctype="multipart/form-data">--%>
                 <c:if test="${UsernameTaken}">
                     <p style="color:red">Current username has been taken.</p>
                     <br>
@@ -107,6 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<label>Profile Picture</label>
 							</span>
                     <br>
+                    <!-- Generates default avatars -->
                     <c:forEach items="${defaultAvatars}" var="i">
                         <img src="Avatars/${i}" width="50px" data-value="${i}">
                     </c:forEach>
@@ -138,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="w3layouts_copy_right">
             <div class="container">
-                <p>© 2018 Registration Form. All rights reserved | Design by <a href="#">Apollo</a></p>
+                <p>&copy; 2018 Registration Form. All rights reserved | Design by <a href="Home.jsp">Apollo</a></p>
             </div>
         </div>
     </div>
@@ -161,6 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
+    //Checks username in real time
     function checkUname() {
         var uname = $('#uname').val();
         if(uname != "") {
@@ -178,6 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 </script>
 <script>
+    //Sends user to right place depending on uploading or not
     function noUploading() {
         document.getElementById("uploading").setAttribute("value", "false");
     }
@@ -188,6 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </script>
 <script>
+    //Validates reCAPTCHA input
     window.onload = function() {
         var $recaptcha = document.querySelector('#g-recaptcha-response');
 

@@ -15,7 +15,6 @@ CREATE TABLE users(
   PRIMARY KEY (userName)
 );
 
-
 CREATE TABLE articles(
   article_id INT AUTO_INCREMENT NOT NULL,
   article_name VARCHAR(50),

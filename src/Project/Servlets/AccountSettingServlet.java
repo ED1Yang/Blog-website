@@ -1,6 +1,6 @@
 package Project.Servlets;
 
-        import Project.UserDAO.User;
+import Project.UserDAO.User;
         import Project.UserDAO.UserDAO;
 
         import javax.servlet.RequestDispatcher;

@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="MainCSS.css">
+    <link rel="stylesheet" type="text/css" href="CSS/MainCSS.css">
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -22,6 +22,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <!-- Check if user is logged in -->
             <c:choose>
                 <c:when test="${!LoggedIn}">
                     <a href="Login_page.jsp"><img src="Resources/avatarimg.png" alt="Name" class="avatar"></a>
@@ -33,6 +34,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
+                <!-- Contextual menu based on user privelage -->
                 <c:if test="${LoggedIn}">
                     <li><a href="./ArticleCreation">ADD ARTICLE</a></li>
                 </c:if>
@@ -180,6 +182,7 @@
             <c:if test="${visChanged}">
                 <h3 style="font-weight: bold; color: coral;">Article Visibility Changed</h3>
             </c:if>
+            <!-- Generate all articles if not in future date or hidden, depending on user privelage -->
             <c:forEach items="${AllArticlesDated}" var="article">
                 <c:if test="${!article.isHidden() || user.isAdmin()}">
                     <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">

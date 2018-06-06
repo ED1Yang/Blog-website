@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     color: white;
-    background: url(Resources/Web-Design-solutions.jpg);
+    background: url(../Resources/Web-Design-solutions.jpg);
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;

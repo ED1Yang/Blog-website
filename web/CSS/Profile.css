@@ -1,6 +1,6 @@
 body {
     color: white;
-    background: url(./Resources/bgAccount.jpg);
+    background: url(../Resources/bgAccount.jpg);
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
