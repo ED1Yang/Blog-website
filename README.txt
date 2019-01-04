@@ -1,4 +1,9 @@
-TEAM GREA FINAL PROJECT
+FINAL PROJECT-Blog website
+by TEAM GREA 
+
+Hello everyone! This project is to build a blogging website.
+For the request of this project, please refer to the handout, and for the introduction of this project, please refer to my reflective report.
+
 
 Notes:
 
